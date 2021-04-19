@@ -1,4 +1,78 @@
+* {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .loginform {
     border: solid black;
     width: 50%;
+}
+
+/* Navibar */
+.wrapper {
+    display: flex;
+    position: relative;
+    
+}
+
+.wrapper .sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: lightpink; 
+}
+
+.wrapper .tenantbutton {
+    list-style-type: none;
+    list-style-position: none;
+}
+
+.wrapper .sidebar h2 {
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px;
+    padding: 20px;
+}
+
+.wrapper .sidebar li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(225,225,0,0.05);
+    
+}
+
+.wrapper .sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.wrapper .sidebar li a .fas {
+    width: 30px;
+}
+
+.wrapper .sidebar li:hover {
+    background: #D8BfD8;
+}
+
+.wrapper .sidebar li:hover a {
+    color: #fff;
+}
+
+/* Tenant announcement */
+.announcementmenu {
+    margin-left: 70px;
+    margin-top: 70px;
+}
+
+.announcementmenu ul li a{
+    text-decoration: none;
+}
+
+.announcementmenu ul li {
+    display: block;
+    padding: 5px;
+    background: black;
+    text-decoration: white;
 }
