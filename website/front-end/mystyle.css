@@ -1,6 +1,8 @@
 * {
     font-family: 'Josefin Sans', sans-serif;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 .loginform {
     border: solid black;
@@ -40,7 +42,7 @@
     
 }
 
-.wrapper .sidebar li a {
+.wrapper .sidebar ul li a {
     display: block;
     text-decoration: none;
     margin-left: 20px;
@@ -58,3 +60,19 @@
     color: #fff;
 }
 
+/* Tenant announcement */
+.announcementmenu {
+    margin-left: 70px;
+    margin-top: 70px;
+}
+
+.announcementmenu ul li a{
+    text-decoration: none;
+}
+
+.announcementmenu ul li {
+    display: block;
+    padding: 5px;
+    background: black;
+    text-decoration: white;
+}
