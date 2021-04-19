@@ -22,5 +22,6 @@ urlpatterns = [
     path('pages/', include('pages.urls')),
     path('contact/', include('pages.urls')),
     path('product/', include('owner.urls')),
-    path('create/', include('owner.urls'))
+    path('create/', include('owner.urls')),
+    path('', include('searching.urls')), # new
 ]
