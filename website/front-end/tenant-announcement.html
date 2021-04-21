@@ -13,11 +13,41 @@
 <body>
     <!-- Announcement menu -->
     <div class="announcementmenu">
-        <ul>
-            <li><a href="">All</a></li>
-            <li><a href="">Unread</a></li>
-        </ul>
+        <!-- Announcement type -->
+        <select name="announcementmenu">
+            <option selected="selected" value="one">All</option>
+            <option value="two">Unread</option>
+        </select>
+
+        <!-- Search bar -->
+        <input type="text" placeholder="Search">
+        <i class="fas fa-search" style="font-size: 26px; "></i>
     </div>
+
+    <!-- Announcement -->
+    <div class="container">
+        <div class="wrapper forannouncement">
+    
+            <div class="announcement">
+                <div class="subjectline"><a href="">Subject line1</a></div>
+                <div class="poston">Posted on:</div>
+                <div class="sendername">Sender name</div>
+                <div class="sendtime">Month Date, Year at hh:mm</div>
+                <div class="briefcontent">content here...</div>
+            </div>
+
+            <div class="announcement">
+                <div class="subjectline"><a href="">Subject line2</a></div>
+                <div class="poston">Posted on:</div>
+                <div class="sendername">Sender name</div>
+                <div class="sendtime">Month Date, Year at hh:mm</div>
+                <div class="briefcontent">content here...</div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
     
 </body>
 </html>

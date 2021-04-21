@@ -13,7 +13,6 @@
 .wrapper {
     display: flex;
     position: relative;
-    
 }
 
 .wrapper .sidebar {
@@ -61,18 +60,73 @@
 }
 
 /* Tenant announcement */
-.announcementmenu {
-    margin-left: 70px;
+ .announcementmenu {
+    margin-left: 400px;
     margin-top: 70px;
 }
 
-.announcementmenu ul li a{
-    text-decoration: none;
+.announcementmenu select {
+    width: 200px;
+    padding: 10px;
 }
 
-.announcementmenu ul li {
-    display: block;
-    padding: 5px;
-    background: black;
-    text-decoration: white;
+.announcementmenu select option {
+    padding: 10px;
 }
+
+.announcementmenu input {
+    padding: 10px;
+    width: 400px;
+    margin-left: 100px;
+}
+
+.announcementmenu i {
+    position: absolute;
+    padding-top: 5px;
+    margin-left: 5px;
+} 
+
+.forannouncement {
+    padding: 50px;
+    margin-top: 20px;
+    display: block;
+}
+
+.announcement {
+    border-bottom: 1px solid black;
+    border-top: 0.5px solid black;
+    
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.announcement .subjectline {
+    margin-left: 100px;
+    padding: 10px;
+}
+
+.announcement .sendername {
+    margin-left: 150px;
+}
+
+.announcement .briefcontent {
+    margin-left: 100px;
+    padding: 10px;
+}
+
+.announcement .poston {
+    
+    float: right;
+}
+
+.announcement .sendtime {
+    float: right;
+}
+
+.subjectline a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
