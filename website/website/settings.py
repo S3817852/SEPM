@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'frontpage'
+LOGOUT_REDIRECT_URL = 'frontpage'
+
 
 # Application definition
 
@@ -38,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages', 'owner', 'hello', 'notifications' , 'searching',
+ 'owner', 'hello', 'tenant', 'home', 'notification','core', 'userprofile','job'
 ]
 
 MIDDLEWARE = [
@@ -64,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notification.context_processors.notifications'
             ],
         },
     },

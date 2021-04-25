@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {%block content %}
-<h1>In app template {{object.title}}</h1>
-<p>{% if object.description %}
+<h1>In app template </h1>
+<p>
+    {{object.title}}
+
     {{object.description}}
-    {% else %}
-    Coming soon
-    {%endif %}
+    {{object.price}}
 </p>
-{{object.price}}
+
 {%endblock %}
