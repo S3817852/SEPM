@@ -8370,10 +8370,11 @@ a[data-toggle="collapse"] {
   margin-left: 100px;
 }
 
-.announcementmenu i {
+.announcementmenu .fas {
   position: absolute;
-  padding-top: 5px;
+  padding-top: 2px;
   margin-left: 5px;
+  color: black;
 } 
 
 .forannouncement {
@@ -8419,10 +8420,124 @@ a[data-toggle="collapse"] {
   color: black;
 }
 
-.announcementavatar {
+.announcement .announcementavatar {
   width: 50px;
   height: 50px;
   float: left;
   margin-left: 35px;
   margin-top: -15px;
+}
+
+/* Tenant announcement page */
+.announcementbox {
+  border: solid black 1px;
+  width: 70%;
+}
+
+.announcementbox .subjectline {
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.announcementbox .sendername {
+  margin-left: 100px;
+  color: #007bff;
+}
+
+.announcementbox .announcementavatar {
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.announcementbox .poston {
+  margin-left: 100px;
+}
+
+.announcementbox .content {
+  padding: 30px;
+}
+
+.announcementbox .commentbox {
+  padding: 10px;
+  border-top: solid black 1px;
+}
+
+.announcementbox .commentbox .comment {
+  height: 40px;
+  width: 60%;
+}
+
+/* Tenant room services */
+.roomservicesmenu {
+  margin-left: 400px;
+  margin-top: 0px;
+  padding-bottom: 30px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roomservicesmenu select {
+  width: 200px;
+  padding: 10px;
+  margin-left: 70px;
+}
+
+.roomservicesmenu select option {
+  padding: 10px;
+}
+
+.roomservicesmenu input {
+  padding: 10px;
+  width: 400px;
+  margin-left: 100px;
+}
+
+.roomservicesmenu .fas {
+  position: absolute;
+  padding-top: 2px;
+  margin-left: 5px;
+  color: black;
+}
+
+/* New service request */
+.newservicebox {
+  border: solid black 1px;
+}
+
+.newserviceform {
+  padding: 10px;
+}
+
+.newserviceform .to {
+  float: left;
+  font-weight: bold;
+  color: black;
+}
+
+.newserviceform .servicesubject {
+  font-weight: bold;
+  color: black;
+}
+
+.newserviceform .description {
+  font-weight: bold;
+  color: black;
+}
+
+.newserviceform .ownername {
+  margin-left: 30px;
+  color: #0056b3;
+}
+
+.newserviceform .servicesubjectinput {
+  width: 52%;
+}
+
+.newservicebox .requestdescription {
+  width: 60%;
 }
