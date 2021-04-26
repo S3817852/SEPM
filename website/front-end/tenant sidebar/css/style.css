@@ -8534,6 +8534,58 @@ a[data-toggle="collapse"] {
   color: black;
 }
 
+/* Tenant billreceiptdetail page */
+
+
+.billreceiptdetail-row {
+  display: flex;
+}
+
+.billreceiptdetail-column {
+  flex: 50%;
+}
+
+.billreceiptdetailbox {
+  border: solid black 1px;
+  width: 95%;
+}
+
+.billreceiptdetailbox .subjectline {
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.billreceiptdetailbox .sendername {
+  margin-left: 100px;
+  color: #007bff;
+}
+
+.billreceiptdetailbox .billreceiptdetailavatar {
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.billreceiptdetailbox .poston {
+  margin-left: 100px;
+}
+
+.billreceiptdetailbox .content {
+  padding: 30px;
+}
+
+.billreceiptdetailbox .commentbox {
+  padding: 10px;
+  border-top: solid black 1px;
+}
+
+.billreceiptdetailbox .commentbox .comment {
+  height: 40px;
+  width: 60%;
+}
 
 /* New service request */
 .newservicebox {
