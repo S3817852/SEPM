@@ -8541,3 +8541,64 @@ a[data-toggle="collapse"] {
 .newservicebox .requestdescription {
   width: 60%;
 }
+
+/* Tenant service request page */
+.servicerequestbox {
+  border: solid black 1px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.servicerequestbox .subjectline {
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.servicerequestbox .sendername {
+  margin-left: 100px;
+  color: #007bff;
+}
+
+.servicerequestbox .announcementavatar {
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.servicerequestbox .poston {
+  margin-left: 100px;
+}
+
+.servicerequestbox .content {
+  padding-top: 5px; 
+  margin-left: 20px;
+}
+
+.servicerequestbox .requestdescription {
+  font-weight: bold;
+  color: black;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.servicerequestbox .commentbox {
+  padding: 10px;
+  border-top: solid black 1px;
+}
+
+.servicerequestbox .commentbox .comment {
+  height: 40px;
+  width: 60%;
+}
+
+.servicerequestbox .brokenimg {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 20px;
+}
+
