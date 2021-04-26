@@ -8345,8 +8345,7 @@ a[data-toggle="collapse"] {
 
   /* Tenant announcement */
  .announcementmenu {
-  margin-left: 400px;
-  margin-top: 70px;
+  margin-top: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid black;
   width: 70%;
@@ -8355,9 +8354,10 @@ a[data-toggle="collapse"] {
 }
 
 .announcementmenu select {
-  width: 200px;
-  padding: 10px;
-  margin-left: 100px;
+  width: 25%;
+  padding: 10px;  
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .announcementmenu select option {
@@ -8366,8 +8366,8 @@ a[data-toggle="collapse"] {
 
 .announcementmenu input {
   padding: 10px;
-  width: 400px;
-  margin-left: 100px;
+  width: 40%;
+  margin-left: 20px;
 }
 
 .announcementmenu .fas {
@@ -8473,8 +8473,7 @@ a[data-toggle="collapse"] {
 
 /* Tenant room services */
 .roomservicesmenu {
-  margin-left: 400px;
-  margin-top: 0px;
+  margin-top: 10px;
   padding-bottom: 30px;
   width: 70%;
   margin-left: auto;
@@ -8482,9 +8481,10 @@ a[data-toggle="collapse"] {
 }
 
 .roomservicesmenu select {
-  width: 200px;
+  width: 25%;
   padding: 10px;
-  margin-left: 70px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .roomservicesmenu select option {
@@ -8493,15 +8493,16 @@ a[data-toggle="collapse"] {
 
 .roomservicesmenu input {
   padding: 10px;
-  width: 400px;
-  margin-left: 100px;
+  width: 40%;
+  margin-left: 10px;
 }
 
 .roomservicesmenu .fas {
   position: absolute;
   padding-top: 2px;
-  margin-left: 5px;
+  
   color: black;
+  margin-left: 5px;
 }
 
 /* Tenant bill receipt services */
@@ -8512,7 +8513,7 @@ a[data-toggle="collapse"] {
 }
 
 .billreceipt select {
-  width: 200px;
+  width: 10%;
   padding: 10px;
   margin-right: 30px;
 }
@@ -8523,7 +8524,7 @@ a[data-toggle="collapse"] {
 
 .billreceipt input {
   padding: 10px;
-  width: 400px;
+  width: 25%;
   margin-right: 30px;
 }
 
@@ -8621,7 +8622,7 @@ a[data-toggle="collapse"] {
 }
 
 .newservicebox .requestdescription {
-  width: 60%;
+  width: 62%;
 }
 
 /* Tenant service request page */
