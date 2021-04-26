@@ -122,7 +122,7 @@
 					  </thead>
 					  <tbody>
 						<tr>
-						  <td><a href="T-billreceiptdetail.html">Monthly Fee</a></td>
+						  <td><a href="T-billreceiptdetail-paid.html">Monthly Fee</a></td>
 						  <td scope="row">May</td>
 						  <td scope="row">2020</td>
 						  <td><a href="#" class="btn btn-success">Paid</a></td>
@@ -199,7 +199,7 @@
 						</tr>
 	
 						<tr>
-							<td><a href="">Monthly Fee</a></td>
+							<td><a href="T-billreceiptdetail-unpaid.html">Monthly Fee</a></td>
 							<td scope="row">April</td>
 							<td scope="row">2021</td>
 							<td><a href="#" class="btn btn-danger">Unpaid</a></td>
@@ -214,6 +214,30 @@
 		
 	   </div>
 	</div>
+
+	<button class="open-button" onclick="openForm()">Chat</button>
+
+	<div class="chat-popup" id="myForm">
+	<form action="/action_page.php" class="form-container">
+		<h1>Chat</h1>
+
+		<label for="msg"><b>Message</b></label>
+		<textarea placeholder="Type message.." name="msg" required></textarea>
+
+		<button type="submit" class="btn">Send</button>
+		<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+	</form>
+	</div>
+
+	<script>
+	function openForm() {
+	document.getElementById("myForm").style.display = "block";
+	}
+
+	function closeForm() {
+	document.getElementById("myForm").style.display = "none";
+	}
+	</script>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
