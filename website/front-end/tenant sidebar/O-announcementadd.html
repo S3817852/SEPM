@@ -12,11 +12,12 @@
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
+		
   </head>
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+            <nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -24,13 +25,13 @@
 	        </button>
         </div>
 				<div class="p-4">
-		  		<h1><a href="index.html" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+		  		<h1><a href="O-statistics" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
-	          <li class="active">
+	          <li>
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
 	          </li>
-	          <li >
-	              <a href="#"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
+	          <li class="active">
+	              <a href="O-announcement.html"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
 	          </li>
 	          <li>
               <a href="#"><span class="fas fa-home mr-3"></span> Rooms</a>
@@ -55,33 +56,61 @@
               </li>
 	        </ul>
 
-	        <div class="mb-5">
-						<h3 class="h6 mb-3">Subscribe for newsletter</h3>
-						<form action="#" class="subscribe-form">
-	            <div class="form-group d-flex">
-	            	<div class="icon"><span class="icon-paper-plane"></span></div>
-	              <input type="text" class="form-control" placeholder="Enter Email Address">
-	            </div>
-	          </form>
-					</div>
-
-	        <div class="footer">
-	        	<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-	        </div>
-
 	      </div>
     	</nav>
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Sidebar #05</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-	  
+        <h2 class="mb-4"> New announcement</h2>
+      
+		<!-- Announcement -->
+		<div class="newannouncementbox">
+			<!-- Announcement info --> 
+            <!-- action="/action_page.php" -->
+            <form class="newserviceform">
+                <div class="to">To:</div><br>
+			    <input type="text" id="" name="" class="servicesubjectinput"><br>
+                <label for="" class="servicesubject">Announcement subject:</label><br>
+                <input type="text" id="" name="" class="servicesubjectinput"><br>
+                <label for="lname" class="description">Announcement main content:</label><br>
+                <textarea name="" id="" cols="50" rows="10" class="requestdescription"></textarea><br><br>
+                <a href="#" class="btn btn-info">Attach an image</a><br><br>
+                <input type="submit" value="Submit">
+                <br>
+                
+            </form>
+	
 		</div>
+
+				
+			
+		
+	   </div>
+	</div>
+
+	<button class="open-button" onclick="openForm()">Chat</button>
+
+	<div class="chat-popup" id="myForm">
+	<form action="/action_page.php" class="form-container">
+		<h1>Chat</h1>
+
+		<label for="msg"><b>Message</b></label>
+		<textarea placeholder="Type message.." name="msg" required></textarea>
+
+		<button type="submit" class="btn">Send</button>
+		<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+	</form>
+	</div>
+
+	<script>
+	function openForm() {
+	document.getElementById("myForm").style.display = "block";
+	}
+
+	function closeForm() {
+	document.getElementById("myForm").style.display = "none";
+	}
+	</script>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
