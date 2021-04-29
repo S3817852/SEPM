@@ -8794,3 +8794,19 @@ a[data-toggle="collapse"] {
 .newannouncementbox .requestdescription {
   width: 100%;
 }
+
+/* Owner bill receipt */
+.O-bill {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Owner new bill receipt */
+.newbillbox {
+  margin-bottom: 20px;
+}
+
+.O-newbilldropdown {
+  margin-left: 10px;
+  margin-top: 10px;
+}
