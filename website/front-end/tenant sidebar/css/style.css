@@ -8868,3 +8868,33 @@ a[data-toggle="collapse"] {
   color: black;
   margin-left: 5px;
 }
+
+/* New tenant account */
+.newtenantaccountbox {
+  border: solid black 1px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dob-dropdown {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.dob-dropdown select {
+  width: 10%;
+  padding: 10px;
+  margin-right: 30px;
+}
+
+.dob-dropdown select option {
+  padding: 10px;
+}
+
+.dob-dropdown input {
+  padding: 10px;
+  width: 25%;
+  margin-right: 30px;
+}
+
