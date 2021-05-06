@@ -25,6 +25,7 @@ urlpatterns = [
     path('create/', include('owner.urls')),
     path('details/', include('owner.urls')),
     path('delete/', include('owner.urls')),
+    path('', include('home.urls'))
     # path('', include('home.urls')),
     # path('notifications/', include('notification.urls')),
     # path('job/', include('job.urls')),
