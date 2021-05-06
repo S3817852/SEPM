@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views
+from core.views import frontpage, signup
 
 
 
@@ -25,7 +26,11 @@ urlpatterns = [
     path('create/', include('owner.urls')),
     path('details/', include('owner.urls')),
     path('delete/', include('owner.urls')),
-    path('', include('home.urls'))
+    path('home/', include('home.urls')),
+    path('', frontpage, name='frontpage'),
+    path('signup/', signup, name='signup'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login')
     # path('', include('home.urls')),
     # path('notifications/', include('notification.urls')),
     # path('job/', include('job.urls')),

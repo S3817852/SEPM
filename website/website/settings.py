@@ -29,6 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'frontpage'
+LOGOUT_REDIRECT_URL = 'frontpage'
 
 
 
@@ -41,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
- 'owner', 'tenant', 'home', 
+ 'owner', 'tenant', 'home', 'core', 'userprofile'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
