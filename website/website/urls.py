@@ -30,7 +30,8 @@ urlpatterns = [
     path('', frontpage, name='frontpage'),
     path('signup/', signup, name='signup'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
-    path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login')
+    path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login'),
+    path('announcement/', include('announcement.urls')),
     # path('', include('home.urls')),
     # path('notifications/', include('notification.urls')),
     # path('job/', include('job.urls')),
