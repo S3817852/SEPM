@@ -77,8 +77,59 @@
 			</div>
 	
 		</div>
-		{% endblock%}
 
+		{% for message in announcement.conversationmessages.all %}
+        {% if user.username == message.created_by.username %}
+        <!-- <p>Yes </p> -->
+        {% endif %}
+        
+        <div class="notification">
+            <b>{{ message.created_by.username }} - {{ message.created_at|timesince }} ago</b><br>
+
+            {{ message.content }}
+        </div>
+		{% empty %}
+			<p>No messages yet...</p>
+
+			<hr>
+		{% endfor %}
+		
+
+		{% endblock%}
+		<form method="post" action=".">
+			{% csrf_token %}
+	
+			<div class="field">
+				<div class="control">
+					<textarea class="textarea" placeholder="Your message" name="content" id="id_content"></textarea>
+				</div>
+			</div>
+	
+			<div class="field">
+				<label>To</label>
+					<div class="control">
+						<textarea class="textarea" placeholder="Sent to ..." name="to" id="id_to"></textarea>
+					</div>
+				<!-- <div class="control">
+					<div class="select">
+						<select name="to" v-model="to">
+							{% for instance in object_list %}
+								{% if instance.username != user.username %}
+								<option value="{{ instance.id }}" selected>{{ instance }}</option>
+								{% endif %}
+							
+							{% endfor %}       
+						</select>
+					</div>
+				</div> -->
+			</div>
+	
+			<div class="field">
+				<div class="control">
+					<button class="button is-success">Send</button>
+				</div>
+			</div>
+		</form>
 				
 			
 		
