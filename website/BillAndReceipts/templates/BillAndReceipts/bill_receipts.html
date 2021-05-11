@@ -34,8 +34,8 @@
                       <li>
                           <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
                       </li>
-                      <li >
-                        <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
+                    <li >
+                      <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{notifications.count}})</a>
                       </li>
                       <li>
                       <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
@@ -43,10 +43,10 @@
                       <li>
                       <a href="{% url 'tenant' %}"><span class="fas fa-address-book mr-3"></span> Tenant</a>
                       </li>
-                      <li class="active">
+                      <li>
                       <a href="{% url 'ew' %}"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
                       </li>
-                      <li>
+                      <li class="active">
                       <a href="{% url 'bill_receipts' %}"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
                       </li>
                       <li>
@@ -70,11 +70,18 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4"> Electricity and Water</h2>
-		<a href="O-EW-new.html" class="btn btn-info">Add new monthly electricity and water data</a>
+        <h2 class="mb-4"> Bills and Receipts</h2>
+		<a href="O-billreceipt-new.html" class="btn btn-info">Write new bill</a>
       
 		<!-- Bills and Receipts menu -->
 		<div class="billreceipt O-bill">
+			<!-- Status Dropdown -->
+			<p style="display:inline">Status</p>
+			<select name="billreceipt-pay">
+				<option selected="selected" value="all">All</option>
+				<option value="paid">Paid</option>
+				<option value="unpaid">Unpaid</option>
+			</select>
 
 			<!-- Month Dropdown -->
 			<p style="display:inline">Month</p>
@@ -128,92 +135,92 @@
 						  <th>Title</th>
 						  <th>Month</th>
 						  <th>Year</th>
-						  <th>Delete data</th>
+						  <th>Status</th>
 						</tr>
 					  </thead>
 					  <tbody>
 						<tr>
-						  <td><a href="#">Monthly electricity and water data</a></td>
+						  <td><a href="O-billreceipt-paymentinprogress.html">Monthly Fee</a></td>
 						  <td scope="row">May</td>
 						  <td scope="row">2020</td>
-						  <td><a href="" class="btn btn-danger">Delete</a></td>
+						  <td><a href="" class="btn btn-danger">Payment In Progress</a></td>
 						</tr>
 
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 						  	<td scope="row">June</td>
 						  	<td scope="row">2020</td>
-                              <td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-danger">Payment In Progress</a></td>
 						</tr>
 
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="O-billreceipt-allpaid.html">Monthly Fee</a></td>
 							<td scope="row">July</td>
 							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
   
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">August</td>
 							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
 
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">September</td>
 							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
   
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">October</td>
 							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
   
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">November</td>
 							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
 	
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">December</td>
 							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
 						
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">January</td>
 							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
   
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">February</td>
 							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
   
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">March</td>
 							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
 	
 						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
+							<td><a href="">Monthly Fee</a></td>
 							<td scope="row">April</td>
 							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
+							<td><a href="#" class="btn btn-success">All Paid</a></td>
 						</tr>
 					  </tbody>
 					</table>

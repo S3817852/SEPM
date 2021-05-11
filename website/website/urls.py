@@ -36,6 +36,8 @@ urlpatterns = [
     path('house/', include('house.urls')),
     path('tenant/', include('tenant.urls')),
     path('ew/', include('EW.urls')),
+    path('billandreceipts/', include('BillAndReceipts.urls')),
+    path('roomservices/', include('roomservices.urls')),
     # path('', include('home.urls')),
     # path('notifications/', include('notification.urls')),
     # path('job/', include('job.urls')),

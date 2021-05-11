@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-      {% load static %}
+	  {%load static%}
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,20 +13,19 @@
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
-		
   </head>
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
-            <nav id="sidebar">
+			<nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
 	          <span class="sr-only">Toggle Menu</span>
 	        </button>
         </div>
-			<div class="p-4">
-                    <h1><a href="{% url 'frontpage' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+				<div class="p-4">
+					<h1><a href="{% url 'frontpage' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
                     <ul class="list-unstyled components mb-5">
                       <li>
                         <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
@@ -34,10 +33,10 @@
                       <li>
                           <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
                       </li>
-                      <li >
-                        <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
+                    <li >
+                      <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{notifications.count}})</a>
                       </li>
-                      <li class="active">
+                      <li>
                       <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
                       </li>
                       <li>
@@ -49,7 +48,7 @@
                       <li>
                       <a href="{% url 'bill_receipts' %}"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
                       </li>
-                      <li>
+                      <li class="active">
                         <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
                       </li>
                       <li>
@@ -65,36 +64,42 @@
                       </li>
                     </ul>
 
-	        </div>
+	      </div>
     	</nav>
 
         <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4"><a href="#">Tenant</a> / Add new house</h2>
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4"> Service request</h2>
       
 		<!-- Announcement -->
-		<div class="newtenantaccountbox">
-
-            <div class="newtenant-lable">House name</div>
-            <input type="text">
-            
-
-
-            <div class="newtenant-lable">Address</div>
-            <input type="text">
-
-            <div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info">Add house</a></div>
-            
-            
+		<div class="servicerequestbox">
+			<!-- Announcement info -->
+			<img src="user1.png" alt="" class="announcementavatar">
+			<div class="subjectline"><h3>Service subject</h3></div>
+            <div class="sendername">Sender name</div>
+            <div class="poston">Posted on: Time here</div>
+			<div class="request-status">
+				<p style="display:inline">Request status: </p>
+				<a href="#" class="btn btn-warning">New request</a>
+			</div>
+            <div class="requestdescription">Request description:</div>
+            <div class="content">description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here...description here... description here... description here... description here... description here... </div>
+            <div class="requestdescription">Attached image for the request:</div>
+            <img src="broken.jpg" alt="" class="brokenimg">
+			<div class="commentbox">
+				<input type="text" class="comment" placeholder="Write a reply...">
+			</div>
+	
 		</div>
-        
+
 				
 			
 		
 	   </div>
-	</div>
 
-	<button class="open-button" onclick="openForm()">Chat</button>
+		</div>
+
+        <button class="open-button" onclick="openForm()">Chat</button>
 
 	<div class="chat-popup" id="myForm">
 	<form action="/action_page.php" class="form-container">
