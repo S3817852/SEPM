@@ -25,7 +25,7 @@
 	        </button>
         </div>
 				<div class="p-4">
-		  		<h1><a href="index.html" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+		  		<h1><a href="{% url 'frontpage' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
@@ -37,13 +37,13 @@
 				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
 			  </li>
 	          <li>
-              <a href="#"><span class="fas fa-home mr-3"></span> Rooms</a>
+              <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
 	          </li>
 	          <li>
-              <a href="#"><span class="fas fa-address-book mr-3"></span> Tenant</a>
+              <a href="{% url 'tenant' %}"><span class="fas fa-address-book mr-3"></span> Tenant</a>
 	          </li>
 	          <li>
-              <a href="#"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
+              <a href="{% url 'ew' %}"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
 	          </li>
 	          <li>
               <a href="#"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
