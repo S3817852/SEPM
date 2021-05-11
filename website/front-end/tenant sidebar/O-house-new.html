@@ -17,7 +17,7 @@
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+            <nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -30,11 +30,11 @@
 	          <li>
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
 	          </li>
-	          <li class="active">
+	          <li>
 	              <a href="O-announcement.html"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
 	          </li>
-	          <li>
-              <a href="#"><span class="fas fa-home mr-3"></span> Rooms</a>
+	          <li  class="active">
+              <a href="O-house.html"><span class="fas fa-home mr-3"></span> Rooms</a>
 	          </li>
 	          <li>
               <a href="O-tenant.html"><span class="fas fa-address-book mr-3"></span> Tenant</a>
@@ -60,23 +60,25 @@
     	</nav>
 
         <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4"> Announcement</h2>
+        <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4"><a href="#">Tenant</a> / Add new house</h2>
       
 		<!-- Announcement -->
-		<div class="announcementbox">
-			<!-- Announcement info -->
-			<img src="user1.png" alt="" class="announcementavatar">
-			<div class="subjectline"><h3>Subject line1</h3></div>
-            <div class="sendername">Sender name</div>
-            <div class="poston">Posted on:</div>
-            <div class="content">Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content...Main content... </div>
-			<div class="commentbox">
-				<input type="text" class="comment" placeholder="Write a reply...">
-			</div>
-	
-		</div>
+		<div class="newtenantaccountbox">
 
+            <div class="newtenant-lable">House name</div>
+            <input type="text">
+            
+
+
+            <div class="newtenant-lable">Address</div>
+            <input type="text">
+
+            <div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info">Add house</a></div>
+            
+            
+		</div>
+        
 				
 			
 		
