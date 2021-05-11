@@ -17,7 +17,7 @@
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+            <nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -61,19 +61,24 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4"> Announcement</h2>
+		<h2 class="mb-4"><a href="O-announcement.html">Announcements</a> / New announcement</h2>
       
 		<!-- Announcement -->
-		<div class="announcementbox">
-			<!-- Announcement info -->
-			<img src="user1.png" alt="" class="announcementavatar">
-			<div class="subjectline"><h3>Subject line1</h3></div>
-            <div class="sendername">Sender name</div>
-            <div class="poston">Posted on:</div>
-            <div class="content">Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content...Main content... </div>
-			<div class="commentbox">
-				<input type="text" class="comment" placeholder="Write a reply...">
-			</div>
+		<div class="newannouncementbox">
+			<!-- Announcement info --> 
+            <!-- action="/action_page.php" -->
+            <form class="newserviceform">
+                <div class="to">To:</div><br>
+			    <input type="text" id="" name="" class="servicesubjectinput"><br>
+                <label for="" class="servicesubject">Announcement subject:</label><br>
+                <input type="text" id="" name="" class="servicesubjectinput"><br>
+                <label for="lname" class="description">Announcement main content:</label><br>
+                <textarea name="" id="" cols="50" rows="10" class="requestdescription"></textarea><br><br>
+                <a href="#" class="btn btn-info">Attach an image</a><br><br>
+                <input type="submit" value="Submit">
+                <br>
+                
+            </form>
 	
 		</div>
 

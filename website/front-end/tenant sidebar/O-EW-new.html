@@ -17,7 +17,7 @@
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+            <nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -30,13 +30,13 @@
 	          <li>
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
 	          </li>
-	          <li class="active">
+	          <li>
 	              <a href="O-announcement.html"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
 	          </li>
 	          <li>
               <a href="#"><span class="fas fa-home mr-3"></span> Rooms</a>
 	          </li>
-	          <li>
+	          <li class="active">
               <a href="O-tenant.html"><span class="fas fa-address-book mr-3"></span> Tenant</a>
 	          </li>
 	          <li>
@@ -61,22 +61,70 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4"> Announcement</h2>
+        <h2 class="mb-4"><a href="#">Tenant</a> / Add new account</h2>
       
 		<!-- Announcement -->
-		<div class="announcementbox">
-			<!-- Announcement info -->
-			<img src="user1.png" alt="" class="announcementavatar">
-			<div class="subjectline"><h3>Subject line1</h3></div>
-            <div class="sendername">Sender name</div>
-            <div class="poston">Posted on:</div>
-            <div class="content">Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content...Main content... </div>
-			<div class="commentbox">
-				<input type="text" class="comment" placeholder="Write a reply...">
-			</div>
-	
-		</div>
+		<div class="newtenantaccountbox">
 
+            <div class="newtenant-lable">Tenant full name</div>
+            <input type="text">
+            
+            <!-- Tenant date of birth -->
+            <div class="dob-dropdown">
+
+                <!-- Month Dropdown -->
+                <select name="billreceipt-month">
+                <option selected="selected" value="all">Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+                </select>
+
+                <!-- Year Dropdown -->
+                <select name="billreceipt-year" class="rightside">
+                <option selected="selected" value="all">Year</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                </select>
+                
+            </div>
+
+            <div class="newtenant-lable">Tenant phone number</div>
+            <input type="text">
+
+            <div class="newtenant-lable">Tenant email address</div>
+            <input type="text">
+
+            <div class="newtenant-lable">Password</div>
+            <input type="password">
+
+            <div class="newtenant-lable">Confirm password</div>
+            <input type="password"><br>
+
+            <div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info">Add account</a></div>
+            
+            
+		</div>
+        
 				
 			
 		

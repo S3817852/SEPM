@@ -12,7 +12,6 @@
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
-		
   </head>
   <body>
 		
@@ -30,11 +29,11 @@
 	          <li>
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
 	          </li>
-	          <li class="active">
+	          <li>
 	              <a href="O-announcement.html"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
 	          </li>
-	          <li>
-              <a href="#"><span class="fas fa-home mr-3"></span> Rooms</a>
+	          <li class="active">
+              <a href="O-house.html"><span class="fas fa-home mr-3"></span> Rooms</a>
 	          </li>
 	          <li>
               <a href="O-tenant.html"><span class="fas fa-address-book mr-3"></span> Tenant</a>
@@ -61,29 +60,77 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4"> Announcement</h2>
+        <h2 class="mb-4"> Houses manager</h2>
+        <a href="O-house-new.html" class="btn btn-info">Add new house</a>
       
-		<!-- Announcement -->
-		<div class="announcementbox">
-			<!-- Announcement info -->
-			<img src="user1.png" alt="" class="announcementavatar">
-			<div class="subjectline"><h3>Subject line1</h3></div>
-            <div class="sendername">Sender name</div>
-            <div class="poston">Posted on:</div>
-            <div class="content">Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content... Main content...Main content... </div>
-			<div class="commentbox">
-				<input type="text" class="comment" placeholder="Write a reply...">
-			</div>
+		<!-- Room Services menu -->
+		<div class="tenantaccountmenu">
+			<!-- Services type -->
+            <p style="display: inline; color: black;">Time remaining</p>
+			<select name="tenantaccountmenu">
+				<option selected="selected" value="one">All</option>
+				<option value="two">Less than 2 months</option>
+				<option value="three">More than 6 months</option>
+				<option value="four">More than 1 year</option>
+			</select>
 	
+			<!-- Search bar -->
+			
+			<input type="text" placeholder="Search">
+			<i class="fas fa-search" style="font-size: 40px; "></i>
+			
+		</div>
+        <h3>House list</h3>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<table class="table table-striped">
+					  <thead>
+						<tr>
+						  <th>House</th>
+						  <th>Address</th>
+                          <th>Empty room</th>
+						  <th>Rented room</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+							<td><a href="O-room.html">House1</a></td>
+							<td scope="row">123 District 7, HCM city</td>
+							<td><a href="#" class="btn btn-success">2</a></td>
+							<td><a href="#" class="btn btn-danger">7</a></td>
+						</tr>
+
+						<tr>
+							<td><a href="">House2</a></td>
+							<td scope="row">123 District 7, HCM city</td>
+							<td><a href="#" class="btn btn-success">2</a></td>
+							<td><a href="#" class="btn btn-danger">7</a></td>
+						</tr>
+
+						<tr>
+							<td><a href="">House3</a></td>
+							<td scope="row">123 District 7, HCM city</td>
+							<td><a href="#" class="btn btn-success">2</a></td>
+							<td><a href="#" class="btn btn-danger">7</a></td>
+						</tr>
+
+						<tr>
+							<td><a href="">House4</a></td>
+							<td scope="row">123 District 7, HCM city</td>
+							<td><a href="#" class="btn btn-success">2</a></td>
+							<td><a href="#" class="btn btn-danger">7</a></td>
+						</tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
+	   </div>
+
 		</div>
 
-				
-			
-		
-	   </div>
-	</div>
-
-	<button class="open-button" onclick="openForm()">Chat</button>
+        <button class="open-button" onclick="openForm()">Chat</button>
 
 	<div class="chat-popup" id="myForm">
 	<form action="/action_page.php" class="form-container">

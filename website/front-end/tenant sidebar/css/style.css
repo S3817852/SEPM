@@ -8440,6 +8440,8 @@ a[data-toggle="collapse"] {
 .announcementbox {
   border: solid black 1px;
   width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .announcementbox .subjectline {
@@ -8768,6 +8770,8 @@ a[data-toggle="collapse"] {
 .newannouncementbox {
   border: solid black 1px;
   width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .newserviceform {
