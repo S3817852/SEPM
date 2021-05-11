@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,10 +29,10 @@
 				<div class="p-4">
 		  		<h1><a href="T-announcement.html" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
-	          <li class="active">
+	          <li>
 	            <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
 	          </li>
-			  <li >
+			  <li class="active">
 				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
 			  </li>
 	          <li>
@@ -59,35 +60,46 @@
     	</nav>
 
         <!-- Page Content  -->
-		<div id="content" class="p-4 p-md-5 pt-5">
-            <h2 class="mb-4"> Announcement</h2>
-            <a href="{% url 'add_announcement' %}" class="btn btn-info">Write new notification</a>
-          
-            <!-- Announcement menu -->
-            <div class="announcementmenu">
-                <!-- Announcement type -->
-                <select name="announcementmenu">
-                    <option selected="selected" value="one">All</option>
-                    <option value="two">Unread</option>
-                </select>
-        
-                <!-- Search bar -->
-                <input type="text" placeholder="Search">
-                <i class="fas fa-search" style="font-size: 40px; "></i>
-            </div>
-        
-            <!-- Announcement -->
+        <div id="content" class="p-4 p-md-5 pt-5">      
+            <!-- Notifications -->
             {% if request.user.is_authenticated %}            
-                {% for announcement in announcements %}
-            <div class="announcement">
-                <div class="subjectline"><a href="{% url 'announcement_detail' announcement.id %}">{{ announcement.title }}</a></div>
-                <div class="poston">Posted on:</div>
-                <img src="user1.png" alt="" class="announcementavatar">
-                <div class="sendername">{{ announcement.created_by }}</div>
-                <div class="sendtime">{{ announcement.created_at }}</div>
-                <div class="briefcontent">{{ announcement.description }}</div>
-            </div>
-            {% endfor %}  
+                {% block content %}
+                <div class="container">
+                    <h1 class="title">Notifications</h1>
+
+                    {% if not notifications %}
+                        No notifications yet!
+                    {% endif %}
+
+                    {% for notification in notifications %}
+                        <div class="notification">
+                            <p>
+                                {% if notification.notification_type == 'message' %}
+                                    <a href="{% url 'notifications' %}?goto=job_detail&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                                        <strong>{{ notification.created_by.username }}</strong> commented on {% for instance in job_list %}
+                                                                                                            {% if instance.id == notification.extra_id %}
+                                                                                                                                                            
+                                                                                                            <p> {{ instance.title}}</p> 
+                                                                                                            {% endif%}
+                                                                                                        {% endfor%}<br>
+                                        {% if not notification.is_read %} <p> Not been read yet</p>   {% endif %}
+                                        <small>{{ notification.created_at|timesince }} ago</small>
+                                    </a>
+
+                                {% elif notification.notification_type == 'application' %}
+                                    <a href="{% url 'notifications' %}?goto=job_detail&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                                        <strong>{{ notification.created_by.username }}</strong> created new annnouncement<br>
+                                        <small>{{ notification.created_at|timesince }} ago</small>
+                                    </a>
+                                {% elif notification.notification_type == 'comment' %}
+                                    <p> {{ notification.created_by.username }} commented on someone's post </p>
+
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endblock %}
             {% endif%}
                 
             

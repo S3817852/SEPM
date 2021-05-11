@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
- 'owner', 'tenant', 'home', 'core', 'userprofile', 'announcement'
+ 'owner', 'tenant', 'home', 'core', 'userprofile', 'announcement', 'notification',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            
+                'notification.context_processors.notifications'
             ],
         },
     },

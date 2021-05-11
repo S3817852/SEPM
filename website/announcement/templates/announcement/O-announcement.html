@@ -33,6 +33,9 @@
 	          <li class="active">
 	              <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
 	          </li>
+            <li >
+              <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{notifications.count}})</a>
+              </li>
 	          <li>
               <a href="#"><span class="fas fa-home mr-3"></span> Rooms</a>
 	          </li>
@@ -97,7 +100,7 @@
             {% endif%}
                 
             
-           </div>
+        </div>
 	  
 		</div>
 

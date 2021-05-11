@@ -5,12 +5,18 @@ from .models import Announcement
 from django.views import View
 from django.contrib.auth.models import User
 from userprofile.models import ConversationMessage
+from notification.utilities import create_notification
 
 # Create your views here.
+# Announcement URL
 def index(request):
     announcements = Announcement.objects.all()
-    return render(request, 'announcement/O-announcement.html', {'announcements': announcements} )
+    if request.user.userprofile.is_owner:
+        return render(request, 'announcement/O-announcement.html', {'announcements': announcements} )
+    else:
+        return render(request, 'announcement/T_announcement.html', {'announcements': announcements} )
 
+# Get specific announcement
 class AnnouncementObjectMixin(object):
     model = Announcement
     def get_object(self):
@@ -20,6 +26,7 @@ class AnnouncementObjectMixin(object):
             obj = get_object_or_404(self.model, id=id)
         return obj
 
+# Get specific user
 class UserObjectMixin(object):
     model_user = User
     def get_user(self, user_id):
@@ -49,11 +56,16 @@ def add_announcement(request):
     
     return render(request, 'announcement/O-announcementadd.html', {'form': form})
 
+# View detail of announcement
 class AnnouncementDetailView(AnnouncementObjectMixin,UserObjectMixin,View):
     template_name = 'announcement/O-announcementdetail.html'
+    template_name1 = 'announcement/T-announcementdetail.html'
     def get(self, request, id = None, *args, **kwargs):
         context = {'announcement': self.get_object()}
-        return render(request, self.template_name, context)
+        if request.user.userprofile.is_owner:
+            return render(request, self.template_name, context)
+        else:
+            return render(request, self.template_name1, context)
 
     def post(self, request,id =None, *args, **kwargs):
         context = {}
@@ -70,11 +82,14 @@ class AnnouncementDetailView(AnnouncementObjectMixin,UserObjectMixin,View):
                 # print(queryset)
                 if content:
                     conversationmessage = ConversationMessage.objects.create(announcement=obj, content=content, created_by=request.user)
-                    # create_notification(request, sent_to_user, 'message', extra_id=obj.id)
+                    create_notification(request, sent_to_user, 'message', extra_id=obj.id)
 
                     return redirect('announcement_detail', id=obj.id)
             # if form.is_valid():
             #     form.save()
             
             # context['form'] =  form
-        return render(request, self.template_name,context)
+        if request.user.userprofile.is_owner:
+            return render(request, self.template_name, context)
+        else:
+            return render(request, self.template_name1, context)

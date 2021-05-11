@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-	{% load static %}
+	  {% load static%}
   	<title>Tenant page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,43 +55,85 @@
                 {% endif %}
 	          </li>
 	        </ul>
+
 	      </div>
     	</nav>
 
         <!-- Page Content  -->
 		<div id="content" class="p-4 p-md-5 pt-5">
-            <h2 class="mb-4"> Announcement</h2>
-            <a href="{% url 'add_announcement' %}" class="btn btn-info">Write new notification</a>
-          
-            <!-- Announcement menu -->
-            <div class="announcementmenu">
-                <!-- Announcement type -->
-                <select name="announcementmenu">
-                    <option selected="selected" value="one">All</option>
-                    <option value="two">Unread</option>
-                </select>
-        
-                <!-- Search bar -->
-                <input type="text" placeholder="Search">
-                <i class="fas fa-search" style="font-size: 40px; "></i>
-            </div>
-        
-            <!-- Announcement -->
-            {% if request.user.is_authenticated %}            
-                {% for announcement in announcements %}
-            <div class="announcement">
-                <div class="subjectline"><a href="{% url 'announcement_detail' announcement.id %}">{{ announcement.title }}</a></div>
-                <div class="poston">Posted on:</div>
-                <img src="user1.png" alt="" class="announcementavatar">
-                <div class="sendername">{{ announcement.created_by }}</div>
-                <div class="sendtime">{{ announcement.created_at }}</div>
-                <div class="briefcontent">{{ announcement.description }}</div>
-            </div>
-            {% endfor %}  
-            {% endif%}
-                
-            
-        </div>
+			<h2 class="mb-4"> Announcement</h2>
+			{% block content%}
+			<!-- Announcement -->
+			<div class="announcementbox">
+				<!-- Announcement info -->
+				<img src="user1.png" alt="" class="announcementavatar">
+				<div class="subjectline"><h3>{{ announcement.title }}</h3></div>
+				<div class="sendername">{{announcement.created_by}}</div>
+				<div class="poston">Posted on: {{announcement.created_at}} </div>
+				<div class="content">{{ announcement.description }}</div>
+				<div class="commentbox">
+					<input type="text" class="comment" placeholder="Write a reply...">
+				</div>
+		
+			</div>
+	
+			{% for message in announcement.conversationmessages.all %}
+			{% if user.username == message.created_by.username %}
+			<!-- <p>Yes </p> -->
+			{% endif %}
+			
+			<div class="notification">
+				<b>{{ message.created_by.username }} - {{ message.created_at|timesince }} ago</b><br>
+	
+				{{ message.content }}
+			</div>
+			{% empty %}
+				<p>No messages yet...</p>
+	
+				<hr>
+			{% endfor %}
+			
+	
+			{% endblock%}
+			<form method="post" action=".">
+				{% csrf_token %}
+		
+				<div class="field">
+					<div class="control">
+						<textarea class="textarea" placeholder="Your message" name="content" id="id_content"></textarea>
+					</div>
+				</div>
+		
+				<div class="field">
+					<label>To</label>
+						<div class="control">
+							<textarea class="textarea" placeholder="Sent to ..." name="to" id="id_to"></textarea>
+						</div>
+					<!-- <div class="control">
+						<div class="select">
+							<select name="to" v-model="to">
+								{% for instance in object_list %}
+									{% if instance.username != user.username %}
+									<option value="{{ instance.id }}" selected>{{ instance }}</option>
+									{% endif %}
+								
+								{% endfor %}       
+							</select>
+						</div>
+					</div> -->
+				</div>
+		
+				<div class="field">
+					<div class="control">
+						<button class="button is-success">Send</button>
+					</div>
+				</div>
+			</form>
+					
+				
+			
+		   </div>
+		</div>
 	</div>
 
 	<button class="open-button" onclick="openForm()">Chat</button>
