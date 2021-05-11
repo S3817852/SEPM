@@ -82,7 +82,7 @@
             <br>
             <div class="field">
                 <div class="control">
-                    <button class="button is-success">Sign up</button>
+                    <button class="btn btn-info">Sign up</button>
                     {% if not request.user.is_authenticated %}
 					<a href="{% url 'login' %}" class="button is-light">Log in</a>  
 					{% endif %}
