@@ -8471,12 +8471,13 @@ a[data-toggle="collapse"] {
   padding: 30px;
 }
 
-.announcementbox .commentbox {
+.announcementbox .commentsection {
   padding: 10px;
   border-top: solid black 1px;
+  width: 100%;
 }
 
-.announcementbox .commentbox .comment {
+.announcementbox .commentsection .comment {
   height: 40px;
   width: 60%;
 }
@@ -8915,4 +8916,36 @@ a[data-toggle="collapse"] {
   color: black;
   margin-left: 10px;
   margin-top: 10px;
+}
+
+/* Comment box */
+.commentbox {
+  border: solid black 1px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.commentbox .sendername {
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #007bff;
+}
+
+.commentbox .announcementavatar {
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.commentbox .poston {
+  margin-left: 100px;
+}
+
+.commentbox .content {
+  padding: 30px;
 }
