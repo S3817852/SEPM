@@ -8949,3 +8949,13 @@ a[data-toggle="collapse"] {
 .commentbox .content {
   padding: 30px;
 }
+
+@media only screen and (max-width: 700px) {
+  .commentbox {
+    width: 90%;
+  }
+
+  .announcementbox {
+    width: 95%;
+  }
+}
