@@ -69,6 +69,7 @@
     	</nav>
 
         <!-- Page Content  -->
+		<div id="add-announcement-app">
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> New announcement</h2>
       
@@ -149,7 +150,9 @@
 
 				
 	</div>
+</div>
 	<script src="https://unpkg.com/vue@next"></script>
+	{% block scripts%}
 	<script>
 		const AddAnnouncementApp = {
 			data() {
@@ -184,10 +187,11 @@
 	
 		Vue.createApp(AddAnnouncementApp).mount('#add-announcement-app');
 	</script>
+	{% endblock%}
 	
-    <!-- <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script> -->
+    <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="{%static 'js/popper.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
   </body>
 </html>

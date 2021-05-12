@@ -71,7 +71,7 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Electricity and Water</h2>
-		<a href="O-EW-new.html" class="btn btn-info">Add new monthly electricity and water data</a>
+		<a href="{% url 'ew_add' %}" class="btn btn-info">Add new monthly electricity and water data</a>
       
 		<!-- Bills and Receipts menu -->
 		<div class="billreceipt O-bill">
@@ -250,9 +250,9 @@
 	}
 	</script>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+<script src="{%static 'js/jquery.min.js'%}"></script>
+<script src="{%static 'js/popper.js'%}"></script>
+<script src="{%static 'js/bootstrap.min.js'%}"></script>
+<script src="{%static 'js/main.js' %}"></script>
   </body>
 </html>
