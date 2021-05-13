@@ -9054,3 +9054,17 @@ a[data-toggle="collapse"] {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+
+.account-lable {
+  color: black;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.account-content {
+  color: black;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 10px;
+}
