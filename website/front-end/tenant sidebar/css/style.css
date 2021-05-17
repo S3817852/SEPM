@@ -8348,7 +8348,7 @@ a[data-toggle="collapse"] {
   margin-top: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid black;
-  width: 70%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -8386,7 +8386,7 @@ a[data-toggle="collapse"] {
 .announcement {
   border-bottom: 1px solid black;
   
-  width: 70%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -8434,6 +8434,38 @@ a[data-toggle="collapse"] {
 
 .announcement-column {
   flex: 50%;
+}
+
+@media only screen and (max-width: 700px) {
+  .announcementmenu {
+    width: 100%;
+  }
+  .announcement {
+    width: 100%;
+  }
+
+  .announcement .announcementavatar {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-left: 15px;
+    margin-top: -15px;
+  }
+
+  .announcement .subjectline {
+    margin-left: 65px;
+    padding: 10px;
+  }
+  
+  .announcement .sendername {
+    margin-left: 90px;
+  }
+  
+  .announcement .briefcontent {
+    margin-left: 65px;
+    padding: 10px;
+  }
+
 }
 
 /* Tenant announcement page */
@@ -8644,6 +8676,12 @@ a[data-toggle="collapse"] {
   margin: 0 auto;
 }
 
+@media only screen and (max-width: 750px) {
+  .servicerequestbox {
+    width: 100%;
+  }
+}
+
 .servicerequestbox .subjectline {
   margin-left: 100px;
   margin-top: 20px;
@@ -8679,12 +8717,12 @@ a[data-toggle="collapse"] {
   margin-top: 20px;
 }
 
-.servicerequestbox .commentbox {
+.servicerequestbox .commentsection {
   padding: 10px;
   border-top: solid black 1px;
 }
 
-.servicerequestbox .commentbox .comment {
+.servicerequestbox .commentsection .comment {
   height: 40px;
   width: 60%;
 }
