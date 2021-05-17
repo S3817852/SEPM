@@ -128,93 +128,21 @@
 						  <th>Title</th>
 						  <th>Month</th>
 						  <th>Year</th>
-						  <th>Delete data</th>
+						  <th>Update data</th>
 						</tr>
 					  </thead>
 					  <tbody>
+						  
+						{% for obj in monthly_list %}
 						<tr>
-						  <td><a href="#">Monthly electricity and water data</a></td>
-						  <td scope="row">May</td>
-						  <td scope="row">2020</td>
-						  <td><a href="" class="btn btn-danger">Delete</a></td>
+						<td><a href="{{ obj.get_absolute_url}}">Electricity and water data of {{ obj.month}} in {{ obj.year}}</a></td>
+						<td scope="row">{{ obj.month}}</td>
+						<td scope="row">{{ obj.year}}</td>
+						<td><a href="#" class="btn btn-success">Update</a></td>
 						</tr>
-
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-						  	<td scope="row">June</td>
-						  	<td scope="row">2020</td>
-                              <td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">July</td>
-							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">August</td>
-							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">September</td>
-							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">October</td>
-							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">November</td>
-							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-	
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">December</td>
-							<td scope="row">2020</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
+						{%endfor%}
+						  
 						
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">January</td>
-							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">February</td>
-							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">March</td>
-							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
-	
-						<tr>
-							<td><a href="#">Monthly electricity and water data</a></td>
-							<td scope="row">April</td>
-							<td scope="row">2021</td>
-							<td><a href="" class="btn btn-danger">Delete</a></td>
-						</tr>
 					  </tbody>
 					</table>
 				</div>
