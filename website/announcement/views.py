@@ -71,18 +71,23 @@ class AnnouncementDetailView(AnnouncementObjectMixin,UserObjectMixin,View):
         context = {}
         obj = self.get_object()
         if obj is not None:
-            context['job'] =  obj
+            context['announcement'] =  obj
             # form = CourseModelForm(request.POST, instance=obj)
             if request.method == 'POST':
                 content = request.POST.get('content')
-                to_user = request.POST.get('to')
-                sent_to_user = self.get_user(to_user)
-                print(sent_to_user)
-                # queryset = User.objects.filter('to_user')
-                # print(queryset)
+                # Choose
+
+                # Choose receiver !!!
+                # to_user = request.POST.get('to')
+                # sent_to_user = self.get_user(to_user)
+                # print(sent_to_user)
+                print(obj.created_by)
+                print(request.user.username)
+                
                 if content:
                     conversationmessage = ConversationMessage.objects.create(announcement=obj, content=content, created_by=request.user)
-                    create_notification(request, sent_to_user, 'message', extra_id=obj.id)
+                    if str(obj.created_by) != str(request.user.username):
+                        create_notification(request,obj.created_by , 'message', extra_id=obj.id)
 
                     return redirect('announcement_detail', id=obj.id)
             # if form.is_valid():

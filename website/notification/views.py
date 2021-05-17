@@ -19,8 +19,8 @@ def notifications(request):
 
             if notification.notification_type == Notification.MESSAGE:
                 return redirect('announcement_detail', id=notification.extra_id)
-            elif notification.notification_type == Notification.APPLICATION:
-                return redirect('announcement_detail', job=notification.extra_id)
+            # elif notification.notification_type == Notification.APPLICATION:
+            #     return redirect('announcement_detail', job=notification.extra_id)
             elif notification.notification_type == Notification.COMMENT:
                 return redirect('announcement_detail', job_id=notification.extra_id)
 

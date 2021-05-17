@@ -115,18 +115,26 @@
         </select>
           
       </div>
-      <div style="margin-left: 20px; margin-top: 20px;"><a href="O-EW-new.html" class="btn btn-warning">Add excel file</a></div>
+        <br>
+        {% if messages %}
+          {%for message in messages %}
+            <div>
+            <strong>{{message|safe}}</strong>
+            </div>
+          {%endfor%}
+        {%endif %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="myfile">
+            <div style="text-align: center; padding: 20px;">
+            <button  type="submit">Upload</button>
+          </div>
+            <!-- <h2>Please upload your file</h2> -->
+        </form>
       
-
-      <div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info">Add data</a></div>
-            
-            
 		</div>
-        
-				
-			
-		
-	   </div>
+
+	  </div>
 	</div>
 
 	<button class="open-button" onclick="openForm()">Chat</button>
