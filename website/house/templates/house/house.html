@@ -52,7 +52,7 @@
                 <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
               </li>
               <li>
-                <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
               </li>
               <li>
                 {% if request.user.is_authenticated %}
@@ -103,33 +103,22 @@
 						</tr>
 					  </thead>
 					  <tbody>
+						  {% for house in houses %}
+						  <tr>
+							<td><a href="{% url 'room' %}">{{house.name}}</a></td>
+							<td scope="row">{{house.address}}</td>
+							<td><a href="#" class="btn btn-success">{{empty_room}}</a></td>
+							<td><a href="#" class="btn btn-danger">{{rented_room}}</a></td>
+						</tr>
+						  {% endfor%}
 						<tr>
 							<td><a href="{% url 'room' %}">House1</a></td>
 							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
+							<td><a href="#" class="btn btn-success">{{empty_room}}</a></td>
 							<td><a href="#" class="btn btn-danger">7</a></td>
 						</tr>
 
-						<tr>
-							<td><a href="">House2</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">House3</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">House4</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
+					
 					  </tbody>
 					</table>
 				</div>

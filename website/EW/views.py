@@ -8,7 +8,8 @@ from django.http import HttpResponse
 # Create your views here.
 def ew(request):
     monthly_List = MonthlyEW.objects.all()   # Get all record in data
-    
+    count = monthly_List.count()
+
     year_list = []
     month_list = []
     unique_id_list = []
@@ -19,8 +20,11 @@ def ew(request):
             month_list.append(obj.month)
             unique_id_list.append(obj.id)
 
-    monthly_list = MonthlyEW.objects.filter(pk__in = unique_id_list)
-    return render(request, 'EW/ew.html',{'monthly_list': monthly_list})
+    # for i in unique_id_list:
+    #     print(i)
+
+    monthly_list = MonthlyEW.objects.filter(pk__in = unique_id_list).order_by("-year")
+    return render(request, 'EW/ew.html',{'monthly_list': monthly_list, 'count': count})
 
 def ew_add(request):
     if request.method == 'POST':
