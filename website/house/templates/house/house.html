@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
       {% load static%}
+	  {% load search_empty %}
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -103,22 +104,38 @@
 						</tr>
 					  </thead>
 					  <tbody>
-						  {% for house in houses %}
-						  <tr>
-							<td><a href="{% url 'room' %}">{{house.name}}</a></td>
+						  
+						    {% for house in houses %}
+						    <tr>
+							<td><a href="{{house.get_absolute_url}}">{{house.name}}</a></td>
 							<td scope="row">{{house.address}}</td>
-							<td><a href="#" class="btn btn-success">{{empty_room}}</a></td>
-							<td><a href="#" class="btn btn-danger">{{rented_room}}</a></td>
-						</tr>
-						  {% endfor%}
-						<tr>
-							<td><a href="{% url 'room' %}">House1</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">{{empty_room}}</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
+							<td><a href="#" class="btn btn-success">
+								{% for i in empty_room %}							
+							{% for a in list_house_id %}
+							{% for thing in i|search_empty:a %}
+								{% if a == house.id %}
+								{{i|length}}
+								{% endif %}							
+							{% endfor %}
+							{% endfor %}							
+							{% endfor %}
+							</a></td>
+						
+						
+							<td><a href="#" class="btn btn-danger">
+								{% for i in rented_room %}
+							{% for a in list_house_id %}
+							{% for thing in i|search_rented:a %}
+							{% if a == house.id %}
+							{{i|length}}
+							{% endif %}	
+							{% endfor %}
+							{% endfor %}							
+							{% endfor %}
+							</a></td>
+							</tr>
+							{% endfor%}
 
-					
 					  </tbody>
 					</table>
 				</div>
