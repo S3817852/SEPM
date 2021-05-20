@@ -110,30 +110,39 @@
 							<td><a href="{{house.get_absolute_url}}">{{house.name}}</a></td>
 							<td scope="row">{{house.address}}</td>
 							<td><a href="#" class="btn btn-success">
+								{% with True as flag %}
 								{% for i in empty_room %}							
 							{% for a in list_house_id %}
 							{% for thing in i|search_empty:a %}
 								{% if a == house.id %}
-								{{i|length}}
+								{% if flag %}
+									{{i|length}}
+									{% update_variable False as flag %}
+								{% endif %}
 								{% endif %}							
 							{% endfor %}
 							{% endfor %}							
 							{% endfor %}
 							</a></td>
-						
-						
+							{% endwith %}
+
 							<td><a href="#" class="btn btn-danger">
+								{% with True as flag %}
 								{% for i in rented_room %}
 							{% for a in list_house_id %}
 							{% for thing in i|search_rented:a %}
-							{% if a == house.id %}
-							{{i|length}}
-							{% endif %}	
+								{% if a == house.id %}
+								{% if flag %}
+									{{i|length}}
+									{% update_variable False as flag %}
+								{% endif %}
+								{% endif %}	
 							{% endfor %}
 							{% endfor %}							
 							{% endfor %}
 							</a></td>
 							</tr>
+							{% endwith %}
 							{% endfor%}
 
 					  </tbody>
