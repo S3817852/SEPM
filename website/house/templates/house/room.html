@@ -70,7 +70,7 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
 		<h2 class="mb-4"><a href="#">Houses manager</a> / <a href="">Rooms</a></h2>
-        <a href="{% url 'room_add' %}" class="btn btn-info">Add new room</a>
+        <a href="{% url 'room_add' house_id%}" class="btn btn-info">Add new room</a>
       
 		<!-- Room Services menu -->
 		<div class="tenantaccountmenu">
@@ -118,8 +118,8 @@
 							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
 							{% endif%}
 							
-							<td><a href="#" class="btn btn-primary">Update</a></td>
-						  	<td><a href="#" class="btn btn-warning">Delete</a></td>
+							<td><a href="{% url 'room_update' house_id room.id %}" class="btn btn-primary">Update</a></td>
+						  	<td><a href="{% url 'room_delete' house_id room.id %}" class="btn btn-warning">Delete</a></td>
 					  		</tr>
 						  {% endfor %}
 						

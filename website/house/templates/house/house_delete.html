@@ -71,96 +71,16 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Houses manager</h2>
-        <a href="{% url 'house_add' %}" class="btn btn-info">Add new house</a>
-      
-		<!-- Room Services menu -->
-		<div class="tenantaccountmenu">
-			<!-- Services type -->
-            <p style="display: inline; color: black;">Time remaining</p>
-			<select name="tenantaccountmenu">
-				<option selected="selected" value="one">All</option>
-				<option value="two">Less than 2 months</option>
-				<option value="three">More than 6 months</option>
-				<option value="four">More than 1 year</option>
-			</select>
-	
-			<!-- Search bar -->
+        {% block content %}
+		<h6>Do you really want to delete {{house.name}}</h6>
+		<form action="" method="POST">
+			{% csrf_token %}
 			
-			<input type="text" placeholder="Search">
-			<i class="fas fa-search" style="font-size: 40px; "></i>
-			
-		</div>
-        <h3>House list</h3>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="table-wrap">
-					<table class="table table-striped">
-					  <thead>
-						<tr>
-						  <th>House</th>
-						  <th>Address</th>
-                          <th>Empty room</th>
-						  <th>Rented room</th>
-						  <th>Update house</th>
-						  <th>Delete house</th>
-						</tr>
-					  </thead>
-					  <tbody>
-						  
-						    {% for house in houses %}
-						    <tr>
-							<td><a href="{{house.get_absolute_url}}">{{house.name}}</a></td>
-							<td scope="row">{{house.address}}</td>
-							<td><a href="#" class="btn btn-success">
-								{% with True as flag %}
-								
-								{% for i in empty_room %}	
-								
-							{% for a in list_house_id %}
-							
-							{% for thing in i|search_empty:a %}
-							
-								{% if a == house.id %}
-								{% if flag %}
-										{{i|length}}	
-									{% update_variable False as flag %}
-								{% endif %}
-								{% endif %}							
-							{% endfor %}
-							{% endfor %}							
-							{% endfor %}
-							</a></td>
-							
-							{% endwith %}
+			<input type="submit" name="Confirm">
+			<a href="{% url 'house' %}" class="btn btn-info">Cancel</a>
+		</form>
 
-							<td><a href="#" class="btn btn-danger">
-								{% with True as flag %}
-								{% for i in rented_room %}
-							{% for a in list_house_id %}
-							{% for thing in i|search_rented:a %}
-								{% if a == house.id %}
-								{% if flag %}
-									{{i|length}}
-									{% update_variable False as flag %}
-								{% endif %}
-								{% endif %}	
-							{% endfor %}
-							{% endfor %}							
-							{% endfor %}
-							</a></td>
-							<td><a href="{% url 'house_update' house.id %}" class="btn btn-primary">Update</a></td>
-							<td><a href="{% url 'house_delete' house.id %}" class="btn btn-warning">Delete</a></td>
-							</tr>
-							{% endwith %}
-							{% endfor%}
-
-					  </tbody>
-					</table>
-				</div>
-			</div>
-		</div>	
-	   </div>
-
+		{% endblock %}
 		</div>
 
         <button class="open-button" onclick="openForm()">Chat</button>
