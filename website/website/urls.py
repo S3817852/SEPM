@@ -39,6 +39,7 @@ urlpatterns = [
     path('billandreceipts/', include('BillAndReceipts.urls')),
     path('roomservices/', include('roomservices.urls')),
     path('account/', include('userprofile.urls')),
+    path('promotions/', include('promotions.urls')),
     # path('', include('home.urls')),
     # path('notifications/', include('notification.urls')),
     # path('job/', include('job.urls')),

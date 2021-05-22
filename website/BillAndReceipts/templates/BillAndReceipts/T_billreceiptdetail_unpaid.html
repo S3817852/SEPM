@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-	{% load static %}
   	<title>Tenant page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{% static 'css/style.css'  %}">
+		<link rel="stylesheet" href="css/style.css">
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
@@ -56,43 +55,97 @@
 						
 					  </li>
 					</ul>
+
+
 	      </div>
     	</nav>
 
         <!-- Page Content  -->
-		<div id="content" class="p-4 p-md-5 pt-5">
-            <h2 class="mb-4"> Announcement</h2>
-            <a href="{% url 'add_announcement' %}" class="btn btn-info">Write new notification</a>
-          
-            <!-- Announcement menu -->
-            <div class="announcementmenu">
-                <!-- Announcement type -->
-                <select name="announcementmenu">
-                    <option selected="selected" value="one">All</option>
-                    <option value="two">Unread</option>
-                </select>
-        
-                <!-- Search bar -->
-                <input type="text" placeholder="Search">
-                <i class="fas fa-search" style="font-size: 40px; "></i>
-            </div>
-        
-            <!-- Announcement -->
-            {% if request.user.is_authenticated %}            
-                {% for announcement in announcements %}
-            <div class="announcement">
-                <div class="subjectline"><a href="{% url 'announcement_detail' announcement.id %}">{{ announcement.title }}</a></div>
-                <div class="poston">Posted on:</div>
-                <img src="user1.png" alt="" class="announcementavatar">
-                <div class="sendername">{{ announcement.created_by }}</div>
-                <div class="sendtime">{{ announcement.created_at }}</div>
-                <div class="briefcontent">{{ announcement.description }}</div>
-            </div>
-            {% endfor %}  
-            {% endif%}
-                
-            
-        </div>
+      	<div id="content" class="p-4 p-md-5 pt-5">
+			<h2 class="mb-4"><a href="#">Bills and Receipts</a> / Monthly fee for MM, YYYY</h2>
+		
+			<!-- Bills and Receipts Details -->
+			<div class="billreceiptdetail-row">
+				<div class="billreceiptdetail-column">
+					<div class="billreceiptdetailbox">
+						<!-- Bills and Receipts Details info -->
+						<div class="subjectline">LOGO</div>
+						<div class="generaldetail">
+							<p>Monthly bills for MM, YYYY</p>
+							<div class="billreceiptdetail-row">
+								<div class="billreceiptdetail-column">
+									<p><b>To:</b></p>
+									<p>Tenants at Room ...</p>
+								</div>
+								<div class="billreceiptdetail-column" style="text-align: right; margin-right: 20px;">
+									<p>Bill #: ...</p>
+									<p>Bill Date: ...</p>
+								</div>
+							</div>
+						</div>
+						<div class="table-wrap">
+							<table class="table">
+							  <thead>
+								<tr>
+								  	<th>DESCRIPTION</th>
+								  	<th>UNIT</th>
+								  	<th>PRICE</th>
+								  	<th style="text-align: right;">TOTAL</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+								  	<td>Fixed monthly rent</td>
+								  	<td scope="row">1</td>
+								  	<td scope="row">1700000</td>
+								  	<td style="text-align: right;">1700000</td>
+								</tr>
+
+								<tr>
+									<td>Electricity</td>
+									<td scope="row">100</td>
+									<td scope="row">2000</td>
+									<td style="text-align: right;">200000</td>
+								</tr>
+
+								<tr>
+									<td>Water</td>
+									<td scope="row">10</td>
+									<td scope="row">4000</td>
+									<td style="text-align: right;">40000</td>
+								</tr>
+							  </tbody>
+							  <thead>
+								<tr>
+									<th style="border-bottom: none;"></th>
+									<th style="border-bottom: none;"></th>
+									<th style="border-bottom: none;">Discount:</th>
+									<th style="border-bottom: none; text-align: right;">0</th>
+							  	</tr>
+								<tr>
+									<th style="border: none;"></th>
+									<th style="border: none;"></th>
+									<th style="border: none;">Tax:</th>
+									<th style="border: none; text-align: right;">0</th>
+							  	</tr>
+								<tr>
+								  	<th style="border: none;"></th>
+								  	<th style="border: none;"></th>
+								  	<th style="border: none;">TOTAL</th>
+								  	<th style="border: none; text-align: right;">1940000</th>
+								</tr>
+							  </thead>
+							</table>
+						</div>
+						<div class="content" style="padding: 20px;">NOTE: ...</div>
+					</div>
+				</div>
+				
+				<div class="billreceiptdetail-column">
+					<div class="subjectline">Tenants have not made any payments for this bill!</div>
+				</div>
+			</div>
+	   	</div>
 	</div>
 
 	<button class="open-button" onclick="openForm()">Chat</button>
@@ -119,9 +172,9 @@
 	}
 	</script>
 
-<script src="{%static 'js/jquery.min.js'%}"></script>
-<script src="{%static 'js/popper.js'%}"></script>
-<script src="{%static 'js/bootstrap.min.js'%}"></script>
-<script src="{%static 'js/main.js' %}"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

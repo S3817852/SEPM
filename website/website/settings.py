@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'owner', 'tenant', 'home', 'core',
     'userprofile', 'announcement', 'notification',
     'house','EW','BillAndReceipts','roomservices',
-    'import_export',
+    'import_export', 'promotions'
 ]
 
 MIDDLEWARE = [

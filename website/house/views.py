@@ -6,8 +6,7 @@ from django.views.generic.base import View
 from .forms import AddHouseForm, AddRoomForm
 from .models import House, Room
 
-
-
+# House page
 class house(View):
     template_name = 'house/house.html'
    
@@ -30,7 +29,7 @@ class house(View):
         if request.user.userprofile.is_owner:
             return render(request, self.template_name, context)
         
-
+# Add new house 
 def house_add(request):
     form = AddHouseForm()
     if request.method == 'POST':
@@ -42,6 +41,7 @@ def house_add(request):
     context = {'form': form}
     return render(request, 'house/house_add.html', context)
 
+# Update a specific house
 def house_update(request,pk):
     house = House.objects.get(id = pk)
     form = AddHouseForm(instance = house)
@@ -54,6 +54,7 @@ def house_update(request,pk):
     context = {'form': form}
     return render(request, 'house/house_update.html', context)
 
+# Delete a specific house
 def house_delete(request, id):
     house = House.objects.get(id = id)
     if request.method == 'POST':
@@ -63,11 +64,13 @@ def house_delete(request, id):
     context = {'house': house}
     return render(request, 'house/house_delete.html', context)
 
+# Room page
 def room(request, id):
     rooms = Room.objects.filter(house_id = id)
 
     return render(request, 'house/room.html', context={'rooms': rooms, 'house_id': id})
 
+# Add new rooms
 def room_add(request, pk):
    
     form = AddRoomForm()
@@ -82,6 +85,7 @@ def room_add(request, pk):
     
     return render(request, 'house/room_add.html', context)
 
+# Update a specific room
 def room_update(request,house_id, pk):
     room = Room.objects.get(id = pk)
     form = AddRoomForm(instance = room)
@@ -95,6 +99,7 @@ def room_update(request,house_id, pk):
     
     return render(request, 'house/room_add.html', context)
 
+# Delete a specific room
 def room_delete(request,house_id, pk):
     houses = House.objects.all()
     list_house_id = []
