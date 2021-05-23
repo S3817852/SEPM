@@ -4,5 +4,5 @@ from .views import ew, ew_add, ew_month
 urlpatterns = [
     path('', ew, name='ew'),
     path('add/', ew_add, name='ew_add'),
-    path('monthly', ew_month, name='ew_month'),
+    path('monthly/<int:year>/<str:month>/', ew_month, name='ew_month'),
 ]

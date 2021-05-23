@@ -52,7 +52,7 @@
                 <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
               </li>
               <li>
-                <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
               </li>
               <li>
                 {% if request.user.is_authenticated %}
@@ -83,8 +83,8 @@
                         <div class="notification">
                             <p>
                                 {% if notification.notification_type == 'message' %}
-                                    <a href="{% url 'notifications' %}?goto=job_detail&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                                        <strong>{{ notification.created_by.username }}</strong> commented on {% for instance in job_list %}
+                                    <a href="{% url 'notifications' %}?goto=job_detaill&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                                        <strong>{{ notification.created_by.username }}</strong> commented on ur's post {% for instance in announcement_list %}
                                                                                                             {% if instance.id == notification.extra_id %}
                                                                                                                                                             
                                                                                                             <p> {{ instance.title}}</p> 
@@ -94,13 +94,14 @@
                                         <small>{{ notification.created_at|timesince }} ago</small>
                                     </a>
 
-                                {% elif notification.notification_type == 'application' %}
-                                    <a href="{% url 'notifications' %}?goto=job_detail&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                                        <strong>{{ notification.created_by.username }}</strong> created new annnouncement<br>
-                                        <small>{{ notification.created_at|timesince }} ago</small>
-                                    </a>
+                                
                                 {% elif notification.notification_type == 'comment' %}
-                                    <p> {{ notification.created_by.username }} commented on someone's post </p>
+                                <a href="{% url 'notifications' %}?goto=announcement_detaill&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                                  <strong>{{ notification.created_by.username }}</strong> commented on your post ({% for instance in announcement_list %} {% if instance.id == notification.extra_id %} {{ instance.title}} {% endif%}
+                                                                                                  {% endfor%})
+                                  <br>
+                                  <small>{{ notification.created_at|timesince }} ago</small>
+                              </a>
 
                                 {% endif %}
                             </p>

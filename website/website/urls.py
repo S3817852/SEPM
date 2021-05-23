@@ -22,10 +22,10 @@ from core.views import frontpage, signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('product/', include('owner.urls')),
-    path('create/', include('owner.urls')),
-    path('details/', include('owner.urls')),
-    path('delete/', include('owner.urls')),
+    # path('product/', include('owner.urls')),
+    # path('create/', include('owner.urls')),
+    # path('details/', include('owner.urls')),
+    # path('delete/', include('owner.urls')),
     path('home/', include('home.urls')),
     path('', frontpage, name='frontpage'),
     path('signup/', signup, name='signup'),
@@ -38,6 +38,8 @@ urlpatterns = [
     path('ew/', include('EW.urls')),
     path('billandreceipts/', include('BillAndReceipts.urls')),
     path('roomservices/', include('roomservices.urls')),
+    path('account/', include('userprofile.urls')),
+    path('promotions/', include('promotions.urls')),
     # path('', include('home.urls')),
     # path('notifications/', include('notification.urls')),
     # path('job/', include('job.urls')),

@@ -53,7 +53,7 @@
                 <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
               </li>
               <li>
-                <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
               </li>
               <li>
                 {% if request.user.is_authenticated %}
@@ -69,7 +69,6 @@
     	</nav>
 
         <!-- Page Content  -->
-		
     <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Announcement</h2>
 		
@@ -81,13 +80,15 @@
             <div class="sendername">{{announcement.created_by}}</div>
             <div class="poston">Posted on: {{announcement.created_at}} </div>
             <div class="content">{{ announcement.description }}</div>
-			<div class="commentbox">
-				<input type="text" class="comment" placeholder="Write a reply...">
+			<div class="commentsection">
+				<form method="post" action=".">
+					{% csrf_token %}
+				<input type="text" class="comment" name="content" id="id_content" placeholder="Write a reply...">
+				
+				</form>
 			</div>
-	
+			
 		</div>
-		
-
 		{% for message in announcement.conversationmessages.all %}
 			{% if user.username == message.created_by.username %}
 			<!-- <p>Yes </p> -->
@@ -99,39 +100,9 @@
 				<div class="poston">Posted on: {{ message.created_at|timesince }} ago</div>
 				<div class="content">{{ message.content }}</div>
 			</div>
-			
-			
 		{% endfor %}
 		<br>
-		
 
-		
-			<form method="post" action=".">
-				{% csrf_token %}
-		
-				<div class="field">
-					<div class="control">
-						<textarea class="textarea" placeholder="Your message" name="content" id="id_content"></textarea>
-					</div>
-				</div>
-		
-				<div class="field">
-					<label>To</label>
-						<div class="control">
-							<textarea class="textarea" placeholder="Sent to ..." name="to" id="id_to"></textarea>
-						</div>
-				</div>
-		
-				<div class="field">
-					<div class="control">
-						<button class="button is-success">Send</button>
-					</div>
-				</div>
-			</form>
-				
-			
-		
-	   
 	</div>
 
 	<button class="open-button" onclick="openForm()">Chat</button>

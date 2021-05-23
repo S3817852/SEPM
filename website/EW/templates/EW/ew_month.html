@@ -53,7 +53,7 @@
                         <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
                       </li>
                       <li>
-                        <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                        <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
                       </li>
                       <li>
                         {% if request.user.is_authenticated %}
@@ -95,77 +95,17 @@
 						</tr>
 					  </thead>
 					  <tbody>
+						{% for obj in monthly_list %}
 						<tr>
-						  	<td><a href="">T1111111</a></td>
-						  	<td scope="row">Nguyen Thanh Tuan</td>
-                          	<td>343</td>
-                          	<td>2536</td>
-						  	<td>14</td>
-							<td>8110</td>
-						  
+							<td><a href="">{{obj.account}}</a></td>
+							<td scope="row">{{obj.tenant}}</td>
+                            <td>{{obj.electricity_consumption}}</td>
+                          	<td>{{obj.electricity_cost}}</td>
+						  	<td>{{obj.water_consumption}}</td>
+							<td>{{obj.water_cost}}</td>
 						</tr>
-
-						<tr>
-							<td><a href="">T1111112</a></td>
-							<td scope="row">Nguyen Thanh Thien</td>
-                            <td>275</td>
-                          	<td>2536</td>
-						  	<td>16</td>
-							<td>8110</td>
-						</tr>
-
-						<tr>
-							<td><a href="">T1111113</a></td>
-							<td scope="row">Ngo My Quynh</td>
-                            <td>357</td>
-                          	<td>2536</td>
-						  	<td>14</td>
-							<td>8110</td>
-						</tr>
-
-						<tr>
-							<td><a href="">T1111114</a></td>
-						    <td scope="row">Pham Phuoc Dong</td>
-                            <td>415</td>
-                          	<td>2536</td>
-						  	<td>14</td>
-							<td>8110</td>
-						</tr>
-
-						 <tr>
-							<td><a href="">T1111115</a></td>
-							<td scope="row">John Wick</td>
-                            <td>297</td>
-                          	<td>2536</td>
-						  	<td>13</td>
-							<td>8110</td>
-						</tr>
-
-						 <tr>
-							<td><a href="">T1111116</a></td>
-							<td scope="row">Naruto</td>
-                            <td>456</td>
-                          	<td>2536</td>
-						  	<td>16</td>
-							<td>8110</td>
-
-						<tr>
-							<td><a href="">T1111117</a></td>
-							<td scope="row">Sasuke</td>
-                            <td>286</td>
-                          	<td>2536</td>
-						  	<td>13</td>
-							<td>8110</td>
-						</tr>
-
-						<tr>
-							<td><a href="">T1111118</a></td>
-						    <td scope="row">Pikachu</td>
-                            <td>392</td>
-                          	<td>2536</td>
-						  	<td>17</td>
-							<td>8110</td>
-						</tr>
+						{%endfor%}
+						
 					  </tbody>
 					</table>
 				</div>

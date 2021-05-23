@@ -53,7 +53,7 @@
                         <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
                       </li>
                       <li>
-                        <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                        <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
                       </li>
                       <li>
                         {% if request.user.is_authenticated %}
@@ -75,8 +75,14 @@
 		<!-- Announcement -->
 		<div class="newtenantaccountbox">
 
-            <div class="newtenant-lable">Rental fee</div>
-            <input type="text">
+            <div class="newtenant-lable"><form action="" method="POST">
+              {% csrf_token %}
+              {{form}}
+              <br>
+              <input type="submit" name="Add house">
+            </form></div>
+            
+            
 
             <div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info">Add room</a></div>
             

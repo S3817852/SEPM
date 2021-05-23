@@ -34,16 +34,16 @@
 				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
 			  </li>
 	          <li>
-	              <a href="T-billreceipt.html"><span class="fas fa-receipt mr-3"></span> Bills and Receipts</a>
+	              <a href="{% url 'bill_receipts' %}"><span class="fas fa-receipt mr-3"></span> Bills and Receipts</a>
 	          </li>
 	          <li>
-              <a href="T-roomservice.html"><span class="fas fa-tools mr-3"></span> Room Services</a>
+              <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
 	          </li>
 	          <li>
-              <a href="#"><span class="fas fa-store mr-3"></span> Promotions</a>
+              <a href="{% url 'promotions' %}"><span class="fas fa-store mr-3"></span> Promotions</a>
 	          </li>
 	          <li>
-              <a href="#"><span class="fas fa-user-circle mr-3"></span> Account</a>
+              <a href="{% url 'account' %}"><span class="fas fa-user-circle mr-3"></span> Account</a>
 	          </li>
               <li>
 				{% if request.user.is_authenticated %}
@@ -61,10 +61,8 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Sidebar #05</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
+		<h2 class="mb-4">Main page</h2>
+        </div>
 	  
 		</div>
 
