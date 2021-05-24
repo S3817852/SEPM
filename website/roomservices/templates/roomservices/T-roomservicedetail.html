@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+	  {% load static%}
   	<title>Tenant page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="{% static 'css/style.css'  %}">
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
@@ -69,17 +70,18 @@
 		<div class="servicerequestbox">
 			<!-- Announcement info -->
 			<img src="user1.png" alt="" class="announcementavatar">
-			<div class="subjectline"><h3>Service subject</h3></div>
-            <div class="sendername">Sender name</div>
-            <div class="poston">Posted on: Time here</div>
+			<div class="subjectline"><h3>{{room.service_subject}}</h3></div>
+            <div class="sendername">{{room.created_by}}</div>
+            <div class="poston">Posted on: {{room.created_at}}</div>
 			<div class="request-status">
 				<p style="display:inline">Request status: </p>
 				<a href="#" class="btn btn-success">Done</a>
 			</div>
             <div class="requestdescription">Request description:</div>
-            <div class="content">description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here...description here... description here... description here... description here... description here... </div>
-            <div class="requestdescription">Attached image for the request:</div>
-            <img src="broken.jpg" alt="" class="brokenimg">
+            <div class="content">{{room.description}}
+			</div>
+			<div class="requestdescription">Attached image for the request:</div>
+            <img src="{{room.image.url}}" alt="" class="brokenimg">
 			<div class="commentbox">
 				<input type="text" class="comment" placeholder="Write a reply...">
 			</div>
@@ -116,9 +118,9 @@
 	}
 	</script>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+<script src="{%static 'js/jquery.min.js'%}"></script>
+<script src="{%static 'js/popper.js'%}"></script>
+<script src="{%static 'js/bootstrap.min.js'%}"></script>
+<script src="{%static 'js/main.js' %}"></script>
   </body>
 </html>

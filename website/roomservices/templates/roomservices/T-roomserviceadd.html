@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+	  {% load static%}
   	<title>Tenant page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="{% static 'css/style.css'  %}">
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
@@ -67,17 +68,14 @@
 		<div class="newservicebox">
 			<!-- Announcement info --> 
             <!-- action="/action_page.php" -->
-            <form class="newserviceform">
-                <div class="to">To:</div>
-			    <div class="ownername">Owner Name</div>
-                <label for="" class="servicesubject">Service subject:</label>
-                <input type="text" id="" name="" class="servicesubjectinput"><br>
-                <label for="lname" class="description">Request description:</label><br>
-                <textarea name="" id="" cols="50" rows="10" class="requestdescription"></textarea><br><br>
-                <a href="#" class="btn btn-info">Attach an image</a><br><br>
-                <input type="submit" value="Submit">
+            <form class="newserviceform" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+				
+				{{form.as_p}}
+				
+				<button type="submit" class="btn btn-info">Submit</button>
                 <br>
-                
+
             </form>
 	
 		</div>
@@ -112,9 +110,9 @@
 	}
 	</script>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+<script src="{%static 'js/jquery.min.js'%}"></script>
+<script src="{%static 'js/popper.js'%}"></script>
+<script src="{%static 'js/bootstrap.min.js'%}"></script>
+<script src="{%static 'js/main.js' %}"></script>
   </body>
 </html>

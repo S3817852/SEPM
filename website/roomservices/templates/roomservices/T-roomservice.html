@@ -64,7 +64,7 @@
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Room Services</h2>
 
-		<a href="T-roomserviceadd.html" class="btn btn-info">New service request</a>
+		<a href="{% url 'room_services_add' %}" class="btn btn-info">New service request</a>
       
 		<!-- Room Services menu -->
 		<div class="roomservicesmenu">
@@ -95,52 +95,18 @@
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr>
-						  <td><a href="T-roomservicedetail.html">Fix air conditioner... </a></td>
-						  <td scope="row">March 27, 2020</td>
-						  <td><a href="#" class="btn btn-success">Done</a></td>
-						</tr>
+						
+						{% for i in services %}
+							<tr>
+							<td><a href="{% url 'room_services_details' i.id %}">{{i.service_subject}}</a></td>
+							<td scope="row">{{i.created_at}}</td>
+							<td><a href="#" class="btn btn-success">Done</a></td>
+						  </tr>
+						 
+						{% endfor %}
+						
 
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 26, 2020</td>
-						    <td><a href="#" class="btn btn-warning">Sent</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 25, 2020</td>
-						  <td><a href="#" class="btn btn-danger">In progress</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 24, 2020</td>
-						  <td><a href="#" class="btn btn-success">Done</a></td>
-						</tr>
-
-						 <tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 23, 2020</td>
-						  <td><a href="#" class="btn btn-danger">In progress</a></td>
-						</tr>
-
-						 <tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 22, 2020</td>
-						    <td><a href="#" class="btn btn-warning">Sent</a></td>
-
-						   <tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 21, 2020</td>
-						  <td><a href="#" class="btn btn-warning">Sent</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 20, 2020</td>
-						  <td><a href="#" class="btn btn-success">Done</a></td>
-						</tr>
+						
 					  </tbody>
 					</table>
 				</div>

@@ -77,7 +77,7 @@
 
             <div class="newtenant-lable"><form action="" method="POST">
               {% csrf_token %}
-              {{form}}
+              {{form.as_p}}
               <br>
               <input type="submit" name="Add house">
             </form></div>

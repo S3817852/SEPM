@@ -8,10 +8,17 @@ def bill_receipts(request):
         return render(request, 'BillAndReceipts/T_billreceipt.html')
 
 def bill_receipts_add(request):
-    return render(request, 'BillAndReceipts/O_billreceipt_new.html')
+    if request.user.userprofile.is_owner:
+        return render(request, 'BillAndReceipts/O_billreceipt_new.html')
 
 def bill_receipts_paid(request):
-    return render(request, 'BillAndReceipts/O_billreceipt_allpaid.html')
+    if request.user.userprofile.is_owner:
+        return render(request, 'BillAndReceipts/O_billreceipt_allpaid.html')
+    else:
+        return render(request, 'BillAndReceipts/T_billreceiptdetail_paid.html')
 
 def bill_receipts_processing(request):
-    return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html')
+    if request.user.userprofile.is_owner:
+        return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html')
+    else:
+        return render(request, 'BillAndReceipts/T_billreceiptdetail_unpaid.html')
