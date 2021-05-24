@@ -10,7 +10,7 @@ from notification.utilities import create_notification
 # Create your views here.
 # Announcement URL
 def index(request):
-    announcements = Announcement.objects.all()
+    announcements = Announcement.objects.all().order_by('-created_at')
     if request.user.userprofile.is_owner:
         return render(request, 'announcement/O-announcement.html', {'announcements': announcements} )
     else:

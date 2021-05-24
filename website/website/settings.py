@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'owner', 'tenant', 'home', 'core',
     'userprofile', 'announcement', 'notification',
     'house','EW','BillAndReceipts','roomservices',
-    'import_export', 'promotions'
+    'import_export', 'promotions', 'mathfilters', 'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [

@@ -15,7 +15,8 @@ def room_services(request):
 
 def room_services_details(request, id):
     if request.user.userprofile.is_owner:
-        return render(request, 'roomservices/O-roomservicedetail.html')
+        room_detail = RoomService.objects.get(id = id)
+        return render(request, 'roomservices/O-roomservicedetail.html',{'room': room_detail})
     else:
         room_detail = RoomService.objects.get(id = id)
         return render(request, 'roomservices/T-roomservicedetail.html', {'room': room_detail})

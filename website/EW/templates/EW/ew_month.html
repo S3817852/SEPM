@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
       {%load static%}
+	  {% load mathfilters%}
+	  {% load humanize %}
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -99,10 +101,10 @@
 						<tr>
 							<td><a href="">{{obj.account}}</a></td>
 							<td scope="row">{{obj.tenant}}</td>
-                            <td>{{obj.electricity_consumption}}</td>
-                          	<td>{{obj.electricity_cost}}</td>
-						  	<td>{{obj.water_consumption}}</td>
-							<td>{{obj.water_cost}}</td>
+                            <td>{{obj.electricity_consumption|intcomma}}</td>
+                          	<td>{{obj.electricity_cost|intcomma}}</td>
+						  	<td>{{obj.water_consumption|intcomma}}</td>
+							<td>{{obj.water_cost|intcomma}}</td>
 						</tr>
 						{%endfor%}
 						

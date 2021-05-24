@@ -6,6 +6,7 @@ class Owner(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     phone = models.CharField(max_length=50)
+    
     dob = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
