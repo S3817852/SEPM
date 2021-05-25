@@ -52,7 +52,7 @@
                         <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
                       </li>
                       <li>
-                        <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                        <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
                       </li>
                       <li>
                         {% if request.user.is_authenticated %}
@@ -70,7 +70,7 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
 		<h2 class="mb-4"><a href="#">Houses manager</a> / <a href="">Rooms</a></h2>
-        <a href="{% url 'room_add' %}" class="btn btn-info">Add new room</a>
+        <a href="{% url 'room_add' house_id%}" class="btn btn-info">Add new room</a>
       
 		<!-- Room Services menu -->
 		<div class="tenantaccountmenu">
@@ -104,76 +104,25 @@
 						    </tr>
 					  </thead>
 					  <tbody>
-						<tr>
-						  	<td><a href="" class="btn btn-success">R1111111</a></td>
-						  	<td scope="row">none</td>
-                          	<td>5,200,000 VND</td>
-                          	<td><a href="#" class="btn btn-success">Add tenant</a></td>
-                          	<td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="" class="btn btn-danger">R1111112</a></td>
-							<td scope="row">Nguyen Thanh Tuan</td>
-                            <td>5,200,000 VND</td>
+						  {% for room in rooms %}
+						  <tr>
+							{% if room.status == 'Empty' %}
+							<td><a href="" class="btn btn-success">{{room.id}}</a></td>
+							<td scope="row">none</td>
+							<td>{{room.rental_fee}}</td>
+							<td><a href="#" class="btn btn-success">Add tenant</a></td>
+							{% elif room.status == 'Rented'%}
+							<td><a href="" class="btn btn-danger">{{room.id}}</a></td>
+							<td scope="row">{{room.tenant_name}}</td>
+							<td>{{room.rental_fee}}</td>
 							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
-                            <td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="" class="btn btn-danger">R1111113</a></td>
-							<td scope="row">Ngo My Quynh</td>
-                            <td>5,200,000 VND</td>
-							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
-                            <td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="" class="btn btn-danger">R1111114</a></td>
-							<td scope="row">Pikachu</td>
-                            <td>5,200,000 VND</td>
-							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
-                            <td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
-
-						 <tr>
-							<td><a href="" class="btn btn-success">R1111115</a></td>
-						  	<td scope="row">none</td>
-                          	<td>5,200,000 VND</td>
-                          	<td><a href="#" class="btn btn-success">Add tenant</a></td>
-                          	<td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
-
-						 <tr>
-							<td><a href="" class="btn btn-danger">R1111116</a></td>
-							<td scope="row">John Wick</td>
-                            <td>5,200,000 VND</td>
-							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
-                            <td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-
-						<tr>
-							<td><a href="" class="btn btn-danger">R1111117</a></td>
-							<td scope="row">Dom</td>
-                            <td>5,200,000 VND</td>
-							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
-                            <td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="" class="btn btn-danger">R1111118</a></td>
-							<td scope="row">Jerry</td>
-                            <td>5,200,000 VND</td>
-							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
-                            <td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
-						</tr>
+							{% endif%}
+							
+							<td><a href="{% url 'room_update' house_id room.id %}" class="btn btn-primary">Update</a></td>
+						  	<td><a href="{% url 'room_delete' house_id room.id %}" class="btn btn-warning">Delete</a></td>
+					  		</tr>
+						  {% endfor %}
+						
 					  </tbody>
 					</table>
 				</div>

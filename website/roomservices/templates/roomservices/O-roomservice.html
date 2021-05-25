@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
 	  {%load static%}
+
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,7 +53,7 @@
                         <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
                       </li>
                       <li>
-                        <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                        <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
                       </li>
                       <li>
                         {% if request.user.is_authenticated %}
@@ -97,13 +98,24 @@
 						  <th>Services</th>
 						  <th>Send day</th>
 						  <th>Status</th>
+						 
 						</tr>
 					  </thead>
 					  <tbody>
+						
+						{% for i in services %}
 						<tr>
-						  <td><a href="{% url 'room_services_details' %}">Fix air conditioner... </a></td>
+						<td><a href="{% url 'room_services_details' i.id %}">{{i.service_subject}}</a></td>
+						<td scope="row">{{i.created_at}}</td>
+						<td><a href="#" class="btn btn-success">Done</a></td>
+					  </tr>
+					 
+						{% endfor %}
+						<tr>
+						  <td><a href="{% url 'room_services_details' 1 %}">Fix air conditioner... </a></td>
 						  <td scope="row">March 27, 2020</td>
 						  <td><a href="#" class="btn btn-success">Done</a></td>
+						   
 						</tr>
 
 						<tr>
@@ -148,6 +160,8 @@
 						</tr>
 					  </tbody>
 					</table>
+					
+					
 				</div>
 			</div>
 		</div>	

@@ -52,7 +52,7 @@
                         <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
                       </li>
                       <li>
-                        <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                        <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
                       </li>
                       <li>
                         {% if request.user.is_authenticated %}
@@ -75,17 +75,18 @@
 		<div class="servicerequestbox">
 			<!-- Announcement info -->
 			<img src="user1.png" alt="" class="announcementavatar">
-			<div class="subjectline"><h3>Service subject</h3></div>
-            <div class="sendername">Sender name</div>
-            <div class="poston">Posted on: Time here</div>
+			<div class="subjectline"><h3>{{room.service_subject}}</h3></div>
+            <div class="sendername">{{room.created_by}}</div>
+            <div class="poston">Posted on: {{room.created_at}}</div>
 			<div class="request-status">
 				<p style="display:inline">Request status: </p>
-				<a href="#" class="btn btn-warning">New request</a>
+				<a href="#" class="btn btn-success">Done</a>
 			</div>
             <div class="requestdescription">Request description:</div>
-            <div class="content">description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here... description here...description here... description here... description here... description here... description here... </div>
-            <div class="requestdescription">Attached image for the request:</div>
-            <img src="broken.jpg" alt="" class="brokenimg">
+            <div class="content">{{room.description}}
+			</div>
+			<div class="requestdescription">Attached image for the request:</div>
+            <img src="{{room.image.url}}" alt="" class="brokenimg">
 			<div class="commentbox">
 				<input type="text" class="comment" placeholder="Write a reply...">
 			</div>

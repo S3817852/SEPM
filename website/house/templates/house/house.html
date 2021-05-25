@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
       {% load static%}
+	  {% load search_empty %}
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,7 +53,7 @@
                 <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
               </li>
               <li>
-                <a href="#"><span class="fas fa-user mr-3"></span> Account</a>
+                <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
               </li>
               <li>
                 {% if request.user.is_authenticated %}
@@ -100,36 +101,59 @@
 						  <th>Address</th>
                           <th>Empty room</th>
 						  <th>Rented room</th>
+						  <th>Update house</th>
+						  <th>Delete house</th>
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr>
-							<td><a href="{% url 'room' %}">House1</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
+						  
+						    {% for house in houses %}
+						    <tr>
+							<td><a href="{{house.get_absolute_url}}">{{house.name}}</a></td>
+							<td scope="row">{{house.address}}</td>
+							<td><a href="#" class="btn btn-success">
+								{% with True as flag %}
+								
+								{% for i in empty_room %}	
+								
+							{% for a in list_house_id %}
+							
+							{% for thing in i|search_empty:a %}
+							
+								{% if a == house.id %}
+								{% if flag %}
+										{{i|length}}	
+									{% update_variable False as flag %}
+								{% endif %}
+								{% endif %}							
+							{% endfor %}
+							{% endfor %}							
+							{% endfor %}
+							</a></td>
+							
+							{% endwith %}
 
-						<tr>
-							<td><a href="">House2</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
+							<td><a href="#" class="btn btn-danger">
+								{% with True as flag %}
+								{% for i in rented_room %}
+							{% for a in list_house_id %}
+							{% for thing in i|search_rented:a %}
+								{% if a == house.id %}
+								{% if flag %}
+									{{i|length}}
+									{% update_variable False as flag %}
+								{% endif %}
+								{% endif %}	
+							{% endfor %}
+							{% endfor %}							
+							{% endfor %}
+							</a></td>
+							<td><a href="{% url 'house_update' house.id %}" class="btn btn-primary">Update</a></td>
+							<td><a href="{% url 'house_delete' house.id %}" class="btn btn-warning">Delete</a></td>
+							</tr>
+							{% endwith %}
+							{% endfor%}
 
-						<tr>
-							<td><a href="">House3</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">House4</a></td>
-							<td scope="row">123 District 7, HCM city</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">7</a></td>
-						</tr>
 					  </tbody>
 					</table>
 				</div>
