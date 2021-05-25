@@ -12,11 +12,12 @@
 
 		<!-- CSS icon -->
 		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
+		
   </head>
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
+            <nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	          <i class="fa fa-bars"></i>
@@ -24,19 +25,19 @@
 	        </button>
         </div>
 				<div class="p-4">
-		  		<h1><a href="O-statistics" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+		  		<h1><a href="O-announcement.html" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
 	        <ul class="list-unstyled components mb-5">
 	          <li>
-	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
+	            <a href="#"><span class="fas fa-database mr-3"></span> Statistic</a>
 	          </li>
-	          <li>
-	              <a href="O-announcement.html"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
+	          <li class="active">
+	              <a href="O-announcement.html"><span class="fas fa-bullhorn mr-3"></span> Announcement</a>
 	          </li>
 	          <li>
               <a href="O-house.html"><span class="fas fa-home mr-3"></span> House</a>
 	          </li>
 	          <li>
-              <a href="O-billreceipt.html"><span class="fas fa-address-book mr-3"></span> Tenant</a>
+              <a href="O-tenant.html"><span class="fas fa-address-book mr-3"></span> Tenant</a>
 	          </li>
 	          <li>
               <a href="O-EW.html"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
@@ -59,30 +60,64 @@
     	</nav>
 
         <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5 pt-5">
-          <h2 class="mb-4">Account</h2>
-          
-          <!-- Account Box -->
-          <div class="newtenantaccountbox">
-            
-            <div class="account-lable" style="text-align:center; font-weight: bold; font-size: 25px;">Owner</div>	
-  
-            <div class="account-lable">Full name:</div>
-            <div class="account-content">Nguyen Thanh Tuan</div>
-  
-            <div class="account-lable">Date of Birth:</div>
-            <div class="account-content">14/12/1995</div>
-  
-            <div class="account-lable">Phone Number:</div>
-            <div class="account-content">0774662974</div>
-  
-            <div class="account-lable">Email address</div>
-            <div class="account-content">tuantng425@gmail.com</div>
-      
-            <div style="text-align: center; padding: 20px;"><a href="O-account-update.html" class="btn btn-info">Update</a></div>									
-          </div>				
-        </div>
-    </div>
+      <!-- Page Content  -->
+			<div id="content" class="p-4 p-md-5 pt-5">
+				<h2 class="mb-4">Account</h2>
+			  
+				<!-- Account Box -->
+				<div class="newtenantaccountbox">
+					
+					<div class="account-lable" style="text-align:center; font-weight: bold; font-size: 25px;">Account setting</div>	
+
+					<div class="account-lable">Full name:</div>
+					<div class="account-content">Nguyen Thanh Tuan</div>
+
+					<div class="account-lable">Date of Birth:</div>
+					<div class="account-content">14/12/1995</div>
+
+					<div class="account-lable">Phone Number:</div>
+					<div class="account-content">0774662974</div>
+
+					<div class="account-lable">Email address</div>
+					<div class="account-content">tuantng425@gmail.com</div>
+		
+					<div class="newtenant-lable">New Password</div>
+					<input type="password">
+		
+					<div class="newtenant-lable">Confirm password</div>
+					<input type="password"><br>
+		
+					<div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info" style="width: 270px;">Update Password</a></div>
+                    
+                    <div style="text-align: center; padding-bottom: 20px;"><a href="#" class="btn btn-warning" style="width: 270px;">Change account information</a></div>
+				</div>				
+			</div>
+	</div>
+
+	<button class="open-button" onclick="openForm()">Chat</button>
+
+	<div class="chat-popup" id="myForm">
+	<form action="/action_page.php" class="form-container">
+		<h1>Chat</h1>
+
+		<label for="msg"><b>Message</b></label>
+		<textarea placeholder="Type message.." name="msg" required></textarea>
+
+		<button type="submit" class="btn">Send</button>
+		<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+	</form>
+	</div>
+
+	<script>
+	function openForm() {
+	document.getElementById("myForm").style.display = "block";
+	}
+
+	function closeForm() {
+	document.getElementById("myForm").style.display = "none";
+	}
+	</script>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
