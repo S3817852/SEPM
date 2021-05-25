@@ -142,101 +142,20 @@
 						</tr>
 					  </thead>
 					  <tbody>
-						<tr>
-						  <td><a href="">Monthly Fee</a></td>
-                          <td>Nguyen Thanh Tuan</td>
-						  <td scope="row">May</td>
-						  <td scope="row">2020</td>
-						  <td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-
-						<tr>
+						  {% for obj in monthly_list %}
+						  <tr>
 							<td><a href="">Monthly Fee</a></td>
-                            <td>Nguyen Thanh Thien</td>
-                            <td scope="row">May</td>
-                            <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Ngo My Quynh</td>
-							<td scope="row">May</td>
-						  <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Pham Phuoc Dong</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>John Wick</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-danger">Unpaid</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Naruto</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Sasuke</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-	
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Pikachu</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-danger">Unpaid</a></td>
-						</tr>
+							<td>{{obj.tenant.first_name}}</td>
+							<td scope="row">{{obj.month}}</td>
+							<td scope="row">{{obj.year}}</td>
+							{% if obj.status == "Paid" %}
+								<td><a href="#" class="btn btn-success">{{obj.status}}</a></td>
+								{% elif obj.status == "Unpaid" %}
+								<td><a href="#" class="btn btn-danger">{{obj.status}}</a></td>
+							{% endif %}
+						  </tr>
+						  {% endfor %}
 						
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Doraemon</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Edogawa Conan</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-  
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>Hulk</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-	
-						<tr>
-							<td><a href="">Monthly Fee</a></td>
-                            <td>GameNhaiLienQuan</td>
-							<td scope="row">May</td>
-						    <td scope="row">2020</td>
-							<td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
 					  </tbody>
 					</table>
 				</div>

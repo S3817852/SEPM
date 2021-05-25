@@ -11,7 +11,7 @@ def account(request):
         return render(request, "userprofile/O_account.html", {'userprofile': userprofile})
         #yy-mm-dd
     else:
-        userprofile = Userprofile.objects.get(id = request.user.id)
+        userprofile = Userprofile.objects.get(user = request.user)
         
         return render(request, 'userprofile/T-account.html', {'userprofile': userprofile})
 

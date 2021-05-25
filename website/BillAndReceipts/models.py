@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
 from userprofile.models import Userprofile
+from django.urls import reverse
 
 # Create your models here.
 class PersonalBill(models.Model):
@@ -20,3 +21,9 @@ class PersonalBill(models.Model):
     month = models.CharField(blank=True, max_length=50)
     year = models.CharField(blank=True, max_length=50)
     status = models.CharField(max_length=50, null=True, choices=BILL_STATUS)
+
+    # def get_absolute_url(self):
+    #     return reverse("bill_receipts_processing",kwargs={"id": self.id})
+
+    def get_absolute_url(self):
+        return reverse("owner_bill_receipts_processing",kwargs={"year": self.year, "month": self.month})

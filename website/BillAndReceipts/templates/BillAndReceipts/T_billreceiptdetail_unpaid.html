@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
 	  {% load static%}
+	  {% load mathfilters%}
+	  {% load humanize %}
   	<title>Tenant page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -72,15 +74,15 @@
 						<!-- Bills and Receipts Details info -->
 						<div class="subjectline">LOGO</div>
 						<div class="generaldetail">
-							<p>Monthly bills for MM, YYYY</p>
+							<p>Monthly bills for {{processing_bill.month}}, {{processing_bill.year}}</p>
 							<div class="billreceiptdetail-row">
 								<div class="billreceiptdetail-column">
-									<p><b>To:</b></p>
-									<p>Tenants at Room ...</p>
+									<p><b>To: {{processing_bill.tenant.first_name}} {{processing_bill.tenant.last_name}}</b></p>
+									<p>Tenants at room id({{tenant_room.id}})</p>
 								</div>
 								<div class="billreceiptdetail-column" style="text-align: right; margin-right: 20px;">
-									<p>Bill #: ...</p>
-									<p>Bill Date: ...</p>
+									<p>Bill #: {{processing_bill.id}}</p>
+									<p>Bill Date: {{processing_bill.created_at}}</p>
 								</div>
 							</div>
 						</div>
@@ -98,22 +100,22 @@
 								<tr>
 								  	<td>Fixed monthly rent</td>
 								  	<td scope="row">1</td>
-								  	<td scope="row">1700000</td>
-								  	<td style="text-align: right;">1700000</td>
+								  	<td scope="row">{{tenant_room.rental_fee|intcomma}}</td>
+								  	<td style="text-align: right;">{{tenant_room.rental_fee|intcomma}}</td>
 								</tr>
 
 								<tr>
 									<td>Electricity</td>
-									<td scope="row">100</td>
-									<td scope="row">2000</td>
-									<td style="text-align: right;">200000</td>
+									<td scope="row">{{processing_bill.electricity_consumption|intcomma}}</td>
+									<td scope="row">{{processing_bill.electricity_cost|intcomma}}</td>
+									<td style="text-align: right;">{{ processing_bill.electricity_cost|mul:processing_bill.electricity_consumption|intcomma   }}</td>
 								</tr>
 
 								<tr>
 									<td>Water</td>
-									<td scope="row">10</td>
-									<td scope="row">4000</td>
-									<td style="text-align: right;">40000</td>
+									<td scope="row">{{processing_bill.water_consumption|intcomma}}</td>
+									<td scope="row">{{processing_bill.water_cost|intcomma}}</td>
+									<td style="text-align: right;">{{ processing_bill.water_cost|mul:processing_bill.water_consumption|intcomma   }}</td>
 								</tr>
 							  </tbody>
 							  <thead>
@@ -133,7 +135,7 @@
 								  	<th style="border: none;"></th>
 								  	<th style="border: none;"></th>
 								  	<th style="border: none;">TOTAL</th>
-								  	<th style="border: none; text-align: right;">1940000</th>
+								  	<th style="border: none; text-align: right;">{{ total|intcomma }}</th>
 								</tr>
 							  </thead>
 							</table>

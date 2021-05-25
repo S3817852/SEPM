@@ -131,31 +131,19 @@
 						</tr>
 					  </thead>
 					  <tbody>
-						 
+						 {% for i in bill%}
 							<tr>
-								<td><a href="{% url 'bill_receipts_paid' %}">Monthly Fee</a></td>
-								<td scope="row">{{bill.month}}</td>
-								<td scope="row">{{bill.year}}</td>
-								{% if bill.status == "Paid" %}
-								<td><a href="#" class="btn btn-success">{{bill.status}}</a></td>
-								{% elif bill.status == "Unpaid" %}
-								<td><a href="#" class="btn btn-danger">{{bill.status}}</a></td>
+								<td><a href="{%url 'bill_receipts_processing' i.id %}">Monthly Fee</a></td>
+								<td scope="row">{{i.month}}</td>
+								<td scope="row">{{i.year}}</td>
+								{% if i.status == "Paid" %}
+								<td><a href="#" class="btn btn-success">{{i.status}}</a></td>
+								{% elif i.status == "Unpaid" %}
+								<td><a href="#" class="btn btn-danger">{{i.status}}</a></td>
 								{% endif %}
 							</tr>
-						  
-						<tr>
-						  <td><a href="{% url 'bill_receipts_paid' %}">Monthly Fee</a></td>
-						  <td scope="row">May</td>
-						  <td scope="row">2020</td>
-						  <td><a href="#" class="btn btn-success">Paid</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="{% url 'bill_receipts_processing' %}">Monthly Fee</a></td>
-						  	<td scope="row">June</td>
-						  	<td scope="row">2020</td>
-							<td><a href="#" class="btn btn-danger">Unpaid</a></td>
-						</tr>
+						  {% endfor %}
+						
 
 						<tr>
 							<td><a href="">Monthly Fee</a></td>

@@ -63,9 +63,9 @@ def ew_month(request, year, month):
     for bill in monthly_list:
         electricity_monthly = bill.electricity_consumption * bill.electricity_cost
         water_monthly = bill.water_consumption * bill.water_cost
-        print(bill.account.id)
-        print("elec " + str(electricity_monthly))
-        print("water " + str(water_monthly))
+        # print(bill.account.id)
+        # print("elec " + str(electricity_monthly))
+        # print("water " + str(water_monthly))
 
 
     return render(request, 'EW/ew_month.html', {'monthly_list': monthly_list})
