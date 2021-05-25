@@ -27,3 +27,6 @@ class PersonalBill(models.Model):
 
     def get_absolute_url(self):
         return reverse("owner_bill_receipts_processing",kwargs={"year": self.year, "month": self.month})
+
+    def get_bill_detail_url(self):
+        return reverse("owner_bill_detail",kwargs={"id": self.id})

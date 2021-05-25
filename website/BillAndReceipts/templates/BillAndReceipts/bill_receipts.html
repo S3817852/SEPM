@@ -144,7 +144,7 @@
 					  <tbody>
 						  {% for i in monthly_bill %}
 						  <tr>
-							<td><a href="{{i.get_absolute_url}}">Monthly Fee</a></td>
+							<td><a href="{{i.get_absolute_url}}">{{i.month}} Fee</a></td>
 						  	<td scope="row">{{i.month}}</td>
 						  	<td scope="row">{{i.year}}</td>
 							<td><a href="#" class="btn btn-danger">Payment In Progress</a></td>

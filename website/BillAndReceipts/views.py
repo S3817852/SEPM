@@ -78,9 +78,9 @@ def bill_receipts_paid(request):
         return render(request, 'BillAndReceipts/T_billreceiptdetail_paid.html')
 
 def bill_receipts_processing(request,id):
-    if request.user.userprofile.is_owner:
-        return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html')
-    else:
+    # if request.user.userprofile.is_owner:
+    #     return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html')
+    # else:
         processing_bill = PersonalBill.objects.get(id = id)
         tenant_room = Room.objects.get(tenant_id = processing_bill.tenant)
         total_cost = (processing_bill.electricity_cost * processing_bill.electricity_consumption) + (tenant_room.rental_fee) + (processing_bill.water_cost * processing_bill.water_consumption)
@@ -90,4 +90,17 @@ def bill_receipts_processing(request,id):
 
 def owner_bill_receipts_processing(request, year, month):
     monthly_list = PersonalBill.objects.filter(year = year).filter(month = month)
-    return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html', {'monthly_list': monthly_list})
+    # for i in monthly_list:
+    #     tenant_bill = PersonalBill.objects.filter(tenant = i.tenant)
+        
+    # tenant_bill = PersonalBill.objects.get(tenant = i.tenant)
+    return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html', {'monthly_list': monthly_list,
+    })
+
+def owner_bill_detail(request, id):
+    processing_bill = PersonalBill.objects.get(id = id)
+    tenant_room = Room.objects.get(tenant_id = processing_bill.tenant)
+    total_cost = (processing_bill.electricity_cost * processing_bill.electricity_consumption) + (tenant_room.rental_fee) + (processing_bill.water_cost * processing_bill.water_consumption)
+    return render(request, 'BillAndReceipts/O_billreceiptdetail_unpaid.html', {'processing_bill': processing_bill,
+        'tenant_room':tenant_room,
+        'total':total_cost})
