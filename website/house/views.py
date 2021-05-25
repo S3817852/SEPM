@@ -1,4 +1,4 @@
-from house.admin import House_Id
+from userprofile.models import Userprofile
 from django import forms
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -66,7 +66,22 @@ def house_delete(request, id):
 
 # Room page
 def room(request, id):
+    tenant_ids = Userprofile.objects.filter(is_owner = False)
+    list_tenant_id = []
+
+    # Make a list of house_id
+    for tenant in tenant_ids:  
+        list_tenant_id.append(tenant.id)
+    
+    for i in list_tenant_id:
+        print(i)
+
     rooms = Room.objects.filter(house_id = id)
+    
+    # tenant_id = Userprofile.objects.filter()
+    for i in rooms:
+        if i.tenant_id:
+            print(i.tenant_id)
 
     return render(request, 'house/room.html', context={'rooms': rooms, 'house_id': id})
 

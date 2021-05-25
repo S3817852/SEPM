@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 # from job.models import Job
 from userprofile.models import Userprofile
+from userprofile.forms import UserprofileUpdateForm
 
 @login_required
 def frontpage(request):
@@ -11,6 +12,7 @@ def frontpage(request):
     if request.user.userprofile.is_owner:
         return render(request, 'core/ownermain.html',{})
     else:
+        
         return render(request, 'core/tenantmain.html',{})
 
 def signup(request):
@@ -31,7 +33,7 @@ def signup(request):
 
             login(request, user)
 
-            return redirect('fontpage')
+            return redirect(frontpage)
     else:
         form = UserCreationForm()
 

@@ -36,6 +36,9 @@
                       <li >
                         <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
                       </li>
+					  <li >
+						<a href="{% url 'messages' %}"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
+						</li>
                       <li>
                       <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
                       </li>
@@ -94,6 +97,7 @@
 			<div class="col-md-12">
 				<div class="table-wrap">
 					<table class="table table-striped">
+						
 					  <thead>
 						<tr>
 						  <th>Account ID</th>
@@ -104,6 +108,16 @@
 						</tr>
 					  </thead>
 					  <tbody>
+						{% for i in tenants %}
+						<tr>
+							<td><a href="">{{i.id}}</a></td>
+							<td scope="row">{{i.first_name}} {{i.last_name}}</td>
+							<td>30 April, 2021</td>
+							<td>1 May, 2023</td>
+							<td><a href="#" class="btn btn-success">Testing</a></td>
+						  </tr>
+						
+						{% endfor %}
 						<tr>
 						  <td><a href="">T1111111</a></td>
 						  <td scope="row">Nguyen Thanh Tuan</td>

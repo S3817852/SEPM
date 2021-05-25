@@ -1,5 +1,12 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+from userprofile.models import Userprofile
 
 # Create your views here.
 def tenant(request):
-    return render(request, 'tenant/tenant.html')
+    tenant = Userprofile.objects.filter(is_owner = False)
+    for instance in tenant:
+        print(instance.id)
+    # if( not request.user.userprofile.is_owner):
+    #     print("a")
+    return render(request, 'tenant/tenant.html', {'tenants': tenant})

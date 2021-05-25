@@ -12,6 +12,7 @@ def account(request):
         #yy-mm-dd
     else:
         userprofile = Userprofile.objects.get(id = request.user.id)
+        
         return render(request, 'userprofile/T-account.html', {'userprofile': userprofile})
 
 def account_update(request, id):

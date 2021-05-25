@@ -31,11 +31,14 @@
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
 	          </li>
 	          <li >
-	              <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
+	              <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3" size="3px"></span> Announcements</a>
 	          </li>
 			  <li >
-				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
+				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3">  </span> Notification ({{ notifications.count }})</a>
 			  </li>
+			  <li >
+				<a href="{% url 'messages' %}"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
+				</li>
 	          <li>
               <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
 	          </li>

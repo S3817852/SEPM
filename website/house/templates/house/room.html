@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
       {% load static %}
+	  {% load humanize %}
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,6 +37,9 @@
                       <li >
                         <a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
                       </li>
+					  <li >
+						<a href="{% url 'messages' %}"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
+						</li>
                       <li class="active">
                       <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
                       </li>
@@ -96,6 +100,7 @@
 					    <thead>
 						    <tr>
 						        <th>Room ID</th>
+								<th>Tenant ID</th>
 						        <th>Tenant name</th>
 						        <th>Rental fee</th>
                                 <th>Add/remove tenant</th>
@@ -109,12 +114,13 @@
 							{% if room.status == 'Empty' %}
 							<td><a href="" class="btn btn-success">{{room.id}}</a></td>
 							<td scope="row">none</td>
-							<td>{{room.rental_fee}}</td>
+							<td>{{room.rental_fee|intcomma}}</td>
 							<td><a href="#" class="btn btn-success">Add tenant</a></td>
 							{% elif room.status == 'Rented'%}
 							<td><a href="" class="btn btn-danger">{{room.id}}</a></td>
+							<td><a href="" class="btn btn-danger">{{room.tenant_id}}</a></td>
 							<td scope="row">{{room.tenant_name}}</td>
-							<td>{{room.rental_fee}}</td>
+							<td>{{room.rental_fee|intcomma}}</td>
 							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
 							{% endif%}
 							

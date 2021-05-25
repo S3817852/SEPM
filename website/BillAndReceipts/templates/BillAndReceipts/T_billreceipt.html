@@ -131,6 +131,18 @@
 						</tr>
 					  </thead>
 					  <tbody>
+						 
+							<tr>
+								<td><a href="{% url 'bill_receipts_paid' %}">Monthly Fee</a></td>
+								<td scope="row">{{bill.month}}</td>
+								<td scope="row">{{bill.year}}</td>
+								{% if bill.status == "Paid" %}
+								<td><a href="#" class="btn btn-success">{{bill.status}}</a></td>
+								{% elif bill.status == "Unpaid" %}
+								<td><a href="#" class="btn btn-danger">{{bill.status}}</a></td>
+								{% endif %}
+							</tr>
+						  
 						<tr>
 						  <td><a href="{% url 'bill_receipts_paid' %}">Monthly Fee</a></td>
 						  <td scope="row">May</td>
