@@ -93,6 +93,13 @@
 			
 		</div>
         <h3>Room list</h3>
+		{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
 		<div class="row">
 			<div class="col-md-12">
 				<div class="table-wrap">
@@ -112,16 +119,17 @@
 						  {% for room in rooms %}
 						  <tr>
 							{% if room.status == 'Empty' %}
-							<td><a href="" class="btn btn-success">{{room.id}}</a></td>
+							<td><a href="#" class="btn btn-success">{{room.id}}</a></td>
+							<td><a href="#" class="btn btn-success">{{room.tenant_id}}</a></td>
 							<td scope="row">none</td>
 							<td>{{room.rental_fee|intcomma}}</td>
-							<td><a href="#" class="btn btn-success">Add tenant</a></td>
+							<td><a href="{% url 'room_update' house_id room.id %}" class="btn btn-success">Add tenant</a></td>
 							{% elif room.status == 'Rented'%}
-							<td><a href="" class="btn btn-danger">{{room.id}}</a></td>
-							<td><a href="" class="btn btn-danger">{{room.tenant_id}}</a></td>
-							<td scope="row">{{room.tenant_name}}</td>
+							<td><a href="#" class="btn btn-danger">{{room.id}}</a></td>
+							<td><a href="" class="btn btn-danger">{{room.tenant_id.id}}</a></td>
+							<td scope="row">{{room.tenant_id.first_name}} {{room.tenant_id.last_name}}</td>
 							<td>{{room.rental_fee|intcomma}}</td>
-							<td><a href="#" class="btn btn-danger">Remove tenant</a></td>
+							<td><a href="{% url 'room_update' house_id room.id %}" class="btn btn-danger">Remove tenant</a></td>
 							{% endif%}
 							
 							<td><a href="{% url 'room_update' house_id room.id %}" class="btn btn-primary">Update</a></td>
@@ -161,6 +169,14 @@
 	document.getElementById("myForm").style.display = "none";
 	}
 	</script>
+	<script>
+		setTimeout(function(){
+		  if($('#msg').length > 0){
+			$('#msg').remove();
+		  }
+		},2000
+		)
+	  </script>
 
 <script src="{%static 'js/jquery.min.js'%}"></script>
 <script src="{%static 'js/popper.js'%}"></script>

@@ -63,7 +63,17 @@
         <form method="post" action=".">
             {% csrf_token %}
 
-            {{ form.as_p }}
+            {{ form.username.label }}
+            {{form.username}}
+            <br><br>
+            {{ form.email.label }}
+            {{form.email}}
+            <br><br>
+            {{ form.password1.label }}
+            {{form.password1}}
+            <br><br>
+            {{ form.password2.label }}
+            {{form.password2}}
 
             <hr>
 
@@ -89,6 +99,7 @@
                 </div>
             </div>
         </form>
+        {{form.errors}}
       </div>
 	  
 		</div>

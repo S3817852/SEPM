@@ -81,10 +81,11 @@
             <div class="newtenant-lable"><form action="" method="POST">
               {% csrf_token %}
               {{form.as_p}}
-              <input type="submit" name="Add house">
-            </form></div>
-            <div style="text-align: center; padding: 20px;"><a href="#" class="btn btn-info">Add house</a></div>
-            
+              <div style="text-align: center; padding: 20px;">
+                <button class="btn btn-primary" type="submit">Add House</button>
+              </div>
+            </form>
+          
             
 		</div>
         

@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {% load static %}
+    
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -76,17 +77,28 @@
             <a href="{% url 'add_announcement' %}" class="btn btn-info">Write new notification</a>
           
             <!-- Announcement menu -->
-            <div class="announcementmenu">
-                <!-- Announcement type -->
-                <select name="announcementmenu">
-                    <option selected="selected" value="one">All</option>
-                    <option value="two">Unread</option>
-                </select>
+            
         
                 <!-- Search bar -->
-                <input type="text" placeholder="Search">
-                <i class="fas fa-search" style="font-size: 40px; "></i>
+                <form action="." method="GET">
+                  <div class="announcementmenu">
+                    <!-- Announcement type -->
+                    <select name="announcementmenu">
+                        <option selected="selected" value="None">All</option>
+                        <option value="False">Unread</option>
+                        <option value="True">Read</option>
+                    </select>
+                    {{filter.form}}
+                  
+               <button class="btn btn-primary" type="submit">
+                Search
+               </button> 
+               
+                </form>
+                
             </div>
+           
+            
         
             <!-- Announcement -->
             {% if request.user.is_authenticated %}            

@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views.generic.base import View
 from .forms import AddHouseForm, AddRoomForm
 from .models import House, Room
+from django.contrib import messages
 
 # House page
 class house(View):
@@ -36,6 +37,9 @@ def house_add(request):
         form = AddHouseForm(request.POST)
         if form.is_valid:
             form.save()
+            house_name = form.cleaned_data.get('name')
+            messages.success(request, house_name + " is created successfully")
+            
             return redirect('/house/')
 
     context = {'form': form}
@@ -49,6 +53,8 @@ def house_update(request,pk):
         form = AddHouseForm(request.POST, instance= house)
         if form.is_valid:
             form.save()
+            house_name = form.cleaned_data.get('name')
+            messages.success(request, house_name + " is updated successfully")
             return redirect('/house/')
 
     context = {'form': form}
@@ -59,6 +65,7 @@ def house_delete(request, id):
     house = House.objects.get(id = id)
     if request.method == 'POST':
         house.delete()
+        messages.success(request, "House is deleted successfully")
         return redirect('/house/')
 
     context = {'house': house}
@@ -93,7 +100,7 @@ def room_add(request, pk):
         form = AddRoomForm(request.POST)
         if form.is_valid:
             form.save()
-            # return redirect('/house/room/')
+            messages.success(request, "New room is added successfully")
             return redirect(reverse('room', kwargs={'id': pk} ))
 
     context = {'form': form, 'house_id':id}
@@ -108,6 +115,7 @@ def room_update(request,house_id, pk):
         form = AddRoomForm(request.POST, instance = room)
         if form.is_valid:
             form.save()
+            messages.success(request, "Room is updated successfully")
             return redirect(reverse('room', kwargs={'id':house_id} ))
 
     context = {'form': form}
@@ -135,6 +143,7 @@ def room_delete(request,house_id, pk):
     
     if request.method == 'POST':
         room.delete()
+        messages.success(request, "Room is deleted successfully")
         return redirect(reverse('room', kwargs={'id':house_id} ))
 
     context = {'room': room, 'house_id':house_id }

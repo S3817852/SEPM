@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Userprofile
 from django.contrib.auth.models import User
 from .forms import UserprofileUpdateForm
+from django.contrib import messages
 
 # Create your views here.
 def account(request):
@@ -23,6 +24,7 @@ def account_update(request, id):
             form = UserprofileUpdateForm(request.POST, instance= userprofile)
             if form.is_valid:
                 form.save()
+                messages.success(request, "Account is updated successfully")
                 return redirect('/account/')
 
         context = {'form': form}

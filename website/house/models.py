@@ -27,7 +27,7 @@ class Room(models.Model):
     )
 
     house_id = models.ForeignKey(House, null=True, on_delete=CASCADE)
-    tenant_id = models.ForeignKey(Userprofile, null=True, on_delete=CASCADE)
+    tenant_id = models.ForeignKey(Userprofile, null=True,blank=True, on_delete=CASCADE)
     tenant_name = models.CharField(max_length= 100, null=True, blank=True)
     rental_fee = models.IntegerField(null=True)
     status = models.CharField(max_length= 255, null=True, choices=ROOM_STATUS)

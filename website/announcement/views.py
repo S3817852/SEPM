@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AddAnnouncementForm
 from django.contrib.auth.decorators import login_required
@@ -6,15 +7,33 @@ from django.views import View
 from django.contrib.auth.models import User
 from userprofile.models import ConversationMessage
 from notification.utilities import create_notification
+from .filter import AnnouncementFilter
 
 # Create your views here.
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
 # Announcement URL
 def index(request):
     announcements = Announcement.objects.all().order_by('-created_at')
+    options = request.GET.get('announcementmenu')
+    if is_valid_queryparam(options) and options != 'None':
+        announcements = announcements.filter(is_read = options)
+    announcement_filter = AnnouncementFilter(request.GET, queryset= announcements)
+    announcements = announcement_filter.qs
     if request.user.userprofile.is_owner:
-        return render(request, 'announcement/O-announcement.html', {'announcements': announcements} )
+        return render(request, 'announcement/O-announcement.html', {'announcements': announcements, 'filter':announcement_filter} )
     else:
         return render(request, 'announcement/T_announcement.html', {'announcements': announcements} )
+
+# Filter result
+# class FilterResult(View):
+#     model = Announcement
+#     template_name = 'announcement/O-announcement.html'
+#     def get_context_date(self, **kwargs):
+#         context = super().get_context_date(**kwargs)
+#         context['filter'] = AnnouncementFilter(self.request.GET, queryset = self.get_queryset())
+        return context
 
 # Get specific announcement
 class AnnouncementObjectMixin(object):

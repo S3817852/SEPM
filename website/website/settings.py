@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages.api import warning
 
 from django.forms.widgets import Media
 
@@ -48,7 +49,9 @@ INSTALLED_APPS = [
     'owner', 'tenant', 'home', 'core',
     'userprofile', 'announcement', 'notification',
     'house','EWs','BillAndReceipts','roomservices',
-    'import_export', 'promotions', 'mathfilters', 'django.contrib.humanize', 'message'
+    'import_export', 'promotions', 'mathfilters', 'django.contrib.humanize', 'message',
+    'django_filters',
+    'bootstrapform'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger'
+}
