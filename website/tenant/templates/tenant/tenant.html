@@ -73,7 +73,7 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Tenant manager</h2>
-        <a href="{% url  'add_new_tenant' %}" class="btn btn-info">Create new tenant account</a>
+        <a href="{% url  'add_tenant' %}" class="btn btn-info">Add new tenant</a>
       
 		<!-- Room Services menu -->
 		<div class="tenantaccountmenu">
@@ -93,6 +93,13 @@
 			
 		</div>
         <h3>Account list</h3>
+		{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
 		<div class="row">
 			<div class="col-md-12">
 				<div class="table-wrap">
@@ -105,16 +112,18 @@
 						  <th>Rental contract start date</th>
                           <th>Rental contract end date</th>
                           <th>Rental contract remaining</th>
+						  <th>Update</th>
 						</tr>
 					  </thead>
 					  <tbody>
-						{% for i in tenants %}
+						  {% for tenant in tenants %}
 						<tr>
-							<td><a href="">{{i.id}}</a></td>
-							<td scope="row">{{i.first_name}} {{i.last_name}}</td>
-							<td>30 April, 2021</td>
-							<td>1 May, 2023</td>
-							<td><a href="#" class="btn btn-success">Testing</a></td>
+							<td><a href="">{{tenant.tenant_id.id}}</a></td>
+							<td scope="row">{{tenant.tenant_id.first_name}} {{tenant.tenant_id.last_name}}</td>
+							<td>{{tenant.start_date}}</td>
+							<td>{{tenant.end_date}}</td>
+							<td><a href="#" class="btn btn-success">{{tenant.end_date|timeuntil}}</a></td>
+							<td><a href="{% url 'update_tenant' tenant.id %}" class="btn btn-primary">Update</a></td>
 						  </tr>
 						
 						{% endfor %}
@@ -217,5 +226,13 @@
 <script src="{%static 'js/popper.js'%}"></script>
 <script src="{%static 'js/bootstrap.min.js'%}"></script>
 <script src="{%static 'js/main.js' %}"></script>
+<script>
+	setTimeout(function(){
+	  if($('#msg').length > 0){
+		$('#msg').remove();
+	  }
+	},2000
+	)
+  </script>
   </body>
 </html>

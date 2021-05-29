@@ -62,8 +62,19 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
 		<h2 class="mb-4">Main page</h2>
-		<h1>Message</h1>
-		{% include 'message.html' %}
+		{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
+		 {% if request.user.userprofile.first_name is None %}
+           <h6>Plase update your account's information for better experiences</h6>
+		   {%else%}
+			<h6>Welcome, {{request.user.username}}</h6>
+		{%endif%}
+		
         </div>
 	  
 		</div>

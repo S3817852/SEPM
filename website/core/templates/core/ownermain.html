@@ -74,7 +74,14 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">Main page</h2>
-		
+		{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
+		 <h6>Welcome, {{request.user.username}}</h6>
         
       </div>
 	  
@@ -84,5 +91,13 @@
     <script src="{%static 'js/popper.js'%}"></script>
     <script src="{%static 'js/bootstrap.min.js'%}"></script>
     <script src="{%static 'js/main.js' %}"></script>
+	<script>
+		setTimeout(function(){
+			if($('#msg').length > 0){
+				$('#msg').remove();
+			}
+		},2000
+		)
+	</script>
   </body>
 </html>

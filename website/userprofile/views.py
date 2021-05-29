@@ -36,6 +36,7 @@ def account_update(request, id):
             form = UserprofileUpdateForm(request.POST, instance= userprofile)
             if form.is_valid:
                 form.save()
+                messages.success(request, "Account is updated successfully")
                 return redirect('/account/')
 
         context = {'form': form}

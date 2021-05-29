@@ -1,10 +1,8 @@
-Count remain retal date.
 Move create new tenant in to Tenant app. ???
 In frontpage, if the user dont update the account infor, redirect them to Account page.
 Notification for new bill, receipt, room service, tenant,
 Click button and change value(color )
 House (form design)
-After sigining up, move to main page !
 After creating new house, rented and empty room should be 0.
 Update in EW consumption
 
@@ -14,3 +12,4 @@ Lam filter
 Signing up nen o trong tenant
 Processing or Done in bill%receipts
 Create a notification for creating new bill
+Diffent account will have diffent room service

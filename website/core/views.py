@@ -13,9 +13,10 @@ from django.contrib import messages
 def frontpage(request):
     # jobs = Job.objects.filter(status=Job.ACTIVE).order_by('-created_at')[0:3]
     if request.user.userprofile.is_owner:
+        messages.success(request, 'Login successfully')
         return render(request, 'core/ownermain.html',{})
     else:
-        
+        messages.success(request, 'Login successfully')
         return render(request, 'core/tenantmain.html',{})
 
 def signup(request):
@@ -35,7 +36,7 @@ def signup(request):
                 userprofile.save()
 
             # user = form.cleaned_data.get('username')
-            messages.error(request, 'Signup successfully')
+            messages.success(request, 'Signup successfully')
 
             login(request, user)
 
