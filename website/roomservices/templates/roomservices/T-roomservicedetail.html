@@ -69,13 +69,18 @@
 		<!-- Announcement -->
 		<div class="servicerequestbox">
 			<!-- Announcement info -->
-			<img src="user1.png" alt="" class="announcementavatar">
+			<img src="{{room.created_by.userprofile.image.url}}" alt="" class="announcementavatar">
 			<div class="subjectline"><h3>{{room.service_subject}}</h3></div>
             <div class="sendername">{{room.created_by}}</div>
             <div class="poston">Posted on: {{room.created_at}}</div>
 			<div class="request-status">
 				<p style="display:inline">Request status: </p>
-				<a href="#" class="btn btn-success">Done</a>
+				{%if room.status == 'Done' %}
+				<a href="#" class="btn btn-success">{{room.status}}</a>
+        {%elif room.status == 'Processing' %}
+        <a href="#" class="btn btn-danger">{{room.status}}</a>
+        
+        {%endif%}
 			</div>
             <div class="requestdescription">Request description:</div>
             <div class="content">{{room.description}}

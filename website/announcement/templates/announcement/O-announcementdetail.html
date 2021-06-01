@@ -78,7 +78,7 @@
 		<!-- Announcement -->
 		<div class="announcementbox">
 			<!-- Announcement info -->
-			<img src="" alt="" class="announcementavatar">
+			<img src="{{announcement.created_by.userprofile.image.url}}" alt="" class="announcementavatar">
 			<div class="subjectline"><h3>{{ announcement.title }}</h3></div>
             <div class="sendername">{{announcement.created_by}}</div>
             <div class="poston">Posted on: {{announcement.created_at}} </div>
@@ -98,7 +98,7 @@
 			{% endif %}
 			<div class="commentbox">
 				<!-- Chat field -->
-				<img src="user1.png" alt="" class="announcementavatar">
+				<img src="{{message.created_by.userprofile.image.url}}" alt="" class="announcementavatar">
 				<div class="sendername">{{ message.created_by.username }}</div>
 				<div class="poston">Posted on: {{ message.created_at|timesince }} ago</div>
 				<div class="content">{{ message.content }}</div>

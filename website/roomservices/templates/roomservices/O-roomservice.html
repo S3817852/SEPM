@@ -74,7 +74,13 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Room Services</h2>
-      
+		{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
 		<!-- Room Services menu -->
 		<div class="roomservicesmenu">
 			<!-- Services type -->
@@ -110,57 +116,16 @@
 						<tr>
 						<td><a href="{% url 'room_services_details' i.id %}">{{i.service_subject}}</a></td>
 						<td scope="row">{{i.created_at}}</td>
-						<td><a href="#" class="btn btn-success">Done</a></td>
-					  </tr>
+						{%if i.status == "Done"%}
+						<td><a href="#" class="btn btn-success">{{i.status}}</a></td>
+						{%elif i.status == "Processing" %}
+						<td><a href="#" class="btn btn-danger">{{i.status}}</a></td>
+						{%endif%}
+					 	 </tr>
 					 
 						{% endfor %}
-						<tr>
-						  <td><a href="{% url 'room_services_details' 1 %}">Fix air conditioner... </a></td>
-						  <td scope="row">March 27, 2020</td>
-						  <td><a href="#" class="btn btn-success">Done</a></td>
-						   
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 26, 2020</td>
-						    <td><a href="#" class="btn btn-warning">New request</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 25, 2020</td>
-						  <td><a href="#" class="btn btn-danger">In progress</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 24, 2020</td>
-						  <td><a href="#" class="btn btn-success">Done</a></td>
-						</tr>
-
-						 <tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 23, 2020</td>
-						  <td><a href="#" class="btn btn-danger">In progress</a></td>
-						</tr>
-
-						 <tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 22, 2020</td>
-						    <td><a href="#" class="btn btn-warning">New request</a></td>
-
-						   <tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 21, 2020</td>
-						  <td><a href="#" class="btn btn-warning">New request</a></td>
-						</tr>
-
-						<tr>
-							<td><a href="">Fix air conditioner... </a></td>
-							<td scope="row">March 20, 2020</td>
-						  <td><a href="#" class="btn btn-success">Done</a></td>
-						</tr>
+				
+		
 					  </tbody>
 					</table>
 					
@@ -195,6 +160,14 @@
 	document.getElementById("myForm").style.display = "none";
 	}
 	</script>
+	<script>
+		setTimeout(function(){
+		  if($('#msg').length > 0){
+			$('#msg').remove();
+		  }
+		},2000
+		)
+	  </script>
 
 <script src="{%static 'js/jquery.min.js'%}"></script>
 <script src="{%static 'js/popper.js'%}"></script>

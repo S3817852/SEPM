@@ -106,7 +106,7 @@
             <div class="announcement">
                 <div class="subjectline"><a href="{% url 'announcement_detail' announcement.id %}">{{ announcement.title }}</a></div>
                 <div class="poston">Posted on:</div>
-                <img src="user1.png" alt="" class="announcementavatar">
+                <img src="{{announcement.created_by.userprofile.image.url}}" alt="" class="announcementavatar">
                 <div class="sendername">{{ announcement.created_by }}</div>
                 <div class="sendtime">{{ announcement.created_at }}</div>
                 <div class="briefcontent">{{ announcement.description }}</div>

@@ -100,7 +100,11 @@
 							<tr>
 							<td><a href="{% url 'room_services_details' i.id %}">{{i.service_subject}}</a></td>
 							<td scope="row">{{i.created_at}}</td>
-							<td><a href="#" class="btn btn-success">Done</a></td>
+							{%if i.status == "Done"%}
+						<td><a href="#" class="btn btn-success">{{i.status}}</a></td>
+						{%elif i.status == "Processing" %}
+						<td><a href="#" class="btn btn-danger">{{i.status}}</a></td>
+						{%endif%}
 						  </tr>
 						 
 						{% endfor %}

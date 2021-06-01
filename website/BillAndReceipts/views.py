@@ -32,7 +32,9 @@ def bill_receipts(request):
         
         for i in monthly_bill:
             print(i)
-        return render(request, 'BillAndReceipts/bill_receipts.html',{'monthly_bill': monthly_bill})
+            # for a in i:
+            #     print(a)
+        return render(request, 'BillAndReceipts/bill_receipts.html',{'monthly_bill': monthly_bill, 'check_status': monthly_List})
     else:
         tenant_bill = PersonalBill.objects.filter(tenant = request.user.userprofile)
         return render(request, 'BillAndReceipts/T_billreceipt.html', {'bill': tenant_bill})
@@ -90,8 +92,12 @@ def bill_receipts_processing(request,id):
 
 def owner_bill_receipts_processing(request, year, month):
     monthly_list = PersonalBill.objects.filter(year = year).filter(month = month)
+    
+    if not monthly_list:
+        print("Yes")
     # for i in monthly_list:
-    #     tenant_bill = PersonalBill.objects.filter(tenant = i.tenant)
+    #     # tenant_bill = PersonalBill.objects.filter(tenant = i.tenant)
+    #     print(i.status)
         
     # tenant_bill = PersonalBill.objects.get(tenant = i.tenant)
     return render(request, 'BillAndReceipts/O_billreceipt_paymentinprogress.html', {'monthly_list': monthly_list,

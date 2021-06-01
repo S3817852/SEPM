@@ -77,8 +77,9 @@
 				<!-- Account Box -->
 				<div class="newtenantaccountbox">
             
-					<div class="account-lable" style="text-align:center; font-weight: bold; font-size: 25px;">Owner</div>	
-		  
+					<div class="account-lable" style="text-align:center; font-weight: bold; font-size: 25px;">Tenant</div>	
+					<div class="requestdescription">Attached image Owner:</div>
+            		<img src="{{userprofile.image.url}}" style="border-radius:50% ;" width="50px" height="50px" alt="" class="announcementavatar">
 					<div class="account-lable">Full name:</div>
 					<div class="account-content"> {%if userprofile.first_name %} {{userprofile.first_name }} {{userprofile.last_name }} {%endif%}</div>
 		  

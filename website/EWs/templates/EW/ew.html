@@ -126,6 +126,13 @@
 			<div class="col-md-12">
 				<div class="table-wrap">
 					<table class="table table-striped">
+						{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
 					  <thead>
 						<tr>
 						  <th>Title</th>
@@ -180,6 +187,14 @@
 	document.getElementById("myForm").style.display = "none";
 	}
 	</script>
+	<script>
+		setTimeout(function(){
+		  if($('#msg').length > 0){
+			$('#msg').remove();
+		  }
+		},4000
+		)
+	  </script>
 
 <script src="{%static 'js/jquery.min.js'%}"></script>
 <script src="{%static 'js/popper.js'%}"></script>

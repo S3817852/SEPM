@@ -53,6 +53,7 @@ def ew_add(request):
                  year
         		)
         	value.save()
+        messages.success(request,"New monthyly electricity and water data is created successfully")
         return redirect('ew')
             
     return render(request, 'EW/ew_add.html')

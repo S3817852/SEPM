@@ -1,13 +1,14 @@
 from django import forms
 from django.shortcuts import redirect, render
-from .forms import RequestPost
+from .forms import RequestPost, UpdateRoomService
 from .models import RoomService    
 from django.core.files.storage import FileSystemStorage
+from django.contrib import messages
 
 # Create your views here.
 def room_services(request):
     if request.user.userprofile.is_owner:
-        services = RoomService.objects.all()
+        services = RoomService.objects.all().order_by('-created_at')
         return render(request, 'roomservices/O-roomservice.html', {'services': services})
     else:
         services = RoomService.objects.all().order_by('-created_at')
@@ -39,3 +40,18 @@ def room_services_add(request):
             # fs.save(upload_file.name, upload_file)
         context = {'form': form}
         return render(request, 'roomservices/T-roomserviceadd.html',context)
+
+# Update a specific room
+def room_service_update(request, pk):
+    room_service = RoomService.objects.get(id = pk)
+    form = UpdateRoomService(instance = room_service)
+    if request.method == 'POST':
+        form = UpdateRoomService(request.POST, instance = room_service)
+        if form.is_valid:
+            form.save()
+            messages.success(request, "Request is updated successfully")
+            return redirect('room_services')
+
+    context = {'form': form}
+    
+    return render(request, 'roomservices/O-roomservice-update.html', context)

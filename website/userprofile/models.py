@@ -13,6 +13,9 @@ class Userprofile(models.Model):
     phone = models.CharField(max_length=50, null=True)
     dob = models.DateField(null=True, max_length=8)
     is_owner = models.BooleanField(default=False)
+    image = models.ImageField(null = True, blank = True, upload_to = 'images/')
+
+
     def get_absolute_url(self):
         return reverse("account_update",kwargs={"id": self.id})
 
