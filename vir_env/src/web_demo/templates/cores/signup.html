@@ -1,0 +1,23 @@
+{%extends 'core/login_signup_templates.html'%}
+{%block content%}
+{% load crispy_forms_tags %}
+  <h2 class="mb-4">Sign up ourside template</h2>
+  <form method="post" action=".">
+      {% csrf_token %}
+
+      {{ form|crispy }}
+
+      <hr>
+
+      <div class="field">
+          <div class="control">
+              <button class="btn btn-info">Sign up</button>
+              {% if not request.user.is_authenticated %}
+    <a href="{% url 'login' %}" class="button is-light">Log in</a>  
+    {% endif %}
+          </div>
+      </div>
+  </form>
+  {{form.errors}}
+
+{%endblock%}

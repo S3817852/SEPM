@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if messages %}
+        {%for mess in messages%}
+            <div class="alert alert-{{mess.tags}}">
+                {{mess}}
+            </div>
+        {%endfor%}
+    {% endif %}
+    <h1>Hi there</h1>
+    <p>Welcome back</p>
+
+{% endblock %}
+
+{% block another_content_area %}
+    
+    <p>My text is {{my_text}} and my number is {{my_number}}</p>
+
+{% endblock %}

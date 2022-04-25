@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	{% load static %}
+  	<title>Owner page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+		<!-- CSS icon -->
+		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4">
+		  		<h1><a href="{% url 'base_page' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          <li class="active">
+	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
+	          </li>
+	          <li >
+	              <a href="#"><span class="fas fa-bullhorn mr-3" size="3px"></span> Announcements</a>
+	          </li>
+			  <li >
+				<a href="#"><span class="fas fa-bell mr-3">  </span> Notification ({{ notifications.count }})</a>
+			  </li>
+			  <li >
+				<a href="#"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
+				</li>
+	          <li>
+              <a href="#"><span class="fas fa-home mr-3"></span> House</a>
+	          </li>
+	          <li>
+              <a href="#"><span class="fas fa-address-book mr-3"></span> Tenant</a>
+	          </li>
+	          <li>
+              <a href="#"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
+	          </li>
+	          <li>
+              <a href="#"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
+	          </li>
+              <li>
+                <a href="#"><span class="fas fa-tools mr-3"></span> Room Services</a>
+              </li>
+              <li>
+                <a href="{% url 'user_profile'%}"><span class="fas fa-user mr-3"></span> Account</a>
+              </li>
+              <li>
+				{% if request.user.is_authenticated %}
+				<a href="{% url 'logout' %}"><span class="fas fa-sign-out-alt mr-3"></span>Hi, {{ user.username}}. Sign out</a>
+				{% else %}
+				<a href="#" class="button is-success"><strong>Sign up</strong></a>
+				<a href="#" class="button is-light">Log in</a>    
+				{% endif %}
+                
+              </li>
+	        </ul>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+		<div id="content" class="p-4 p-md-5 pt-5">
+			
+			{%if messages %}
+			{% for message in messages %}
+			<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+					{{message}}
+			</div>
+			{% endfor %}
+			{%endif%}
+			
+
+			{%block content%}
+			REPLACE ME !!!
+			{%endblock %}
+		</div>
+		</div>
+
+    <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="{%static 'js/popper.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
+	<script>
+		setTimeout(function(){
+			if($('#msg').length > 0){
+				$('#msg').remove();
+			}
+		},2000
+		)
+	</script>
+  </body>
+</html>
