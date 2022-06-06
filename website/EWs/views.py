@@ -44,13 +44,13 @@ def ew_add(request):
         	value = MonthlyEW(
         		data[0],
         		data[1],
-        		 data[2],
-        		 data[3],
-                 data[4],
-                 data[5],
-                 data[6],
-                 month,
-                 year
+                data[2],
+                data[3],
+                data[4],
+                data[5],
+                data[6],
+                month,
+                year
         		)
         	value.save()
         messages.success(request,"New monthyly electricity and water data is created successfully")
