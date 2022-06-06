@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from user.models import Userprofile
+from django.urls import reverse
 
 # Create your models here.
 class MonthlyEW(models.Model):
@@ -14,6 +15,9 @@ class MonthlyEW(models.Model):
     month = models.TextField(blank=True)
     year = models.TextField(blank=True)
 
+    def get_absolute_url(self):
+        return reverse("ew_month",kwargs={"year": self.year, "month": self.month})
+
 class EW(admin.ModelAdmin):
     list_display = ['id', 'month','year']
     list_filter = ['month','year']
@@ -25,7 +29,7 @@ class Announcement(models.Model):
     description = models.TextField()
     is_read = models.BooleanField(default=False, null=True)
 
-    created_by = models.ForeignKey(Userprofile, related_name='jobs', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(Userprofile, related_name='announcement', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     changed_at = models.DateTimeField(auto_now=True)
 

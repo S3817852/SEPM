@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Userprofile
+from .models import Userprofile, Tenant
 
 class UserSignUpForm(UserCreationForm):
     email = forms.EmailField()
@@ -23,3 +23,29 @@ class UserprofileUpdateForm(forms.ModelForm):
     class Meta:
         model = Userprofile
         fields = ['image']
+
+
+class UpdateTenantForm(forms.ModelForm):
+    class Meta:
+        model = Tenant
+        fields = '__all__'
+
+
+
+class AddTenantForm(forms.ModelForm):
+    # tenant_id = forms.ForeignKey(Userprofile, on_delete=CASCADE , null=True)
+    start_date = forms.DateField(widget=forms.TextInput(
+        attrs={
+            "placeholder":"Date format: yyyy-MM-dd"
+        }
+    ))
+    end_date = forms.DateField(widget=forms.TextInput(
+        attrs={
+            "placeholder":"Date format: yyyy-MM-dd"
+        }
+    ))
+    is_rented = forms.BooleanField(required=False)
+
+    class Meta:
+        model = Tenant
+        fields = '__all__'

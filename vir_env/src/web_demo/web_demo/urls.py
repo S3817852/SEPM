@@ -33,9 +33,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='core/logout.html'), name='logout'),
     path('userprofile/', userprofile, name='user_profile'),
     path('signup/', sign_up, name='signup'),
-    path('tenant/', tenant_manage, name='tenant'),
-    path('ew/', ew, name='ew'),
-    path('announcement/', announcement, name='announcement'),
+    path('tenant/', include('user.urls')),
+    # path('ew/', ew, name='ew'),
+    path('services/', include('services.urls'))
 
 ]
 

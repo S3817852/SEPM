@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
 	  {% load static %}
+	  {% load crispy_forms_tags %}
   	<title>Owner page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,50 +26,51 @@
 	          <span class="sr-only">Toggle Menu</span>
 	        </button>
         </div>
-			<div class="p-4">
-		  		<h1><a href="{% url 'frontpage' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
-	        	<ul class="list-unstyled components mb-5">
-	          <li>
+				<div class="p-4">
+		  		<h1><a href="{% url 'base_page' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          <li class="active">
 	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
 	          </li>
-	          <li class="active">
-	              <a href="{% url 'index' %}"><span class="fas fa-bullhorn mr-3"></span> Announcements</a>
+	          <li >
+	              <a href="#"><span class="fas fa-bullhorn mr-3" size="3px"></span> Announcements</a>
 	          </li>
 			  <li >
-				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3"></span> Notification ({{ notifications.count }})</a>
+				<a href="#"><span class="fas fa-bell mr-3">  </span> Notification ({{ notifications.count }})</a>
 			  </li>
 			  <li >
-				<a href="{% url 'messages' %}"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
+				<a href="#"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
 				</li>
 	          <li>
-              <a href="{% url 'house' %}"><span class="fas fa-home mr-3"></span> House</a>
+              <a href="#"><span class="fas fa-home mr-3"></span> House</a>
 	          </li>
 	          <li>
-              <a href="{% url 'tenant' %}"><span class="fas fa-address-book mr-3"></span> Tenant</a>
+              <a href="{%url 'tenant'%}"><span class="fas fa-address-book mr-3"></span> Tenant</a>
 	          </li>
 	          <li>
-              <a href="{% url 'ew' %}"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
+              <a href="#"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
 	          </li>
 	          <li>
-              <a href="{% url 'bill_receipts' %}"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
+              <a href="#"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
 	          </li>
               <li>
-                <a href="{% url 'room_services' %}"><span class="fas fa-tools mr-3"></span> Room Services</a>
+                <a href="#"><span class="fas fa-tools mr-3"></span> Room Services</a>
               </li>
               <li>
-                <a href="{% url 'account' %}"><span class="fas fa-user mr-3"></span> Account</a>
+                <a href="{% url 'user_profile'%}"><span class="fas fa-user mr-3"></span> Account</a>
               </li>
               <li>
-                {% if request.user.is_authenticated %}
-                <a href="{% url 'logout' %}"><span class="fas fa-sign-out-alt mr-3"></span>Hi, {{ user.username}} !!! Sign out</a>
-                {% else %}
-                <a href="{% url 'signup' %}" class="button is-success"><strong>Sign up</strong></a>
-                <a href="{% url 'login' %}" class="button is-light">Log in</a>    
-                {% endif %}
+				{% if request.user.is_authenticated %}
+				<a href="{% url 'logout' %}"><span class="fas fa-sign-out-alt mr-3"></span>Hi, {{ user.username}}. Sign out</a>
+				{% else %}
+				<a href="#" class="button is-success"><strong>Sign up</strong></a>
+				<a href="#" class="button is-light">Log in</a>    
+				{% endif %}
+                
               </li>
-	        	</ul>
+	        </ul>
 
-	      	</div>
+	      </div>
     	</nav>
 
         <!-- Page Content  -->
@@ -93,7 +95,7 @@
                 
             </form> -->
 
-			<form class="newserviceform" v-on:submit="validateForm" method="post" action=".">
+			<form class="newserviceform" method="post" action=".">
 				{% csrf_token %}
 	
 				{% if form.errors %}
@@ -103,8 +105,8 @@
 						</div>
 					{% endfor %}
 				{% endif %}
-	
-				<div class="notification is-danger" v-if="errors.length">
+				{{ form|crispy }}
+				<!-- <div class="notification is-danger" v-if="errors.length">
 					<p v-for="error in errors">
 						[[ error ]]
 					</p>
@@ -124,7 +126,7 @@
 					<div class="control">
 						<textarea class="textarea" name="description" id="id_description" v-model="description"></textarea>
 					</div>
-				</div>
+				</div> -->
 	
 				<!-- <div class="field">
 					<label class="servicesubject">Title</label>

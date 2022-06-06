@@ -73,7 +73,7 @@
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4"> Tenant manager</h2>
-        <a href="#" class="btn btn-info">Add new tenant</a>
+        <a href="{% url  'add_tenant' %}" class="btn btn-info">Add new tenant</a>
       
 		<!-- Room Services menu -->
 		<div class="tenantaccountmenu">
@@ -123,7 +123,7 @@
 							<td>{{tenant.start_date}}</td>
 							<td>{{tenant.end_date}}</td>
 							<td><a href="#" class="btn btn-success">{{tenant.end_date|timeuntil}}</a></td>
-							<td><a href="#" class="btn btn-primary">Update</a></td>
+							<td><a href="{% url 'update_tenant' tenant.id %}" class="btn btn-primary">Update</a></td>
 						  </tr>
 						
 						{% endfor %}

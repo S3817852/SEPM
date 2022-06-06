@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserSignUpForm, UserUpdateForm, UserprofileUpdateForm
+from .forms import UserSignUpForm, UserUpdateForm, UserprofileUpdateForm, AddTenantForm, UpdateTenantForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Tenant
@@ -66,3 +66,31 @@ def tenant_manage(request):
     tenant = Tenant.objects.filter(is_rented = True)
    
     return render(request, 'tenant/tenant.html', {'tenants': tenant})
+
+def add_tenant(request):
+    form = AddTenantForm()
+    if request.method == 'POST':
+        form = AddTenantForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"New tenant is added successfully")
+            return redirect('/tenant/')
+        else:
+            print(form.errors)
+
+    context = {'form': form}
+    return render(request, 'tenant/tenant_add.html', context)
+
+def update_tenant(request, pk):
+    tenant = Tenant.objects.get(id = pk)
+    form = UpdateTenantForm(instance = tenant)
+    if request.method == 'POST':
+        form = UpdateTenantForm(request.POST, instance= tenant)
+        if form.is_valid:
+            form.save()
+            # tenant_name = form.cleaned_data.get('name')
+            messages.success(request,  "Tenant's information is updated successfully")
+            return redirect('/tenant/')
+
+    context = {'form': form}
+    return render(request, 'tenant/tenant_update.html', context)
