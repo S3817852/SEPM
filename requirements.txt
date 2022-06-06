@@ -1,0 +1,9 @@
+asgiref==3.5.0
+Django==4.0.4
+django-crispy-forms==1.14.0
+django-filter==21.1
+django-mathfilters==1.0.0
+Pillow==9.1.0
+sqlparse==0.4.2
+tablib==3.2.1
+tzdata==2022.1
