@@ -24,6 +24,7 @@ from django.conf import settings
 from products.views import product_view
 from user.views import sign_up, userprofile, main_page, login_page, tenant_manage
 from services.views import ew, announcement
+from dong_demo.views import dong_lun
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +36,9 @@ urlpatterns = [
     path('signup/', sign_up, name='signup'),
     path('tenant/', include('user.urls')),
     # path('ew/', ew, name='ew'),
-    path('services/', include('services.urls'))
+    path('services/', include('services.urls')),
+    path('dong_lun/', dong_lun, name='VN vo dich')
+
 
 ]
 

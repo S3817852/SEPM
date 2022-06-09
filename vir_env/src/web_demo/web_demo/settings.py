@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'products.apps.ProductsConfig', 
     'services.apps.ServicesConfig',
+    'dong_demo',
+    'D_products',
+
     'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
