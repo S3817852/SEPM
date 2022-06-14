@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	  {% load static %}
+	  {% load crispy_forms_tags %}
+  	<title>Owner page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static 'css/style.css'  %}">
+
+		<!-- CSS icon -->
+		<script src="https://kit.fontawesome.com/62b2ff62ed.js" crossorigin="anonymous"></script>
+		
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+            <nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4">
+		  		<h1><a href="{% url 'base_page' %}" class="logo">TTD Logo <span>TTD Motel Management</span></a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          <li class="active">
+	            <a href="#"><span class="fas fa-database mr-3"></span> Statistics</a>
+	          </li>
+	          <li >
+	              <a href="#"><span class="fas fa-bullhorn mr-3" size="3px"></span> Announcements</a>
+	          </li>
+			  <li >
+				<a href="#"><span class="fas fa-bell mr-3">  </span> Notification ({{ notifications.count }})</a>
+			  </li>
+			  <li >
+				<a href="#"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
+				</li>
+	          <li>
+              <a href="#"><span class="fas fa-home mr-3"></span> House</a>
+	          </li>
+	          <li>
+              <a href="{%url 'tenant'%}"><span class="fas fa-address-book mr-3"></span> Tenant</a>
+	          </li>
+	          <li>
+              <a href="#"><span class="fas fa-bolt mr-3"></span> Electricity & Water</a>
+	          </li>
+	          <li>
+              <a href="#"><span class="fas fa-receipt mr-3"></span> Bills & Receipts</a>
+	          </li>
+              <li>
+                <a href="#"><span class="fas fa-tools mr-3"></span> Room Services</a>
+              </li>
+              <li>
+                <a href="{% url 'user_profile'%}"><span class="fas fa-user mr-3"></span> Account</a>
+              </li>
+              <li>
+				{% if request.user.is_authenticated %}
+				<a href="{% url 'logout' %}"><span class="fas fa-sign-out-alt mr-3"></span>Hi, {{ user.username}}. Sign out</a>
+				{% else %}
+				<a href="#" class="button is-success"><strong>Sign up</strong></a>
+				<a href="#" class="button is-light">Log in</a>    
+				{% endif %}
+                
+              </li>
+	        </ul>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+		<div id="add-announcement-app">
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4"> New announcement</h2>
+      
+		<!-- Announcement -->
+		<div class="newannouncementbox">
+			<!-- Announcement info --> 
+            <!-- action="/action_page.php" -->
+            <!-- <form class="newserviceform">
+                <div class="to">To:</div><br>
+			    <input type="text" id="" name="" class="servicesubjectinput"><br>
+                <label for="" class="servicesubject">Announcement subject:</label><br>
+                <input type="text" class="servicesubjectinput"><br>
+                <label for="lname" class="description">Announcement main content:</label><br>
+                <textarea name="" id="" cols="50" rows="10" class="requestdescription"></textarea><br><br>
+                <a href="#" class="btn btn-info">Attach an image</a><br><br>
+                <input type="submit" value="Submit">
+                <br>
+                
+            </form> -->
+
+			<form class="newserviceform" method="post" action=".">
+				{% csrf_token %}
+	
+				{% if form.errors %}
+					{% for error in form.errors %}
+						<div class="notification is-danger">
+							{{ error }}
+						</div>
+					{% endfor %}
+				{% endif %}
+				{{ form|crispy }}
+				<!-- <div class="notification is-danger" v-if="errors.length">
+					<p v-for="error in errors">
+						[[ error ]]
+					</p>
+				</div>
+
+				<div class="field">
+					<label>Title</label>
+	
+					<div class="control">
+						<input class="input" type="text" name="title" id="id_title" v-model="title">
+					</div>
+				</div>
+	
+				<div class="field">
+					<label>Description</label>
+	
+					<div class="control">
+						<textarea class="textarea" name="description" id="id_description" v-model="description"></textarea>
+					</div>
+				</div> -->
+	
+				<!-- <div class="field">
+					<label class="servicesubject">Title</label>
+	
+					<div class="control">
+						<input class="servicesubjectinput" type="text" name="title" id="id_title" v-model="title">
+					</div>
+				</div>
+	
+				<div class="field">
+                	 <textarea class="requestdescription"></textarea><br><br> 
+					<label for="lname" class="description">Description</label>
+					<div class="control">
+						<textarea cols="50" rows="10" class="requestdescription" name="description" id="id_description" v-model="description"></textarea>
+					</div>
+				</div> -->
+	
+				<div class="field">
+					<div class="control">
+						<button class="button is-success" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+	
+		</div>
+
+				
+	</div>
+</div>
+	<script src="https://unpkg.com/vue@next"></script>
+	{% block scripts%}
+	<script>
+		const AddAnnouncementApp = {
+			data() {
+				return {
+					title: '',
+					description: '',
+					errors: []
+				}
+			},
+			delimiters: ['[[', ']]'],
+			methods: {
+				validateForm(e) {
+					this.errors = []
+	
+					if (this.title === '') {
+						this.errors.push('The title field is missing!')
+					}
+	
+					if (this.description === '') {
+						this.errors.push('The description field is missing!')
+					}	
+					if (this.errors.length) {
+						e.preventDefault()
+	
+						return false
+					} else {
+						return true
+					}
+				}
+			}
+		}
+	
+		Vue.createApp(AddAnnouncementApp).mount('#add-announcement-app');
+	</script>
+	{% endblock%}
+	
+    <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="{%static 'js/popper.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
+  </body>
+</html>

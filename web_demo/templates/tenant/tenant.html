@@ -1,0 +1,67 @@
+{% extends request.user.account.is_owner|yesno:'core/ownermain.html,core/tenantmain.html' %}
+{%block tenant_active %}{% with selected='tenant' %}{{ block.super }}{% endwith %}{%endblock%}
+{%block main_content%}
+
+<h2 class="mb-4"> Tenant manager</h2>
+        <a href="{% url  'add_tenant' %}" class="btn btn-info">Add new tenant</a>
+      
+		<!-- Room Services menu -->
+		<div class="tenantaccountmenu">
+			<!-- Services type -->
+            <p style="display: inline; color: black;">Time remaining</p>
+			<select name="tenantaccountmenu">
+				<option selected="selected" value="one">All</option>
+				<option value="two">Less than 2 months</option>
+				<option value="three">More than 6 months</option>
+				<option value="four">More than 1 year</option>
+			</select>
+	
+			<!-- Search bar -->
+			
+			<input type="text" placeholder="Search">
+			<i class="fas fa-search" style="font-size: 40px; "></i>
+			
+		</div>
+        <h3>Account list</h3>
+		{%if messages %}
+		{% for message in messages %}
+		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
+				{{message}}
+		</div>
+	 	{% endfor %}
+		 {%endif%}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<table class="table table-striped">
+						
+					  <thead>
+						<tr>
+						  <th>Account ID</th>
+						  <th>Tenant name</th>
+						  <th>Rental contract start date</th>
+                          <th>Rental contract end date</th>
+                          <th>Rental contract remaining</th>
+						  <th>Update</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						  {% for tenant in tenants %}
+						<tr>
+							<td><a href="">{{tenant.tenant_id.user.id}}</a></td>
+							<td scope="row">{{tenant.tenant_id.user.username}}</td>
+							<td>{{tenant.start_date}}</td>
+							<td>{{tenant.end_date}}</td>
+							<td><a href="#" class="btn btn-success">{{tenant.end_date|timeuntil}}</a></td>
+							<td><a href="{% url 'update_tenant' tenant.id %}" class="btn btn-primary">Update</a></td>
+						  </tr>
+						
+						{% endfor %}
+					
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
+
+{%endblock main_content%}
