@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     't_account',
     't_house',
     't_room',
+    't_bill',
     
 ]
 
