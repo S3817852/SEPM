@@ -13,3 +13,4 @@ class RentContract(models.Model):
     num_Tenants     = models.IntegerField()
     internet_Yes    = models.BooleanField()
     tv_Yes          = models.BooleanField()
+    
