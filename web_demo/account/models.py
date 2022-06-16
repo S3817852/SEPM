@@ -15,7 +15,7 @@ class Account(models.Model):
         return f'{self.user.username} Profile'
 
     # Auto-resize the input image from users
-    def save(self):
+    def save(self, *args, **kwargs):
         super().save()
 
         img = Image.open(self.image.path)
