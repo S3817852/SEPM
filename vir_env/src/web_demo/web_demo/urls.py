@@ -25,6 +25,8 @@ from products.views import product_view
 from user.views import sign_up, userprofile, main_page, login_page, tenant_manage
 from services.views import ew, announcement
 from dong_demo.views import dong_lun
+from D_products.views import product_detail_view, product_create_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,7 +39,10 @@ urlpatterns = [
     path('tenant/', include('user.urls')),
     # path('ew/', ew, name='ew'),
     path('services/', include('services.urls')),
-    path('dong_lun/', dong_lun, name='VN vo dich')
+    path('dong_lun/', dong_lun, name='VN vo dich'),
+    path('productDetail/', product_detail_view, name='Product detail'),
+    path('create/', product_create_view, name='Form')
+
 
 
 ]
