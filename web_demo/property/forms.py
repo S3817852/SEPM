@@ -1,3 +1,4 @@
+from account.models import Account
 from django import forms
 
 from .models import House, Room
@@ -8,10 +9,14 @@ class AddHouseForm(forms.ModelForm):
         model = House
         fields = ['owner_id', 'address']
 
-# class AddRoomForm(forms.ModelForm):
-#     class Meta:
-#         model = Room
-#         fields = ['house_id', 'tenant_id', 'rental_fee', 'status']
+    # def __init__(self, user=None, **kwargs):
+    #     super(AddHouseForm, self).__init__(**kwargs)
+        
+    #     self.fields['owner_id'].queryset  = Account.objects.filter(user=user)
+class AddRoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = ['house_id', 'price', 'is_rented']
 
 
 

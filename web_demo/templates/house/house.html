@@ -1,5 +1,5 @@
 {% extends request.user.account.is_owner|yesno:'core/ownermain.html,core/tenantmain.html' %}
-{%block house_active %}{% with selected='ew' %}{{ block.super }}{% endwith %}{%endblock%}
+{%block house_active %}{% with selected='house' %}{{ block.super }}{% endwith %}{%endblock%}
 {%block main_content%}
 
 <h2 class="mb-4"> Houses manager</h2>
@@ -36,6 +36,7 @@
 					<table class="table table-striped">
 					  <thead>
 						<tr>
+						  <th>House ID</th>
 						  <th>House</th>
 						  <th>Address</th>
                           <th>Empty room</th>
@@ -47,14 +48,15 @@
 					  </thead>
 					  <tbody>
 						  
-						   {%for house in houses %}
+						   {%for house_id, house_info in houses.items %}
 						    <tr>
-							<td><a href="{{house.get_absolute_url}}">{{house.id}}</a></td>
-							<td scope="row">{{house.address}}</td>
-							<td><a href="#" class="btn btn-success">2</a></td>
-							<td><a href="#" class="btn btn-danger">3</a></td>
-							<td><a href="#" class="btn btn-primary">Update</a></td>
-							<td><a href="#" class="btn btn-warning">Delete</a></td>
+							<td scope="row">{{house_info.id}}</td>
+							<td><a href="{{house_id.get_absolute_url}}">{{house_id}}</a></td>
+							<td scope="row">{{house_info.address}}</td>
+							<td><a href="#" class="btn btn-success">{{house_info.num_empty_rooms}}</a></td>
+							<td><a href="$" class="btn btn-danger">{{house_info.num_rented_rooms}}</a></td>
+							<td><a href="{% url 'house_update' house_info.id %}" class="btn btn-primary">Update</a></td>
+							<td><a href="{% url 'house_delete' house_info.id %}" class="btn btn-warning">Delete</a></td>
 							</tr>
 							{%endfor%}
 							
