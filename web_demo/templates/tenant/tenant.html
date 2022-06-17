@@ -3,7 +3,7 @@
 {%block main_content%}
 
 <h2 class="mb-4"> Tenant manager</h2>
-        <a href="{% url  'add_tenant' %}" class="btn btn-info">Add new tenant</a>
+        <a href="{% url  'add_tenant' %}" class="btn btn-info">Add new rent contract</a>
       
 		<!-- Room Services menu -->
 		<div class="tenantaccountmenu">
@@ -22,7 +22,7 @@
 			<i class="fas fa-search" style="font-size: 40px; "></i>
 			
 		</div>
-        <h3>Account list</h3>
+        <h3>Rent Contract list</h3>
 		{%if messages %}
 		{% for message in messages %}
 		<div class="alert {{message.tags}} m-2" id="msg" role="alert">
@@ -38,7 +38,8 @@
 					  <thead>
 						<tr>
 						  <th>Account ID</th>
-						  <th>Tenant name</th>
+						  <th>Room ID</th>
+						  <th>Number of tenants</th>
 						  <th>Rental contract start date</th>
                           <th>Rental contract end date</th>
                           <th>Rental contract remaining</th>
@@ -48,8 +49,9 @@
 					  <tbody>
 						  {% for tenant in tenants %}
 						<tr>
-							<td><a href="">{{tenant.tenant_id.user.id}}</a></td>
-							<td scope="row">{{tenant.tenant_id.user.username}}</td>
+							<td><a href="">{{tenant.account_id}}</a></td>
+							<td scope="row">{{tenant.room_id}}</td>
+							<td scope="row">{{tenant.num_tenants}}</td>
 							<td>{{tenant.start_date}}</td>
 							<td>{{tenant.end_date}}</td>
 							<td><a href="#" class="btn btn-success">{{tenant.end_date|timeuntil}}</a></td>

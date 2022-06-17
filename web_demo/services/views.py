@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
+from social.utilities import create_notification
 from tablib import Dataset
 
 from .filter import AnnouncementFilter
@@ -121,7 +122,11 @@ class AnnouncementDetailView(AnnouncementObjectMixin,UserObjectMixin,View):
     template_name1 = 'announcement/T-announcementdetail.html'
     def get(self, request, id = None, *args, **kwargs):
         context = {'announcement': self.get_object()}
-        if request.user.userprofile.is_owner:
+       
+        if request.user.account.is_owner:
+
+            Announcement.objects.filter(id=self.get_object().id).update(is_read=True)                  # Announcement is read after the user clicked on.
+
             return render(request, self.template_name, context)
         else:
             return render(request, self.template_name1, context)
@@ -166,11 +171,14 @@ def add_announcement(request):
 
         if form.is_valid():
             announcement = form.save(commit=False)
-            announcement.created_by = request.user.userprofile
+            announcement.created_by = request.user.account
             announcement.save()
             # for tenant in sent_to_tenant:
             #     if not tenant.is_owner:
             #         create_notification(request, tenant.user, 'application', extra_id=job.id)
+
+            create_notification(request, request.user, 'announcement', extra_id=announcement.id)
+
             
             return redirect('announcement')
     else:

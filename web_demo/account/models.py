@@ -15,8 +15,8 @@ class Account(models.Model):
         return f'{self.user.username} Profile'
 
     # Auto-resize the input image from users
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
@@ -36,7 +36,7 @@ class RentContract(models.Model):
     num_tenants = models.DecimalField(max_digits=2, decimal_places=0)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    actual_end_date = models.DateTimeField()
+    actual_end_date = models.DateTimeField(blank=True, null=True)
     internet_usage = models.BooleanField()
     tv_usage = models.BooleanField()
 

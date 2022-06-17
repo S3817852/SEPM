@@ -28,7 +28,7 @@ class EW(admin.ModelAdmin):
 class Announcement(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    is_read = models.BooleanField(default=False, null=True)
+    is_read = models.BooleanField(default=False)
 
     created_by = models.ForeignKey(Account, related_name='announcement', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,3 +36,6 @@ class Announcement(models.Model):
 
     def __str__(self):
         return self.title
+
+
+

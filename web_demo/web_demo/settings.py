@@ -33,12 +33,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'crispy_forms',
-    'mathfilters',
     'django_filters',
+    'mathfilters',
+   
     'account.apps.AccountConfig',
     'bills.apps.BillsConfig',
     'services.apps.ServicesConfig',
     'property.apps.PropertyConfig',
+    'social.apps.SocialConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.context_processors.notifications',
             ],
         },
     },
@@ -140,3 +143,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'base_page'
 LOGIN_URL = 'login'
+
+
+
+

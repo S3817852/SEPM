@@ -1,0 +1,47 @@
+{% extends request.user.account.is_owner|yesno:'core/ownermain.html,core/tenantmain.html' %}
+{%block notification_active %}{% with selected='notifi' %}{{ block.super }}{% endwith %}{%endblock%}
+{%block main_content%}
+
+            <!-- Notifications -->
+                  
+               
+                <div class="container">
+                    <h1 class="title">Notifications</h1>
+                   
+
+                    {% if notifications is None %}
+                        No notifications yet!
+                    {% endif %}
+                    
+                    {% for notification in notifications %}
+                        <div class="notification">
+                            <p>
+                                {% if notification.notification_type == 'announcement' %}
+                                    <a href="{% url 'notifications' %}?goto=announcement_detaill&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                                        <strong>{{ notification.created_by.username }}</strong> commented on ur's post {% for instance in announcement_list %}
+                                                                                                            {% if instance.id == notification.extra_id %}
+                                                                                                                                                            
+                                                                                                            <p> {{ instance.title}}</p> 
+                                                                                                            {% endif%}
+                                                                                                        {% endfor%}<br>
+                                        {% if not notification.is_read %} <p> Not been read yet</p>   {% endif %}
+                                        <small>{{ notification.created_at|timesince }} ago</small>
+                                    </a>
+
+                                
+                                {% elif notification.notification_type == 'comment' %}
+                                <a href="{% url 'notifications' %}?goto=announcement_detaill&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                                  <strong>{{ notification.created_by.username }}</strong> commented on your post ({% for instance in announcement_list %} {% if instance.id == notification.extra_id %} {{ instance.title}} {% endif%}
+                                                                                                  {% endfor%})
+                                  <br>
+                                  <small>{{ notification.created_at|timesince }} ago</small>
+                              </a>
+
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endblock main_content%}
+            
+                

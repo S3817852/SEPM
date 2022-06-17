@@ -34,7 +34,7 @@
   {% if request.user.is_authenticated and announcements|length > 0 %}            
       {% for announcement in announcements %}
   <div class="announcement">
-      <div class="subjectline"><a href="{% url 'announcement_detail' announcement.id %}">{% if not announcement.is_read %} * {%endif%}{{ announcement.title }} </a></div>
+      <div class="subjectline"><a href="{% url 'announcement_detail' announcement.id %}">{% if announcement.is_read is False %} * {%endif%}{{ announcement.title }} </a></div>
       <div class="poston">Posted on:</div>
       <img src="{{announcement.created_by.account.image.url}}" alt="" class="announcementavatar">
       <div class="sendername">{{ announcement.created_by }}</div>

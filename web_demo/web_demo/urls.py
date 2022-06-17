@@ -34,7 +34,10 @@ urlpatterns = [
     path('signup/', sign_up, name='signup'),
     path('tenant/', include('account.urls')),
     path('house/', include('property.urls')),
-    path('services/', include('services.urls'))
+    path('services/', include('services.urls')),
+    path('notifications/', include('social.urls')),
+
+
 
 ]
 

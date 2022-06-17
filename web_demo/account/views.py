@@ -1,10 +1,13 @@
+import datetime
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from property.models import Room
 
 from .forms import (AddTenantForm, UpdateTenantForm, UserprofileUpdateForm,
                     UserSignUpForm, UserUpdateForm)
-from .models import Tenant
+from .models import RentContract, Tenant
 
 
 # Create your views here.
@@ -66,8 +69,8 @@ def login_page(request, *args, **kwargs):
     return render(request, 'core/login.html', {})
 
 def tenant_manage(request):
-    tenant = Tenant.objects.filter(is_rented = True)
-   
+    tenant = RentContract.objects.all()
+    remaining_time = datetime.datetime.now()  
     return render(request, 'tenant/tenant.html', {'tenants': tenant})
 
 def add_tenant(request):
@@ -76,8 +79,13 @@ def add_tenant(request):
         form = AddTenantForm(request.POST)
         if form.is_valid():
             form.save()
+
+            # Update room status when new rent contract is created
+            room_id = form.cleaned_data['room_id']
+            Room.objects.filter(id=room_id.id).update(is_rented=True)
+            
             messages.success(request,"New tenant is added successfully")
-            return redirect('/tenant/')
+            return redirect('/tenant/tenant')
         else:
             print(form.errors)
 
@@ -85,7 +93,7 @@ def add_tenant(request):
     return render(request, 'tenant/tenant_add.html', context)
 
 def update_tenant(request, pk):
-    tenant = Tenant.objects.get(id = pk)
+    tenant = RentContract.objects.get(id = pk)
     form = UpdateTenantForm(instance = tenant)
     if request.method == 'POST':
         form = UpdateTenantForm(request.POST, instance= tenant)
@@ -93,7 +101,7 @@ def update_tenant(request, pk):
             form.save()
             # tenant_name = form.cleaned_data.get('name')
             messages.success(request,  "Tenant's information is updated successfully")
-            return redirect('/tenant/')
+            return redirect('/tenant/tenant')
 
     context = {'form': form}
     return render(request, 'tenant/tenant_update.html', context)

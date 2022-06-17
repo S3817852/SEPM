@@ -34,7 +34,7 @@
 	              <a href="{%url 'announcement'%}"><span class="fas fa-bullhorn mr-3" size="3px"></span> Announcements</a>
 	          </li>
 			  {%block notification_active%} <li class="{% if selected == 'notifi' %}active{% endif %}"> {%endblock%}
-				<a href="#"><span class="fas fa-bell mr-3">  </span> Notification ({{ notifications.count }})</a>
+				<a href="{% url 'notifications' %}"><span class="fas fa-bell mr-3">  </span> Notification ({{ notifications.count }})</a>
 			  </li>
 			  {%block messages_active%} <li class="{% if selected == 'mess' %}active{% endif %}"> {%endblock%}
 				<a href="#"><span class="fab fa-facebook-messenger"> </span> Messages ()</a>
