@@ -1,5 +1,5 @@
 {% extends request.user.account.is_owner|yesno:'core/ownermain.html,core/tenantmain.html' %}
-{%block house_active %}{% with selected='ew' %}{{ block.super }}{% endwith %}{%endblock%}
+{%block house_active %}{% with selected='house' %}{{ block.super }}{% endwith %}{%endblock%}
 {% load humanize %}
 {%block main_content%}
 
