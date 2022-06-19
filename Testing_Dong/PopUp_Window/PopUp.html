@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <script defer src="Script.js"></script>
+    <title>Pop-up Window</title>
+</head>
+<body>
+    
+    <button data-modal-target="#modal">Open the window</button>
+
+    <div class="modal" id="modal">
+        <!-- modal header -->
+        <div class="modal-header">
+            <div class="title">The Unforgiven - YASUO</div>
+            <button window-close-button class="close-button">&times;</button>
+        </div>
+
+        <!-- modal body -->
+        <div class="modal-body">
+            An Ionian of deep resolve, Yasuo is an agile swordsman who wields the air itself against his enemies. As a proud young man, he was falsely accused of murdering his master—unable to prove his innocence, he was forced to slay his own brother in self defense. Even after his master's true killer was revealed, Yasuo still could not forgive himself for all he had done, and now wanders his homeland with only the wind to guide his blade.
+        </div>
+
+    </div>
+
+    <!-- make the rest of the screen darker -->
+    <div id="overlay"></div>
+</body>
+</html>

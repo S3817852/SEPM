@@ -16,8 +16,8 @@
     </p>
 
     <ul>
-        {%for room_consumption in consumption%}
-            <li>{{id}}, {{room}}, {{electric_consumption}}, {{water_consumption}}, {{time}}</li>
+        {%for room_consumption, value in consumption.items%}
+            <li> Key: {{room_consumption}} Room id: {{room}} Electric consumption: {{value.electric_consumption}} Water consumption: {{value.water_consumption}} Time: {{value.time}}</li>
         {% endfor %}
     </ul>
 </body>
