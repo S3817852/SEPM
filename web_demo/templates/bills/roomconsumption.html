@@ -8,5 +8,17 @@
 </head>
 <body>
     <h1>Room Consumption</h1>
+    
+    <p>
+        {{ consumption }}
+
+        
+    </p>
+
+    <ul>
+        {%for room_consumption in consumption%}
+            <li>{{id}}, {{room}}, {{electric_consumption}}, {{water_consumption}}, {{time}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
