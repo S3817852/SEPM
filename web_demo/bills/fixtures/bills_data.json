@@ -1,0 +1,123 @@
+[
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 1,
+        "fields": {
+          "room_id": 1,
+          "electricity_consump": "0",
+          "water_consump": "0",
+          "time": "2022-01-01"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 2,
+        "fields": {
+          "room_id": 2,
+          "electricity_consump": "0",
+          "water_consump": "0",
+          "time": "2022-01-01"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 3,
+        "fields": {
+          "room_id": 3,
+          "electricity_consump": "0",
+          "water_consump": "0",
+          "time": "2022-01-01"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 4,
+        "fields": {
+          "room_id": 4,
+          "electricity_consump": "0",
+          "water_consump": "0",
+          "time": "2022-01-01"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 5,
+        "fields": {
+          "room_id": 5,
+          "electricity_consump": "0",
+          "water_consump": "0",
+          "time": "2022-01-01"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 6,
+        "fields": {
+          "room_id": 6,
+          "electricity_consump": "0",
+          "water_consump": "0",
+          "time": "2022-01-01"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 7,
+        "fields": {
+          "room_id": 1,
+          "electricity_consump": "119",
+          "water_consump": "4",
+          "time": "2022-01-31"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 8,
+        "fields": {
+          "room_id": 2,
+          "electricity_consump": "129",
+          "water_consump": "5",
+          "time": "2022-01-31"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 9,
+        "fields": {
+          "room_id": 3,
+          "electricity_consump": "139",
+          "water_consump": "6",
+          "time": "2022-01-31"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 10,
+        "fields": {
+          "room_id": 4,
+          "electricity_consump": "149",
+          "water_consump": "7",
+          "time": "2022-01-31"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 11,
+        "fields": {
+          "room_id": 5,
+          "electricity_consump": "159",
+          "water_consump": "8",
+          "time": "2022-01-31"
+        }
+    },
+    {
+        "model": "bills.RoomConsumption",
+        "pk": 12,
+        "fields": {
+          "room_id": 6,
+          "electricity_consump": "169",
+          "water_consump": "9",
+          "time": "2022-01-31"
+        }
+    }
+    
+]

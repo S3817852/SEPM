@@ -9,10 +9,10 @@ class Account(models.Model):
     is_owner = models.BooleanField(default=False)
     image = models.ImageField(default='default_user.jpg', upload_to='profile_pics')
     national_id = models.TextField(blank=True)
-    dob = models.DateTimeField(null=True)
+    dob = models.DateField(null=True)
 
     def __str__(self) -> str:
-        return f'{self.user.username} Profile'
+        return f'{self.id}---{self.user.username}'
 
     # Auto-resize the input image from users
     def save(self, *args, **kwargs):
@@ -41,7 +41,6 @@ class RentContract(models.Model):
     tv_usage = models.BooleanField()
 
     def __str__(self, *args, **kwargs): 
-        txt = "{room}---{day}.{month}.{year}"
-        return txt.format(room = self.room_id, day = self.start_date.strftime("%d"), month = self.start_date.strftime("%m"), year = self.start_date.strftime("%Y"))
+        return f'{self.id}---{self.room_id.name}---{self.start_date}'
 
 

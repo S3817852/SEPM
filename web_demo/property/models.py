@@ -13,13 +13,15 @@ class House(models.Model):
     def get_absolute_url(self):
         return reverse("room",kwargs={"id": self.id})
     
+    def __str__(self, *args, **kwargs):
+        return f'{self.id}---{self.address}'
 
 
 class Room(models.Model):
     house_id = models.ForeignKey(House, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=12, decimal_places=0)
     is_rented = models.BooleanField()
-    name = models.TextField(default="001", max_length=3, null=False)
+    name = models.TextField(default="P001", max_length=4, null=False)
 
     def __str__(self, *args, **kwargs):
-        return self.name
+        return f'{self.id}---{self.name}'

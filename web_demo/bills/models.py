@@ -17,6 +17,9 @@ class RoomConsumption(models.Model):
     water_consump = models.DecimalField(max_digits=10, decimal_places=3)
     time = models.DateField()
 
+    def __str__(self, *args, **kwargs):
+        return f'{self.id}---{self.room_id.name}---{self.time}'
+
 class BillAndReceipts(models.Model):
     rent_contract_id = models.ForeignKey(RentContract, on_delete=models.CASCADE)
     room_price = models.DecimalField(max_digits=10, decimal_places=3)

@@ -1,0 +1,80 @@
+[
+    {
+        "model": "account.RentContract",
+        "pk": 1,
+        "fields": {
+          "account_id": 2,
+          "room_id": 1,
+          "num_tenants": 1,
+          "start_date": "2022-01-01",
+          "end_date": "2022-12-31",
+          "internet_usage": "True",
+          "tv_usage": "True"
+        }
+    },
+    {
+        "model": "account.RentContract",
+        "pk": 2,
+        "fields": {
+          "account_id": 2,
+          "room_id": 2,
+          "num_tenants": 2,
+          "start_date": "2022-01-01",
+          "end_date": "2022-12-31",
+          "internet_usage": "True",
+          "tv_usage": "True"
+        }
+    },
+    {
+        "model": "account.RentContract",
+        "pk": 3,
+        "fields": {
+          "account_id": 3,
+          "room_id": 3,
+          "num_tenants": 3,
+          "start_date": "2022-01-01",
+          "end_date": "2022-12-31",
+          "internet_usage": "True",
+          "tv_usage": "True"
+        }
+    },
+    {
+        "model": "account.RentContract",
+        "pk": 4,
+        "fields": {
+          "account_id": 4,
+          "room_id": 4,
+          "num_tenants": 4,
+          "start_date": "2022-01-01",
+          "end_date": "2022-12-31",
+          "internet_usage": "True",
+          "tv_usage": "False"
+        }
+    },
+    {
+        "model": "account.RentContract",
+        "pk": 5,
+        "fields": {
+          "account_id": 5,
+          "room_id": 5,
+          "num_tenants": 1,
+          "start_date": "2022-01-01",
+          "end_date": "2022-12-31",
+          "internet_usage": "True",
+          "tv_usage": "True"
+        }
+    },
+    {
+        "model": "account.RentContract",
+        "pk": 6,
+        "fields": {
+          "account_id": 6,
+          "room_id": 6,
+          "num_tenants": 2,
+          "start_date": "2022-01-01",
+          "end_date": "2022-12-31",
+          "internet_usage": "True",
+          "tv_usage": "False"
+        }
+    }
+]
