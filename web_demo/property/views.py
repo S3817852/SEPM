@@ -53,9 +53,9 @@ def house_page(request):
 # Add new house 
 def house_add(request):
     
-    form = AddHouseForm(initial={'owner_id': request.user.account})
+    form = AddHouseForm(owner=request.user)
     if request.method == 'POST':
-        form = AddHouseForm(request.POST)
+        form = AddHouseForm(request.POST, owner=request.user )
         if form.is_valid:
             form.save()
             house_name = form.cleaned_data.get('address')

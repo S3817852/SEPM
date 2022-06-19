@@ -9,10 +9,10 @@ class AddHouseForm(forms.ModelForm):
         model = House
         fields = ['owner_id', 'address']
 
-    # def __init__(self, user=None, **kwargs):
-    #     super(AddHouseForm, self).__init__(**kwargs)
-        
-    #     self.fields['owner_id'].queryset  = Account.objects.filter(user=user)
+    def __init__(self,*args, **kwargs):
+        owner = kwargs.pop('owner')
+        super().__init__(*args,**kwargs)
+        self.fields['owner_id'].queryset  = Account.objects.filter(user=owner)
 class AddRoomForm(forms.ModelForm):
     class Meta:
         model = Room
