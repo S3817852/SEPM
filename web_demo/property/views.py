@@ -53,7 +53,7 @@ def house_page(request):
 # Add new house 
 def house_add(request):
     
-    form = AddHouseForm(owner=request.user)
+    form = AddHouseForm(initial={'owner_id': request.user.account}, owner=request.user)
     if request.method == 'POST':
         form = AddHouseForm(request.POST, owner=request.user )
         if form.is_valid:
@@ -101,8 +101,7 @@ def room(request, id):
     for tenant in tenant_ids:  
         list_tenant_id.append(tenant.id)
     
-    for i in list_tenant_id:
-        print(i)
+    
 
     rooms = Room.objects.filter(house_id = id)
     
@@ -116,9 +115,9 @@ def room(request, id):
 # Add new rooms
 def room_add(request, pk):
    
-    form = AddRoomForm()
+    form = AddRoomForm(initial={'house_id': pk}, house_id=pk)
     if request.method == 'POST':
-        form = AddRoomForm(request.POST)
+        form = AddRoomForm(request.POST,house_id=pk)
         if form.is_valid:
             form.save()
             messages.success(request, "New room is added successfully")

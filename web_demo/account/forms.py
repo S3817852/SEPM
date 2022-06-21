@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from property.models import Room
 
 from .models import Account, RentContract, Tenant
 
@@ -51,3 +52,11 @@ class AddTenantForm(forms.ModelForm):
     class Meta:
         model = RentContract
         fields = '__all__'
+
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args,**kwargs)
+        tenant_list = RentContract.objects.values_list('account_id', flat=True)
+        self.fields['account_id'].queryset  = Account.objects.exclude(pk__in=tenant_list).filter(is_owner=False)
+        self.fields['room_id'].queryset  = Room.objects.filter(is_rented=False)
+
+

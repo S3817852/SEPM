@@ -18,5 +18,10 @@ class AddRoomForm(forms.ModelForm):
         model = Room
         fields = ['house_id', 'price', 'is_rented']
 
+    def __init__(self,*args, **kwargs):
+        house_id = kwargs.pop('house_id')
+        super().__init__(*args,**kwargs)
+        self.fields['house_id'].queryset  = House.objects.filter(id=house_id)
+
 
 

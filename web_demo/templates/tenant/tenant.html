@@ -42,6 +42,7 @@
 						  <th>Number of tenants</th>
 						  <th>Rental contract start date</th>
                           <th>Rental contract end date</th>
+						  <th>Rental contract actual end date</th>
                           <th>Rental contract remaining</th>
 						  <th>Update</th>
 						</tr>
@@ -54,6 +55,7 @@
 							<td scope="row">{{tenant.num_tenants}}</td>
 							<td>{{tenant.start_date}}</td>
 							<td>{{tenant.end_date}}</td>
+							<td>{{tenant.actual_end_date}}</td>
 							<td><a href="#" class="btn btn-success">{{tenant.end_date|timeuntil}}</a></td>
 							<td><a href="{% url 'update_tenant' tenant.id %}" class="btn btn-primary">Update</a></td>
 						  </tr>

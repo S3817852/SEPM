@@ -1,3 +1,4 @@
+from bills.models import RoomConsumption
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,24 +14,28 @@ from .models import Announcement, MonthlyEW
 
 # Create your views here.
 def ew(request):
-    monthly_List = MonthlyEW.objects.all()   # Get all record in data
-    count = monthly_List.count()
+    # monthly_List = MonthlyEW.objects.all()   # Get all record in data
+    # count = monthly_List.count()
 
-    year_list = []
-    month_list = []
-    unique_id_list = []
-    for obj in monthly_List:
-        if obj.year not in year_list:
-            year_list.append(obj.year)
-        if obj.month not in month_list:
-            month_list.append(obj.month)
-            unique_id_list.append(obj.id)
+    # year_list = []
+    # month_list = []
+    # unique_id_list = []
+    # for obj in monthly_List:
+    #     if obj.year not in year_list:
+    #         year_list.append(obj.year)
+    #     if obj.month not in month_list:
+    #         month_list.append(obj.month)
+    #         unique_id_list.append(obj.id)
 
-    # for i in unique_id_list:
-    #     print(i)
+    # # for i in unique_id_list:
+    # #     print(i)
 
-    monthly_list = MonthlyEW.objects.filter(pk__in = unique_id_list).order_by("-year")
-    return render(request, 'EW/ew.html',{'monthly_list': monthly_list, 'count': count})
+    # monthly_list = MonthlyEW.objects.filter(pk__in = unique_id_list).order_by("-year")
+    # context = {'monthly_list': monthly_list, 'count': count}
+    room_consumption = RoomConsumption.objects.all()
+ 
+    # for room_cons in room_consumption:
+    return render(request, 'EW/ew.html', {'consumption': room_consumption})
 
 def ew_month(request, year, month):
 

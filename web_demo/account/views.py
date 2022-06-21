@@ -7,7 +7,7 @@ from property.models import Room
 
 from .forms import (AddTenantForm, UpdateTenantForm, UserprofileUpdateForm,
                     UserSignUpForm, UserUpdateForm)
-from .models import RentContract, Tenant
+from .models import Account, RentContract, Tenant
 
 
 # Create your views here.
@@ -71,6 +71,7 @@ def login_page(request, *args, **kwargs):
 def tenant_manage(request):
     tenant = RentContract.objects.all()
     remaining_time = datetime.datetime.now()  
+   
     return render(request, 'tenant/tenant.html', {'tenants': tenant})
 
 def add_tenant(request):
@@ -79,7 +80,6 @@ def add_tenant(request):
         form = AddTenantForm(request.POST)
         if form.is_valid():
             form.save()
-
             # Update room status when new rent contract is created
             room_id = form.cleaned_data['room_id']
             Room.objects.filter(id=room_id.id).update(is_rented=True)
