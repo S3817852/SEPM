@@ -69,9 +69,9 @@ def house_add(request):
 # Update a specific house
 def house_update(request,pk):
     house = House.objects.get(id = pk)
-    form = AddHouseForm(instance = house)
+    form = AddHouseForm(instance = house, owner=request.user)
     if request.method == 'POST':
-        form = AddHouseForm(request.POST, instance= house)
+        form = AddHouseForm(request.POST, instance= house, owner=request.user)
         if form.is_valid:
             form.save()
             house_name = form.cleaned_data.get('address')
@@ -130,9 +130,9 @@ def room_add(request, pk):
 # Update a specific room
 def room_update(request,house_id, pk):
     room = Room.objects.get(id = pk)
-    form = AddRoomForm(instance = room)
+    form = AddRoomForm(instance = room, house_id=house_id)
     if request.method == 'POST':
-        form = AddRoomForm(request.POST, instance = room)
+        form = AddRoomForm(request.POST, instance = room, house_id=house_id)
         if form.is_valid:
             form.save()
             messages.success(request, "Room is updated successfully")

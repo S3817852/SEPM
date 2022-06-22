@@ -1,5 +1,6 @@
-import datetime
+from datetime import datetime
 
+from dateutil import tz
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -68,11 +69,26 @@ def main_page(request):
 def login_page(request, *args, **kwargs):
     return render(request, 'core/login.html', {})
 
+
+
+
 def tenant_manage(request):
-    tenant = RentContract.objects.all()
-    remaining_time = datetime.datetime.now()  
+    rent_contracts = RentContract.objects.all()
+    current_time = datetime.now().replace(tzinfo=tz.tzlocal()) 
+    
+    for rc in rent_contracts:
+        covert_utc_to_vn_time_end_date = rc.end_date.astimezone(tz.tzlocal())
+        remain_time = covert_utc_to_vn_time_end_date - current_time
+        print(remain_time)
+        print(remain_time.seconds)
+        print(remain_time.seconds//3600)
+        print((remain_time.seconds//60)%60)
+
+        if remain_time.days <= 0:
+            print("yes")
+
    
-    return render(request, 'tenant/tenant.html', {'tenants': tenant})
+    return render(request, 'tenant/tenant.html', {'rent_contracts': rent_contracts})
 
 def add_tenant(request):
     form = AddTenantForm()

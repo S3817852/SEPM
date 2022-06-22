@@ -48,16 +48,16 @@
 						</tr>
 					  </thead>
 					  <tbody>
-						  {% for tenant in tenants %}
+						  {% for rc in rent_contracts %}
 						<tr>
-							<td><a href="">{{tenant.account_id}}</a></td>
-							<td scope="row">{{tenant.room_id}}</td>
-							<td scope="row">{{tenant.num_tenants}}</td>
-							<td>{{tenant.start_date}}</td>
-							<td>{{tenant.end_date}}</td>
-							<td>{{tenant.actual_end_date}}</td>
-							<td><a href="#" class="btn btn-success">{{tenant.end_date|timeuntil}}</a></td>
-							<td><a href="{% url 'update_tenant' tenant.id %}" class="btn btn-primary">Update</a></td>
+							<td><a href="">{{rc.account_id}}</a></td>
+							<td scope="row">{{rc.room_id}}</td>
+							<td scope="row">{{rc.num_tenants}}</td>
+							<td>{{rc.start_date}}</td>
+							<td>{{rc.end_date}}</td>
+							<td>{{rc.actual_end_date}}</td>
+							<td><a href="#" class="btn btn-success">{{rc.end_date|timeuntil}}</a></td>
+							<td><a href="{% url 'update_tenant' rc.id %}" class="btn btn-primary">Update</a></td>
 						  </tr>
 						
 						{% endfor %}

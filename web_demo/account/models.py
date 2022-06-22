@@ -34,7 +34,7 @@ class RentContract(models.Model):
     account_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     room_id = models.ForeignKey("property.Room", on_delete=models.CASCADE)
     num_tenants = models.DecimalField(max_digits=2, decimal_places=0)
-    start_date = models.DateTimeField()
+    start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField()
     actual_end_date = models.DateTimeField(blank=True, null=True)
     internet_usage = models.BooleanField()
