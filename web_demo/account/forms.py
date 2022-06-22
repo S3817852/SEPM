@@ -55,7 +55,7 @@ class AddTenantForm(forms.ModelForm):
 
     def __init__(self,*args, **kwargs):
         super().__init__(*args,**kwargs)
-        tenant_list = RentContract.objects.values_list('account_id', flat=True)
+        tenant_list = RentContract.objects.filter(actual_end_date=None).values_list('account_id', flat=True)
         self.fields['account_id'].queryset  = Account.objects.exclude(pk__in=tenant_list).filter(is_owner=False)
         self.fields['room_id'].queryset  = Room.objects.filter(is_rented=False)
 

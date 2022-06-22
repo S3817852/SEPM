@@ -77,15 +77,17 @@ def tenant_manage(request):
     current_time = datetime.now().replace(tzinfo=tz.tzlocal()) 
     
     for rc in rent_contracts:
-        covert_utc_to_vn_time_end_date = rc.end_date.astimezone(tz.tzlocal())
-        remain_time = covert_utc_to_vn_time_end_date - current_time
-        print(remain_time)
-        print(remain_time.seconds)
-        print(remain_time.seconds//3600)
-        print((remain_time.seconds//60)%60)
 
-        if remain_time.days <= 0:
-            print("yes")
+        # Check 
+        if rc.actual_end_date == None:
+            covert_utc_to_vn_time_end_date = rc.end_date.astimezone(tz.tzlocal())
+            remain_time = covert_utc_to_vn_time_end_date - current_time
+
+            if remain_time.days < 0:
+                # Update room status
+                Room.objects.filter(id=rc.room_id.id).update(is_rented=False)
+                RentContract.objects.filter(id=rc.id).update(actual_end_date=rc.end_date)
+                
 
    
     return render(request, 'tenant/tenant.html', {'rent_contracts': rent_contracts})
