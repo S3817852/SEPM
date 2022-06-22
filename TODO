@@ -1,1 +1,9 @@
 Auto fill month and year in ew_add page.
+
+
++ If current time is end date -> update actual end date
++ Update actual end date if tenant turns room early
++ Update room status.
+
++ Calculate how many date left in specific month.
++ Calculate consumption monthly.
