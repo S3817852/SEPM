@@ -119,7 +119,7 @@ def update_tenant(request, pk):
             if form.cleaned_data['actual_end_date']:
                 Room.objects.filter(id=form.cleaned_data['room_id'].id).update(is_rented=False)
             form.save()
-            # tenant_name = form.cleaned_data.get('name')
+            
             messages.success(request,  "Tenant's information is updated successfully")
             return redirect('/tenant/tenant')
 

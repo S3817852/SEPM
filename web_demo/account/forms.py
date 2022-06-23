@@ -51,7 +51,8 @@ class AddTenantForm(forms.ModelForm):
 
     class Meta:
         model = RentContract
-        fields = '__all__'
+        fields = ['account_id', 'room_id', 'num_tenants',
+                  'end_date', 'internet_usage', 'tv_usage']
 
     def __init__(self,*args, **kwargs):
         super().__init__(*args,**kwargs)

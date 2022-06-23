@@ -56,7 +56,12 @@
 							<td>{{rc.start_date}}</td>
 							<td>{{rc.end_date}}</td>
 							<td>{{rc.actual_end_date}}</td>
-							<td><a href="#" class="btn btn-success">{{rc.end_date|timeuntil}}</a></td>
+							<td><a href="#" class="btn btn-success">{%if rc.actual_end_date %}
+																	0 minutes
+																	{%else%}
+																	{{rc.end_date|timeuntil}}
+																	{%endif%}
+								</a></td>
 							<td><a href="{% url 'update_tenant' rc.id %}" class="btn btn-primary">Update</a></td>
 						  </tr>
 						
