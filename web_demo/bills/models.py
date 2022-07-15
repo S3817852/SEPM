@@ -25,14 +25,16 @@ class BillAndReceipts(models.Model):
     room_price = models.DecimalField(max_digits=10, decimal_places=3)
     old_electricity = models.DecimalField(max_digits=10, decimal_places=3)
     new_electricity = models.DecimalField(max_digits=10, decimal_places=3)
+    total_electricity = models.DecimalField(max_digits=10, decimal_places=3, default=0)
     old_water = models.DecimalField(max_digits=10, decimal_places=3)
     new_water = models.DecimalField(max_digits=10, decimal_places=3)
+    total_water = models.DecimalField(max_digits=10, decimal_places=3, default=0)
     internet = models.DecimalField(max_digits=10, decimal_places=3)
     tv = models.DecimalField(max_digits=10, decimal_places=3)
     other = models.DecimalField(max_digits=10, decimal_places=3)
     total = models.DecimalField(max_digits=10, decimal_places=3)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
 
 
 

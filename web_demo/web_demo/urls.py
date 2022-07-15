@@ -24,6 +24,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from property.views import house_page
 from services.views import announcement, ew
+from bills.views import calculate_bill_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +35,8 @@ urlpatterns = [
     path('signup/', sign_up, name='signup'),
     path('tenant/', include('account.urls')),
     path('house/', include('property.urls')),
-    path('services/', include('services.urls'))
+    path('services/', include('services.urls')),
+    path('calculate-bill/', calculate_bill_view)
 
 ]
 

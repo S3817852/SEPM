@@ -21,6 +21,8 @@ class Room(models.Model):
     house_id = models.ForeignKey(House, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=12, decimal_places=0)
     is_rented = models.BooleanField()
+    cur_electricity = models.DecimalField(max_digits=10, decimal_places=3, default=0)
+    cur_water = models.DecimalField(max_digits=10, decimal_places=3, default=0)
     name = models.TextField(default="P001", max_length=4, null=False)
 
     def __str__(self, *args, **kwargs):
